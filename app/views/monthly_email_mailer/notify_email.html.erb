@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  	<title>HomeBinder Monthly Email</title>
+	  	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	  	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	</head>
+	<body style="font:14px 'Open Sans', Sans-serif;color:#444;">
+		<table border="0" cellspacing="0" cellpadding="10" width="600px">
+			<tr>
+				<td style="background-color:#222;text-align:center;width:100px;border-top:2px solid #ff9900" valign="top">
+					<a href="http://www.homebinder.com">
+						<img src="http://www.homebinder.com/img/logo.png" />
+					</a>
+				</td>
+				<td valign="top">
+					<p style="border-bottom:1px solid #ccc;"><strong><span style="color:#ff9900;font-size: 28px;">Your HomeBinder Update for <%= @date.strftime("%B")%> <%= @date.strftime("%Y")%></span></strong></p>
+				  	<p>
+				  	<% if @email_user.user_profile.first_name.nil? %>
+                      	<%= "Hello #{@email_user.email}!" %>
+                    <% else %>
+                      	<%= "Hello #{@email_user.user_profile.first_name}!" %>
+                    <% end %>
+					</p>
+					<p>Thanks for being a loyal HomeBinder.com user! Each month we like to give you a heads up about any upcoming 
+						Maintenance Items and ongoing Projects you have in your Binders. You can see these items listed below.</p>
+					<p>Remember to come back to <a href="http://www.homebinder.com">HomeBinder.com</a> often and update your Maintenance 
+						items and Projects!</p>
+					
+					<% if @email_binders.length > 0 %>
+						<% @email_binders.each do |binder| %>
+							<p style="border-bottom:1px solid #ccc;"><strong><span style="color:#ff9900;font-size: 16px;"><%= binder.name %></span></strong></p>
+							<p><strong>Maintenance Items:</strong></p>
+							<% if binder.maintenance_items.length > 0 %>
+								<% @maint_items = binder.maintenance_items.sort_by {|i| i.next_event.do_date} %>
+								<table width="100%">
+									<tr>
+										<td style="border-bottom:1px solid #ccc;"><span style="font-size: 10px;text-transform: uppercase;">Item</span></td>
+										<td style="border-bottom:1px solid #ccc;"><span style="font-size: 10px;text-transform: uppercase;">Due Next</span></td>
+									</tr>
+								
+									<% @maint_items.each do |item| %>
+										<% iname = item.name unless item.name.nil? %>
+										<% next if item.next_event.do_date > @dateplus2mo %>
+	          							<% inext = item.next_event.do_date.strftime('%A, %B %-d, %Y') unless item.next_event.do_date.nil? %>
+	          							
+	          							<tr>
+	          								<td><%= iname %></td>
+	          								<td><%= inext %></td>
+	          							</tr>
+	          						
+									<% end %>
+								</table>
+							<% else %>
+								<p><%= "You have no maintenance items to complete this month. Nice work!" %></p>
+							<% end %>
+							
+							
+							
+							<p><strong>Projects:</strong></p>
+							<% if binder.projects.length > 0 %>
+								<table width="100%">
+									<tr>
+										<td style="border-bottom:1px solid #ccc;"><span style="font-size: 10px;text-transform: uppercase;">Name</span></td>
+										<td style="border-bottom:1px solid #ccc;"><span style="font-size: 10px;text-transform: uppercase;">Status</span></td>
+										<td style="border-bottom:1px solid #ccc;"><span style="font-size: 10px;text-transform: uppercase;">End Date</span></td>
+									</tr>
+								
+
+									<% binder.projects.each do |project| %>
+								        <% pname = project.name unless project.name.nil? %>
+								        <% pendd = project.end_date.strftime('%A, %B %-d, %Y') unless project.end_date.nil? %>
+								        <% pstat = project.get_status.titleize unless project.get_status.nil? %>
+	          							
+	          							<% next if pstat == 'Completed' %>
+	          							<tr>
+	          								<td><%= pname %></td>
+	          								<td><%= pstat %></td>
+	          								<td><%= pendd %></td>
+	          							</tr>
+	          							
+									<% end %>
+								</table>
+							<% else %>
+								<p><%= "You have no projects. Go build something!" %></p>
+							<% end %>
+							
+							<p>&nbsp;</p>
+						<% end %>
+					<% else %>
+						<p><%= "You have no binders, you should go create one!" %></p>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td style="background-color:#222;text-align:left;width:100px;color:#fff;">
+					<strong>Organize.<br/>Manage.<br/><span style="color:#ff9900">Sell.</span></strong>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="border-top:1px solid #ccc;font-size:10px;text-align: right">
+					&copy; <%= @date.strftime("%Y")%> <a href="http://www.homebinder.com" style="color:#ff9900">HomeBinder.com</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

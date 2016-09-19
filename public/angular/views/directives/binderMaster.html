@@ -1,0 +1,86 @@
+<application-header></application-header>
+
+<div class="mobile-view-select dropdown">
+	<a href="" class="dropdown-toggle" data-toggle="dropdown">
+		<span>Overview</span><b class="caret"></b>
+	</a>
+	<ul class="mobile-view-list dropdown-menu">
+		<li ng-repeat="tab in tabs.list" class="nav-sub {{ tab.statusClass }}">
+			<hr ng-show="tab.id == 'spacer'" />
+			<a href="#/binders/{{ binder.id }}/{{ tab.url }}" ng-show="tab.id != 'spacer'">
+				<span ng-if="tab.icon" class="{{ tab.icon }}">&nbsp;</span>{{tab.name}}
+				<span ng-show="tab.statusClass == 'active'" class="label label-white pull-right" id="item_count">{{resourceCount}}</span>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div id="main-wrapper" class="container-fluid">
+	<div class="row">
+    	<div class="col-sm-3 col-md-2 sidebar sidebar-upper">
+          	<ul class="nav nav-sidebar">
+				<li ng-repeat="tab in tabs.list" class="nav-sub {{ tab.statusClass }}">
+					<hr ng-show="tab.id == 'spacer'" />
+					<a href="#/binders/{{ binder.id }}/{{ tab.url }}" ng-show="tab.id != 'spacer'">
+						<span ng-if="tab.icon" class="{{ tab.icon }}">&nbsp;</span>{{tab.name}}
+						<span ng-show="tab.statusClass == 'active'" class="label label-white pull-right" id="item_count">{{resourceCount}}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-sm-3 col-md-2 sidebar sidebar-lower">
+			<div class="text-center">
+				<img class="partner-logo" ng-src="{{binder.logo_url}}" />
+			</div>	
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="navbar navbar-default navbar-fixed-top navbar-breadcrumbs col-sm-offset-3 col-md-offset-2 binder-options" role="navigation">
+				<div class="row-fluid">
+					<div class="pull-left">
+						<span ng-repeat="button in buttons">
+							<a href="" id="{{button.id}}" ng-click="clickToolbarButton(button)" class="btn btn-primary navbar-btn"><span class='{{button.icon}}'></span>&nbsp;{{button.text}}</a>
+						</span>
+					</div>
+					<div class="pull-right">
+						<a href="{{subscription.url}}" ng-show="permissions.can_subscribe && subscription.visible" class="upgrade-binder btn btn-primary navbar-btn"><span class="glyphicon glyphicon-hand-up"></span>&nbsp;Upgrade</a>
+						<a href="{{binder.transfer_url}}" ng-show="permissions.can_transfer" class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-arrow-right"></span>&nbsp;Transfer</a>
+						<a href="" ng-show="permissions.can_share" ng-click="share()" class="btn btn-primary navbar-btn share-binder"><span class='glyphicon glyphicon-share'></span>&nbsp;Share</a>
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Reports <span class="caret"></span></button>
+						  	<ul class="dropdown-menu pull-right" role="menu">
+						    	<li ng-if="permissions.can_report"><a href="{{binder.report_url}}">Full Binder Report</a></li>
+						    	<li ng-if="permissions.can_create_seller_report"><a href="" ng-click="createSellerReport()">Create Seller's Report</a></li>
+								<li ng-if="permissions.can_edit_seller_report"><a href="{{binder.edit_seller_report_url}}">Edit Seller's Report</a></li>
+						    	<li ng-if="binder.seller_report_exists"><a href="{{binder.seller_report_url}}" target="_blank">View Seller's Report</a></li>
+						  </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-transclude></div>
+		</div>
+	</div>
+</div>
+
+<div class="mobile-binder-options" role="navigation">
+	<div class="row-fluid">
+		<span ng-repeat="button in buttons">
+			<a href="" id="{{button.id}}" ng-click="clickToolbarButton(button)" class="btn btn-primary navbar-btn"><span class='{{button.icon}}'></span>&nbsp;{{button.text}}</a>
+		</span>
+
+		<a class="btn btn-primary navbar-btn" href="#/binders/{{ binder.id }}/edit"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Binder</a>
+		<a class="btn btn-primary navbar-btn" href="#/binders/{{ binder.id }}/onboarding_wizard/contractors"><span class="glyphicon glyphicon-flash"></span>&nbsp;Launch Wizard</a>
+
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Reports <span class="caret"></span></button>
+		  	<ul class="dropdown-menu pull-right" role="menu">
+		    	<li ng-show="permissions.can_report"><a href="{{binder.report_url}}">Full Binder Report</a></li>
+		    	<li ng-show="permissions.can_create_seller_report"><a href="" ng-click="createSellerReport()">Create Seller's Report</a></li>
+				<li ng-if="permissions.can_edit_seller_report"><a href="{{binder.edit_seller_report_url}}">Edit Seller's Report</a></li>
+		    	<li ng-show="binder.seller_report_exists"><a href="{{binder.seller_report_url}}" target="_blank">Seller's Report</a></li>
+		  </ul>
+		</div>
+	</div>
+</div>
+
+<application-footer></application-footer>

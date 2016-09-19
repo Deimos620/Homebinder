@@ -1,0 +1,44 @@
+<div ng-controller="DocumentIndexCtrl">
+	<binder-master selected-tab="selectedTab" resource-count="data.documents.length">
+		
+		<h3>All Documents</h3>
+		
+		<div class="toolbar-btn-pad">
+			<div class="nav">
+				<a class="btn btn-primary navbar-btn" pl-upload pl-url="upload.url" pl-files-model="upload.multiFiles"
+					 pl-progress-model="upload.multiPercent" pl-instance="upload.uploader" pl-filters-model="upload.filters" 
+					 pl-multi-params-model="upload.multipart_params" on-file-uploaded="onFileUploaded($response)" 
+					 on-file-error="onFileError($error)" pl-errors-model="upload.errors">
+					<span class="glyphicon glyphicon-upload"></span>&nbsp;Upload Files</a>
+			</div>
+		</div>
+		
+		<div class="alert alert-danger" ng-show="upload.errors.length"></div>
+		
+		<table ng-show="upload.multiFiles.length" class="table table-condensed">
+			<th>Name</th>
+			<th>Size</th>
+			<th>Percent Uploaded</th>
+			<tr ng-repeat="file in upload.multiFiles">
+				<td>{{file.name}}</td>
+				<td>{{file.size | bytes}}</td>
+				<td><progressbar class="progress-striped active" value="file.percent"></progressbar></td>
+			</tr>
+		</table>
+		
+		<table class="table">
+			<tr>
+				<th>Name</th>
+				<th>Size</th>
+				<th>Tags</th>
+				<th>&nbsp;</th>
+			</tr>
+			<tr ng-repeat="doc in data.documents">
+				<td><a href="{{doc.location}}" target="_blank">{{doc.name}}</a></td>
+				<td>Size: {{doc.file_size | bytes}}</td>
+				<td>{{doc.tags}}</td>
+				<td><button class="btn btn-danger btn-sm" ng-click="destroy(doc)">Delete</button></td>
+			</tr>
+		</table>
+	</binder-master>
+</div>

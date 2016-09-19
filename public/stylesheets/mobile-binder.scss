@@ -1,0 +1,118 @@
+//  =============================================================================
+//  Variables
+//  =============================================================================
+		$orange: #f63;
+		$white: #fff;
+		$gray: #999;
+		$gray-dark: #333;
+		$gray-light: #efefef;
+
+//  =============================================================================
+//  Breakpoints
+//  =============================================================================
+		$small:    "only screen and (max-width: 500px)";
+		$medium:   "only screen and (min-width: 501px) and (max-width: 690px)";
+		$large:    "only screen and (min-width: 1001px)";
+		
+//  =============================================================================
+//  Modules
+//  =============================================================================
+
+		@media #{$small} {
+			#main-wrapper {
+				display: block;
+				float: left;
+				width: 100%;
+				.panel-heading {
+					.pull-right {
+						float: left !important;
+					}
+					h3.panel-title {
+						font-size: 18px;
+						margin-bottom: 0.75em;
+						text-align: left;
+						width: 100%;
+					}
+				}
+				
+				.panel-default {
+					overflow: hidden;
+					&:last-of-type {
+						margin-bottom: 0;
+					}
+					&.panel-overview {
+						margin-bottom: 20px;
+					}
+					.btn-group {
+						width: 100%;
+					}
+				}
+
+				.edit_item_btn, .delete_post {
+					margin-right: 5px;
+					padding: 8px;
+				}
+				.table.table-condensed, 
+				.table.table-responsive {
+					tr {
+						display: block;						
+					}
+					th, td {
+						border-top: none;
+						border-bottom: 1px solid #ddd;
+						display: block;
+						float: left;
+						height: 50px;
+						&.additional-details, &.edit-history {
+							border: none;
+							min-height: 50px;
+							height: auto;
+							width: 100%;
+						}
+					}
+					th {
+						width: 60%;
+					}
+					td {
+						width: 40%;
+						&.buttons {
+							width: 100%;
+						}
+					}
+					input[type=text] {
+						font-size: 16px;
+					}
+				}
+				.thumbnails {
+					margin-left: 0;
+					padding-left: 0;
+					li {
+						margin: 0;
+						width: 50%;
+					}
+					img {
+						width: 100%;
+					}
+				}
+			}
+
+			#binder-main {
+				padding-left: 0;
+				padding-right: 0;
+				.binder-map {
+					display: none;
+				}
+				.panel-footer {
+					h1 {
+						border-bottom: none;
+						font-size: 28px;
+						margin-top: 0;
+						padding-bottom: 0;
+					}
+					h2 {
+						font-size: 22px;
+						margin-top: 0;
+					}
+				}
+			}
+		}

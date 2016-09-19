@@ -1,0 +1,35 @@
+<hb-admin-toolbar></hb-admin-toolbar>
+<div class="container">
+    <p><h2>Seller Reports - {{data.reports.length}}</h2></p>
+    <table class="table table-condensed table-striped table-hover">
+        <thead>
+            <td><a href="" ng-click="orderBy('id')">Id</a></td>
+            <td><a href="" ng-click="orderBy('binder.owner')">Owner</a></td>
+            <td><a href="" ng-click="orderBy('binder.property.address1')">Address</a></td>
+            <td><a href="" ng-click="orderBy('binder.property.city')">City</a></td>
+            <td><a href="" ng-click="orderBy('binder.property.state')">State</a></td>
+            <td><a href="" ng-click="orderBy('binder.partner')">Partner</a></td>
+            <td><a href="" ng-click="orderBy('public')">Public</a></td>
+            <td><a href="" ng-click="orderBy('created_at')">Created On</a></td>
+            <td></td>
+        </thead>
+        <tbody>
+            <tr ng-show="data.isBusy">
+                <td colspan="7">
+                    <p>Loading seller's reports... <img src="/img/busy.gif" /></p>
+                </td>
+            </tr>
+            <tr ng-repeat="report in data.reports | orderBy: sort.column : sort.reverse" ng-show="!data.isBusy">
+                <td>{{report.id}}</td>
+                <td>{{report.binder.owner}}</td>
+                <td>{{report.binder.property.address1}} {{report.binder.property.address2}}</td>
+                <td>{{report.binder.property.city}}</td>
+                <td>{{report.binder.property.state}}</td>
+                <td>{{report.binder.partner.name}}</td>
+                <td>{{report.public | yesNo}}</td>
+                <td>{{report.created_at | date : shortDate}}</td>
+                <td><a ng-href="#/SellerReport/{{report.code}}" target="_blank">View</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

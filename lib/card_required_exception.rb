@@ -1,0 +1,2 @@
+class CardRequiredException < StandardError
+end

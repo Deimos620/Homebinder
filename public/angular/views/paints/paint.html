@@ -1,0 +1,59 @@
+<div ng-controller="PaintCtrl">
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="form{{ resource.data.id }}" onshow="onShow()" onbeforesave="save($data)">
+			<table class="table table-condensed">
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<th>Name</th>
+					<td><span editable-text="resource.data.name" e-name="name" e-required>{{ resource.data.name }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Manufacturer:</th>
+					<td><span editable-text="resource.data.manufacturer" e-name="manufacturer" e-typeahead="man for man in typeahead.manufacturers | filter:$viewValue | limitTo:8 | orderBy:'man'">{{ resource.data.manufacturer | titleize }}</span></td>
+					<th class="fixed-width">Type of Paint:</th>
+					<td colspan="3"><span editable-text="resource.data.paint_type" e-name="paint_type" e-typeahead="type for type in typeahead.paintTypes | filter:$viewValue | limitTo:8 | orderBy:'type'">{{ resource.data.paint_type | titleize }}</span></td>
+				</tr>
+				<tr>
+					<th>Code:</th>
+					<td><span editable-text="resource.data.code" e-name="code">{{ resource.data.code }}</span></td>
+					<th>Make Up:</th>
+					<td colspan="3"><span editable-text="resource.data.makeup" e-name="code">{{ resource.data.makeup }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Purchased At:</th>
+					<td><span editable-text="resource.data.purchase.store" e-name="store" e-typeahead="store.name for store in typeahead.stores | filter:$viewValue | limitTo:8 | orderBy:'name'">{{ resource.data.purchase.store | titleize }}</span></td>
+					<th class="fixed-width">Purchase Price:</th>
+					<td><span editable-text="resource.data.purchase.price" e-name="price" onbeforesave="isFloat($data)">{{ resource.data.purchase.price | currency }}</span></td>
+					<th class="fixed-width">Purchased On:</th>
+					<td><span editable-date="resource.data.purchase.date" e-name="date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options">{{ resource.data.purchase.date | date:'M/d/y' }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Structures:</th>
+					<td colspan="5"><span editable-checklist="resource.data.structures" e-name="structures" e-ng-options="structure as structure.name for structure in options.structures | orderBy:'name'">{{showStructureTags()}}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Areas:</th>
+					<td colspan="5"><span editable-checklist="resource.data.areas" e-name="areas" e-ng-options="area as area.name for area in options.areas | orderBy:'name'">{{showAreaTags()}}</span></td>
+				</tr>
+				<tr>
+					<th class="additional-details">Additional Details</th>
+					<td class="additional-details" colspan="5"><span editable-textarea="resource.data.details" e-name="details" e-rows="5" e-cols="120">{{ resource.data.details }}</span></td>
+				</tr>
+				<tr ng-show="errors.hasErrors">
+					<td colspan="6">
+						<div class="alert alert-danger errors">
+							<span ng-repeat="error in errors.list">{{ error }}</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="buttons" colspan="6">
+						<span ng-show="form{{ resource.data.id }}.$visible">
+	        				<button type="submit" class="btn btn-primary" ng-disabled="form{{ resource.data.id }}.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="form{{ resource.data.id }}.$waiting" ng-click="cancelEdit()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

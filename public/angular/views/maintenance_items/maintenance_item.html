@@ -1,0 +1,84 @@
+<div ng-controller="MaintenanceItemCtrl">
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="form{{ resource.data.id }}" onshow="onShow()" onbeforesave="save($data)">
+			<table class="table table-condensed">
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<th>Name</th>
+					<td><span editable-text="resource.data.name" e-name="name" onbeforesave="checkName($data)" e-required>{{ resource.data.name }}</span></td>
+				</tr>
+				<tr>
+					<th>Occurs every</th>
+					<td colspan="3">
+						<span editable-text="resource.data.interval" e-name="interval" onbeforesave="isInteger($data)" e-required>{{ resource.data.interval }}</span>
+						<span editable-select="resource.data.maintenance_cycle" e-name="maintenance_cycle" e-ng-options="cycle.name as cycle.name for cycle in options.cycles | orderBy:'name'" e-required>{{ resource.data.maintenance_cycle }}</span>
+					</td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Last completed on:</th>
+					<td>{{ (resource.data.last_event_date | date:'M/d/y') || 'Unknown' }}</td>
+					<th class="fixed-width">Due next on:</th>
+					<td><span editable-date="resource.data.do_date" e-name="do_date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options" e-required>{{ resource.data.do_date | date:'M/d/y' }}</span></td>
+				</tr>
+				<tr>
+					<th class="additional-details">Additional Details</th>
+					<td class="additional-details" colspan="5"><span editable-textarea="resource.data.details" e-name="details" e-rows="5" e-cols="120">{{ resource.data.details }}</span></td>
+				</tr>
+				<tr ng-show="errors.hasErrors">
+					<td colspan="4">
+						<div class="alert alert-danger errors">
+							<span ng-repeat="error in errors.list">{{ error }}</span>
+						</div>
+					</td>
+				</tr>
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<td class="buttons" colspan="6">
+						<span>
+	        				<button type="submit" class="btn btn-primary" ng-disabled="form{{ resource.data.id }}.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="form{{ resource.data.id }}.$waiting" ng-click="cancelEdit()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+  	<div class="panel panel-default">
+	  	<div class="panel-heading">
+  			<h4 class="panel-title">
+		  		<a data-toggle="collapse" data-target="#table_{{resource.data.id}}" href="" class="collapsed" ng-click="toggleHistory()">
+		  			Show history
+		  		</a>
+			</h4>
+	  	</div>
+	  	<div id="table_{{resource.data.id}}" class="panel-collapse collapse" ng-show="history.show">
+			<table class="maintenance-history-table table table-condensed">
+				<tr ng-repeat="event in history.list">
+					<th>Due Next On</th>
+					<td><span editable-date="event.do_date" e-form="eventForm" e-name="do_date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options">{{ event.do_date | date:'M/d/y' }}</span></td>
+				</tr>
+
+				<tr ng-repeat="event in history.list">
+					<th>Last Completed On</th>
+					<td><span editable-date="event.completed_date" e-form="eventForm" e-name="completed_date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options">{{ event.completed_date | date:'M/d/y' }}</span></td>
+				</tr>
+
+				<tr ng-repeat="event in history.list">
+					<th>Work Done By</th>
+					<td><span editable-select="event.contractor_id" e-form="eventForm" e-name="contractor_id" e-ng-options="contractor.id as contractor.contractor.name group by contractor.contractor.contractor_type for contractor in event_options.contractors | orderBy:'contractor.name'">{{ event.contractor_id }}</span></td>
+				</tr>
+				
+				<tr ng-repeat="event in history.list">
+					<td class="edit-history">
+						<form editable-form name="eventForm" onbeforesave="saveEvent($data, event.id)" ng-show="eventForm.$visible" class="form-buttons form-inline">
+	          	<button type="submit" ng-disabled="eventForm.$waiting" class="btn btn-primary">save</button>
+	          	<button type="button" ng-disabled="eventForm.$waiting" ng-click="eventForm.$cancel()" class="btn btn-default">cancel</button>
+	        	</form>
+						<div class="buttons" ng-show="!eventForm.$visible">
+	          	<button class="btn btn-primary" ng-click="eventForm.$show()">edit</button>
+	        	</div> 
+	        </td>
+				</tr>
+				
+			</table>
+		</div>
+	</div>
+</div>

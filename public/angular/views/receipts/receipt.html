@@ -1,0 +1,43 @@
+<div ng-controller='ReceiptCtrl'>
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="form{{ resource.data.id }}" onshow="onShow()" onbeforesave="save($data)">
+			<table class="table table-responsive">
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<th>Name</th>
+					<td colspan="5"><span editable-text="resource.data.name" e-name="name" onbeforesave="checkName($data)" e-required>{{ resource.data.name }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Purchased At:</th>
+					<td><span editable-text="resource.data.purchase.store" e-name="store" e-typeahead="store.name for store in typeahead.stores | filter:$viewValue | limitTo:8 | orderBy:'name'">{{ resource.data.purchase.store | titleize }}</span></td>
+					<th class="fixed-width">Purchase Price:</th>
+					<td><span editable-text="resource.data.purchase.price" e-name="price" onbeforesave="isFloat($data)">{{ resource.data.purchase.price | currency }}</span></td>
+					<th class="fixed-width">Purchased On:</th>
+					<td><span editable-date="resource.data.purchase.date" e-name="date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options">{{ resource.data.purchase.date | date:'M/d/y' }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Capital Improvement:</th>
+					<td colspan="6" class="fixed-width"><span editable-checkbox="resource.data.deductable" e-name="deductable">{{resource.data.deductable | yesNo}}</span>&nbsp;<a href="" ng-click="showTaxInfo()"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Additional Details</th>
+					<td colspan="5"><span editable-textarea="resource.data.details" e-name="details" e-rows="5" e-cols="110">{{ resource.data.details }}</span></td>
+				</tr>
+				<tr ng-show="errors.hasErrors">
+					<td colspan="6">
+						<div class="alert alert-danger errors">
+							<span ng-repeat="error in errors.list">{{ error }}</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="buttons" colspan="4">
+						<span ng-show="form{{ resource.data.id }}.$visible">
+	        				<button type="submit" class="btn btn-primary" ng-disabled="form{{ resource.data.id }}.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="form{{ resource.data.id }}.$waiting" ng-click="cancelEdit()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

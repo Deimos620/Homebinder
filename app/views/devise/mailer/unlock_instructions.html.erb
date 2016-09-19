@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  	<title>HomeBinder Account Unlock</title>
+	  	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	</head>
+	<body style="font:14px 'Open Sans', Sans-serif;color:#444;">
+		<table border="0" cellspacing="0" cellpadding="10" width="600px">
+			<tr>
+				<td style="background-color:#222;text-align:center;width:100px;border-top:2px solid #ff9900" valign="top">
+					<a href="http://www.homebinder.com">
+						<img src="http://www.homebinder.com/img/logo.png" />
+					</a>
+				</td>
+				<td valign="top">
+		  			<p style="border-bottom:1px solid #ccc;"><strong><span style="color:#ff9900;font-size: 28px;">HomeBinder Account Unlock</span></strong></p>
+				  	<p>&nbsp;</p>
+				  	<p>Hello <%= @resource.email %>!</p>
+
+					<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+					
+					<p>Click the link below to unlock your account:</p>
+					
+					<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token), :style => 'color:#ff9900' %></p>
+				  	
+				  	<p>If you have any questions, please email us - <a href="mailto:support@homebinder.com" style="color:#ff9900">support@homebinder.com</a></p>
+				  	<p>Sincerely,<br />The <a href="http://www.homebinder.com" style="color:#ff9900">HomeBinder.com</a> Team</p>					
+				</td>
+			</tr>
+			<tr>
+				<td style="background-color:#222;text-align:left;width:100px;color:#fff;">
+					<strong>Organize.<br/>Manage.<br/><span style="color:#ff9900">Sell.</span></strong>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="border-top:1px solid #ccc;font-size:10px;text-align: right">
+					&copy; 2013 <a href="http://www.homebinder.com" style="color:#ff9900">HomeBinder.com</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

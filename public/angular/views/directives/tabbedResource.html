@@ -1,0 +1,74 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title pull-left capitalize">{{ resource.data.displayName }}</h3>
+		<div class="btn-group pull-right">
+			<a ng-click="toggleDetails()" href="" class="edit_item_btn btn btn-default btn-sm">
+				<span class="{{resource.detailsToggleIcon}}"></span>&nbsp;{{resource.detailsToggleTip}}
+			</a>
+			<a ng-show="resource.data.permissions.can_share" ng-click="share()" href="" class="edit_item_btn btn btn-default btn-sm">
+				<span class='glyphicon glyphicon-share'></span>&nbsp;Share
+			</a>
+			<a ng-show="resource.data.permissions.can_write" ng-click="showOnEdit();edit()" href="" class="edit_item_btn btn btn-default btn-sm">
+				<span class='glyphicon glyphicon-edit'></span>&nbsp;Edit
+			</a>
+		   	<a ng-show="resource.data.permissions.can_destroy" ng-click="destroy()" href="" class="delete_post btn btn-default btn-sm">
+		    	<span class='glyphicon glyphicon-remove-circle'></span>&nbsp;Delete
+		    </a>  	    	
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="panel-body">
+		<!--
+		<div collapse="!resource.showDetails" class="datatable">
+			<ul class="nav nav-tabs">
+				<li class="{{ resource.detailsStatus }}"><a href="" ng-click="selectTab('details')">Details</a></li>
+			  	<li class="{{ resource.galleryStatus }}"><a href="" ng-click="selectTab('gallery')">Gallery</a></li>
+			  	<li class="{{ resource.documentsStatus }}"><a href="" ng-click="selectTab('documents')">Documents</a></li>
+			  	<li class="{{ resource.notesStatus }}"><a href="" ng-click="selectTab('notes')">Notes</a></li>
+			</ul>
+			<div class="tab-content">
+				<div ng-include="view.current"></div>
+			</div>
+		</div>
+		-->
+		<div class="panel-group" id="accordion_{{resource.data.id}}" collapse="!resource.showDetails">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-target="#details_{{resource.data.id}}" href="">
+		          Details
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="details_{{resource.data.id}}" class="panel-collapse collapse in">
+		      <div ng-include="view.current"></div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default" ng-show="resource.tagId">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-target="#gallery_{{resource.data.id}}" href="" class="collapsed">
+		          Gallery
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="gallery_{{resource.data.id}}" class="panel-collapse collapse">
+		      <div ng-include="'/angular/views/images/index-res.html'"></div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default" ng-show="resource.tagId">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-target="#docs_{{resource.data.id}}" href="" class="collapsed">
+		          Documents
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="docs_{{resource.data.id}}" class="panel-collapse collapse">
+		      <div ng-include="'/angular/views/documents/index-res.html'"></div>
+		    </div>
+		  </div>
+		</div>
+		
+	</div>
+</div>

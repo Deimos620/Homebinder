@@ -1,0 +1,18 @@
+<application-header></application-header>
+<div ng-controller="NewBinderCtrl">
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Create New Binder</h1>
+			<p>Fill out the form below to get started with your new Binder!</p>
+		</div>
+	</div>
+	<div class="jumbotron-bar navbar navbar-default navbar-fixed-top" style="display:none;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="">Create New Binder</a>
+		</div>
+	</div>
+	<div class="container">
+		<div ng-include="'/angular/views/binders/form.html'"></div>
+	</div>
+</div>
+<application-footer></application-footer>

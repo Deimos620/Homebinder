@@ -1,0 +1,10 @@
+<form ng-controller="OnboardingWizardFormCtrl" ng-submit="submitForm()" name="form" role="form">
+	<div ng-show="data.form.hasErrors" class="alert alert-error errors">
+		<span ng-repeat="error in data.form.errors">{{ error }}</span>
+	</div>
+	
+	<input ng-model="data.form.id" type="hidden" />
+
+	<div ng-include="'/angular/views/onboarding_wizard/steps/contractors.html'"></div>
+	
+</form>

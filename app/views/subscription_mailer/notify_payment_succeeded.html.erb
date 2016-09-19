@@ -1,0 +1,34 @@
+<html>
+	<head>
+	  	<title>HomeBinder Payment Notification</title>
+	  	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	  	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	</head>
+	<body style="font:14px 'Open Sans', Sans-serif;color:#444;">
+		<table border="0" cellspacing="0" cellpadding="10" width="600px">
+			<tr>
+				<td style="background-color:#222;text-align:center;width:100px;border-top:2px solid #ff9900" valign="top">
+					<a href="http://www.homebinder.com">
+						<img src="http://www.homebinder.com/img/logo.png" />
+					</a>
+				</td>
+				<td valign="top">
+		  			<p>Your credit card has been billed <%= number_to_currency(@invoice.total / 100.00) %> for binder <%= @binder.name %>.</p>&nbsp;&nbsp;
+		  			<p>If you have any questions, please email us - <a href="mailto:support@homebinder.com" style="color:#ff9900">support@homebinder.com</a></p>
+				  	<p>Sincerely,<br />The <a href="http://www.homebinder.com" style="color:#ff9900">HomeBinder.com</a> Team</p>
+				</td>
+			</tr>
+			<tr>
+				<td style="background-color:#222;text-align:left;width:100px;color:#fff;">
+					<strong>Organize.<br/>Manage.<br/><span style="color:#ff9900">Sell.</span></strong>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="border-top:1px solid #ccc;font-size:10px;text-align: right">
+					&copy; 2013 <a href="http://www.homebinder.com" style="color:#ff9900">HomeBinder.com</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

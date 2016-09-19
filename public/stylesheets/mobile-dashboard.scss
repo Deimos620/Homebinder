@@ -1,0 +1,115 @@
+//  =============================================================================
+//  Variables
+//  =============================================================================
+		$white: #fff;
+		$orange: #f63;
+		$lightgrey: #e3e2e2;
+		$grey:  #c6c5c5;
+
+//  =============================================================================
+//  Breakpoints
+//  =============================================================================
+		$small:    "only screen and (max-width: 500px)";
+		$medium:   "only screen and (min-width: 501px) and (max-width: 690px)";
+		$large:    "only screen and (min-width: 1001px)";
+
+//  =============================================================================
+//  Mobile-only Styles
+//  =============================================================================
+
+		@media #{$small} {
+			.jumbotron {
+				margin-bottom: 0;
+				padding: 0;
+				h1 {
+					font-size: 28px;
+				}
+				p {
+					font-size: 16px;
+				}
+			}
+
+			.account-master-container {
+				padding: 0;
+				
+				h3 {
+					font-size: 22px;
+				}
+				
+				// Account Navigation
+				
+				.col-md-2 {
+					background: $white;
+					border-bottom: 3px solid $grey;
+					margin-bottom: 15px;
+					padding: 0;
+					width: 100%;
+				}
+				
+				.nav-pills>li>a {
+					-moz-border-radius: 0;
+					-webkit-border-radius: 0;
+					border-radius: 0;
+				}
+
+				.nav-stacked>li+li {
+					margin-top: 0;
+				}
+				
+				.nav-sub {
+					border-bottom: 1px solid $lightgrey;
+					&.active {
+						border-bottom: none;
+					}
+				}
+
+				// Table Styles
+				
+				.btn.btn-primary {
+					// display: inline-block;
+					// float: right;
+					// margin-top: -8px;
+					position: absolute;
+					top: 0;
+					right: 15px;
+
+				}
+				
+				.table {
+					th, td {
+						display: block;
+						float: left;
+						min-height: 40px;
+					}
+					th {
+						width: 35%;
+					}
+					td {
+						width: 65%;
+						&.buttons {
+							width: 100%;
+							.btn.btn-primary {
+								float: left;
+								margin-top: 0;
+								margin-right: 8px;
+							}
+						}
+					}
+				}
+
+				// Subscriptions View
+
+				.panel-body {
+					h4 {
+						margin-top: 0;
+					}
+					p {
+						margin-bottom: 0;
+					}
+					.pull-left, .pull-right {
+						margin-bottom: 15px;
+						width: 100%;
+					}
+				}
+			} // End .account-master-container
+		} // End media query

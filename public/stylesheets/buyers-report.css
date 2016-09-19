@@ -1,0 +1,445 @@
+body { padding-top: 0px; }
+
+.public-header {
+  background-color: #f4f5f6;
+  border-bottom: 1px solid #e3e2e2; }
+  .public-header .navbar-brand {
+    color: #ff6633; }
+    .public-header .navbar-brand:hover {
+      color: #ff6633; }
+    @media only screen and (max-width: 500px) {
+      .public-header .navbar-brand {
+        height: auto;
+        line-height: 1.45;
+        padding: 10px; } }
+    .public-header .navbar-brand img {
+      max-width: 45px;
+      top: -10px;
+      position: relative; }
+
+.public-binder .report-wrapper {
+  max-width: 1200px;
+  width: 85%;
+  margin: 20px auto 0; }
+  @media only screen and (max-width: 500px) {
+    .public-binder .report-wrapper {
+      width: 100%;
+      margin: 0;
+      /*padding: 10px 5px;*/ } }
+.public-binder .report-actions {
+  text-align: right; 
+  height: 25px; }
+  .public-binder .report-actions a {
+    margin: 0 5px; }
+  .public-binder .report-actions h3 {
+      margin-top: 5px; }
+  .public-binder .report-actions .shareTitle {
+      margin-top:7px;
+      display:inline; }    
+    @media only screen and (max-width: 500px) {
+      .public-binder .report-actions a {
+        margin: 0; } }
+  .public-binder .report-actions .btn-default {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    overflow: hidden;
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    opacity: 0.9; }
+    .public-binder .report-actions .btn-default:hover {
+      opacity: 1; }
+    .public-binder .report-actions .btn-default img {
+      width: 100%;
+      border-radius: 4px; }
+.public-binder .paper-document {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 10px 10px;
+  line-height: 0; }
+  .public-binder .paper-document .actions {
+    padding: 30px 50px;
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+    background-color: #f4f5f6; }
+    @media only screen and (max-width: 500px) {
+      .public-binder .paper-document .actions {
+        padding: 20px 0; } }
+    .public-binder .paper-document .actions > div {
+      text-align: center; }
+    .public-binder .paper-document .actions .btn {
+      margin: 0 5px; }
+      @media only screen and (max-width: 500px) {
+        .public-binder .paper-document .actions .btn {
+          margin: 0 auto;
+          text-align: center; } }
+    .public-binder .paper-document .actions .btn-default {
+      border: none;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      overflow: hidden;
+      opacity: 0.9; }
+      .public-binder .paper-document .actions .btn-default img {
+        border-radius: 7px;
+        width: 100%; }
+      .public-binder .paper-document .actions .btn-default:hover {
+        opacity: 1; }
+  .public-binder .paper-document .footer {
+    background-color: #ff6633;
+    border-radius: 0 0 10px 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 1.45;
+    margin: 0;
+    padding: 30px 40px;
+    text-align: center;
+    width: 100%; }
+    @media only screen and (max-width: 500px) {
+      .public-binder .paper-document .footer {
+        padding: 15px 15px 20px; } }
+    .public-binder .paper-document .footer .btn {
+      background-color: #fff;
+      color: white #ff6633;
+      font-size: 17px; }
+      @media only screen and (max-width: 500px) {
+        .public-binder .paper-document .footer .btn {
+          display: block;
+          font-size: 16px;
+          margin: 10px auto 0;
+          width: 65%; } }
+      .public-binder .paper-document .footer .btn:hover {
+        color: #ff6633; }
+    .public-binder .paper-document .footer p {
+      margin: 0; }
+      @media only screen and (max-width: 500px) {
+        .public-binder .paper-document .footer p {
+          font-size: 16px; } }
+.public-binder .report {
+  padding: 50px 50px 25px;
+  font-size: 16px;
+  width: 100%;
+  margin: 20px auto 0;
+  display: block;
+  background-color: #fff;
+  overflow: hidden; }
+  @media only screen and (max-width: 500px) {
+    .public-binder .report {
+      margin: 10px 0 0;
+      padding: 5px; } }
+  .public-binder .report .disclaimer {
+    line-height: 1.45;
+    padding: 20px 0 0;
+    text-align: center; }
+    @media only screen and (max-width: 500px) {
+      .public-binder .report .disclaimer {
+        font-size: 12px; } }
+  .public-binder .report .report-heading {
+    height: 180px; }
+    @media only screen and (max-width: 500px) {
+      .public-binder .report .report-heading {
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        text-align: center; } }
+    .public-binder .report .report-heading .meta {
+      padding: 0 20px 0; }
+      @media only screen and (max-width: 500px) {
+        .public-binder .report .report-heading .meta img {
+          display: none; } }
+      .public-binder .report .report-heading .meta h1 {
+        margin: 0;
+        font-size: 40px; }
+        @media only screen and (max-width: 500px) {
+          .public-binder .report .report-heading .meta h1 {
+            font-size: 24px;
+            line-height: 1.45; } }
+        .public-binder .report .report-heading .meta h1 small {
+          top: -13px;
+          position: relative; }
+      .public-binder .report .report-heading .meta h5 {
+        color: #999999;
+        font-weight: normal;
+        margin-bottom: 2px; }
+        .public-binder .report .report-heading .meta h5 a {
+          color: #999999;
+          font-weight: normal; }
+      .public-binder .report .report-heading .meta .hb-logo img {
+          margin-right: 25px; }
+    .public-binder .report .report-heading .provider {
+      top: -50px;
+      right: -40px; }
+      .public-binder .report .report-heading .provider .wrapper {
+        border-left: 0px solid #e3e2e2;
+        border-bottom: 0px solid #e3e2e2;
+        padding: 40px 50px 50px 50px;
+        height: 200px;
+        border-radius: 0 0 0 10px;
+        display: table;
+        width: 100%; }
+      .public-binder .report .report-heading .provider .label {
+        margin: 0;
+        color: #999999;
+        font-style: italic;
+        text-align: center;
+        display: block;
+        width: 100%;
+        height: 20px;
+        position: absolute;
+        top: 40px;
+        left: 0; }
+      .public-binder .report .report-heading .provider .provider-logo {
+        margin-top: 0;
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
+        height: 160px;
+        color: #999999;
+        font-style: italic;
+        text-align: center; }
+        .public-binder .report .report-heading .provider .provider-logo img {
+          max-width: 250px;
+          max-height: 120px; }
+    .public-binder .report .report-heading .photo {
+      text-align: right; }
+      .public-binder .report .report-heading .photo img {
+        max-width: 100%; }
+  .public-binder .report section {
+    margin: 20px 0; }
+    @media only screen and (max-width: 500px) {
+      .public-binder .report section {
+        margin-bottom: 10px;
+        margin-top: 0; } }
+    .public-binder .report section:first-of-type {
+      margin-top: 0; }
+    .public-binder .report section h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      margin-top: 0px !important;
+      color: #ff6633; }
+      @media only screen and (max-width: 500px) {
+        .public-binder .report section h3 {
+          font-size: 18px;
+          margin: 0;
+          padding-left: 5px; } }
+    .public-binder .report section .table {
+      padding: 0 30px;
+      border-collapse: separate; }
+      @media only screen and (max-width: 500px) {
+        .public-binder .report section .table {
+          margin: 0 0 10px;
+          padding: 5px; } }
+      .public-binder .report section .table tbody {
+        padding: 0 30px; }
+        @media only screen and (max-width: 500px) {
+          .public-binder .report section .table tbody {
+            padding: 0; } }
+      .public-binder .report section .table th {
+        border-top: none;
+        border-bottom: 1px solid #c6c5c5;
+        padding: 0; }
+        .public-binder .report section .table th label {
+          text-transform: uppercase;
+          color: #999999;
+          font-size: 12px; }
+          @media only screen and (max-width: 500px) {
+            .public-binder .report section .table th label {
+              font-size: 11px;
+              text-transform: none; } }
+        .public-binder .report section .table th:last-of-type {
+          text-align: right; }
+          @media only screen and (max-width: 500px) {
+            .public-binder .report section .table th:last-of-type {
+              text-align: left; } }
+      .public-binder .report section .table td {
+        padding: 10px;
+        vertical-align: middle;
+        border-top: none;
+        border-bottom: 1px solid #e3e2e2; }
+        @media only screen and (max-width: 500px) {
+          .public-binder .report section .table td {
+            font-size: 14px;
+            padding: 10px 10px 10px 0;
+            overflow: hidden;
+            text-overflow: ellipsis; } }
+        .public-binder .report section .table td small {
+          color: #999999; }
+        .public-binder .report section .table td span {
+          display: block; }
+          .public-binder .report section .table td span.notes {
+            font-size: 14px; }
+        @media only screen and (max-width: 500px) {
+          .public-binder .report section .table td.make {
+            font-size: 14px;
+            text-overflow: ellipsis; } }
+        .public-binder .report section .table td:first-of-type span:first-of-type {
+          font-weight: bold;
+          font-size: 18px; }
+          @media only screen and (max-width: 500px) {
+            .public-binder .report section .table td:first-of-type span:first-of-type {
+              font-size: 14px; } }
+        .public-binder .report section .table td:last-of-type {
+          text-align: right; }
+          @media only screen and (max-width: 500px) {
+            .public-binder .report section .table td:last-of-type {
+              text-align: left; } }
+        .public-binder .report section .table td .notes {
+          color: #999999; }
+        .public-binder .report section .no-data {
+          font-size: 12px;
+          text-align: center;
+          font-style: italic;
+          color: #999999;
+        }
+        .public-binder .report section .gallery-divider {
+          margin-left: 20px;
+          margin-right: 20px;
+          height: 1px;
+          background-color: #c6c5c5;
+        }
+        
+/* jd additions for mobile */
+@media only screen and (max-width: 1023px) {
+  .report-actions .addthis_toolbox {
+    float: left !important; }
+
+  .addthis_toolbox_bottom {
+    padding: 0; }
+
+  .shareTitle {
+    display: none !important; } 
+    
+  .public-binder .report {
+  	padding: 30px 15px 15px;
+  }
+  
+  .public-binder .report-wrapper {
+  	/*width: 95%;*/
+  }
+    
+  .public-binder .report-actions {
+  	height: 80px; 
+  	margin: 0 10px; }  
+  	
+  .public-binder .report-actions > div.pull-left {
+  	float: none !important; 
+  	text-align: center; }  
+ 
+  .public-binder .report .report-heading {
+    height: 130px;  }
+  
+  .public-binder .report .report-heading .meta img {
+  	max-width: 75px;  }
+  	
+  .public-binder .report .report-heading .meta h1 {
+  	font-size: 26px;
+    line-height: 1.45;
+    text-transform: capitalize; }
+  
+  .public-binder .report .report-heading .provider {
+  	top: -130px;
+  	right: 0;
+  	height: 100px;
+  	float: right; }
+  
+  .public-binder .report .report-heading .provider .label {
+  	top: 22px; }
+  		
+  .public-binder .report .report-heading .provider .provider-logo {
+  	float: right; }
+  		
+  .public-binder .paper-document .actions > div.col-xs-12 > span {
+  	display: none; }	
+  	
+  .public-binder .paper-document .actions > div.col-xs-12 >	div.addthis_toolbox_bottom {
+  	padding: 0; } 
+  	
+  .thumbnails > li {
+  	margin-bottom: 0; }
+  
+  .thumbnails > li > div > a > img {
+  	max-width: 125px !important; }	}
+
+
+@media only screen and (max-width: 500px) {
+  .addthis_toolbox_bottom {
+    padding: 0; }
+
+  .shareTitle {
+    display: none !important; } 
+        
+  .public-binder .report-actions {
+  	height: 80px; 
+  	margin: 0 10px; }  
+  	
+  .public-binder .report-actions > div.pull-left {
+  	float: none !important; 
+  	text-align: center; }  
+  	
+  .public-binder .report .report-heading {
+    height: 270px;  }  	
+  
+  .public-binder .report .report-heading > div.pull-right {
+  	float: none !important; }
+  	
+  .public-binder .report .report-heading > div.col-xs-4 {
+  	width: auto !important; }
+  
+  .public-binder .report .report-heading .provider {
+  	top: 0;
+  	right: 0; 
+  	float: none !important; }
+  	
+  .public-binder .paper-document .actions > div.col-xs-12 > span {
+  	display: none; }	
+  	
+  .public-binder .paper-document .actions > div.col-xs-12 >	div.addthis_toolbox_bottom {
+  	padding: 0; } 
+  	
+  .thumbnails > li {
+  	margin-bottom: 0; }
+  
+  .thumbnails > li > div > a > img {
+  	max-width: 125px !important; }	}
+
+          
+
+.addthis_toolbox_bottom {
+    width: 145px;
+    margin: 0 auto;
+    height: 50px;
+    padding: 10px 0;
+}
+
+.addthis_32x32_style .at15t_facebook,
+.addthis_32x32_style .at15t_twitter,
+.addthis_32x32_style .at15t_google_plusone_share,
+.addthis_32x32_style .at15t_email {
+    border-radius:6px;
+    margin-top:1px;
+}
+
+.report-actions {
+    height:35px;
+}
+
+/* for super small screens */
+@media only screen and (max-width: 320px) {
+  .public-binder .report-actions {
+  	height: 80px; 
+  	margin: 0 10px; }  
+  	
+  .public-binder .report-actions > div.pull-left,
+  .public-binder .report-actions > div.pull-right {
+  	float: none !important; 
+  	text-align: center; 
+  }  
+  
+  .public-binder .report-actions .addthis_toolbox {
+  	margin-left: 65px;
+  }
+}

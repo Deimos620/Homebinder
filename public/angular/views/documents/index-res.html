@@ -1,0 +1,37 @@
+<div ng-controller="DocumentIndexCtrl" resource-count="data.documents.length">
+	<div class="btn-pad">
+		<a class="btn btn-primary btn-sm" pl-upload pl-url="upload.url" pl-files-model="upload.multiFiles" pl-progress-model="upload.multiPercent" 
+			pl-instance="upload.uploader" pl-filters-model="upload.filters" pl-multi-params-model="upload.multipart_params"
+			on-file-uploaded="onFileUploaded($response)" on-file-error="onFileError($error)">
+			<span class="glyphicon glyphicon-upload"></span>&nbsp;Upload Files</a>
+	</div>
+
+	<table ng-show="upload.multiFiles.length" class="table table-condensed">
+		<th>Name</th>
+		<th>Size</th>
+		<th>Percent Uploaded</th>
+		<tr ng-repeat="file in upload.multiFiles">
+			<td>{{file.name}}</td>
+			<td>{{file.size | bytes}}</td>
+			<td><progressbar class="progress-striped active" value="file.percent"></progressbar></td>
+		</tr>
+	</table>
+	
+	<!--
+	<hb-upload auto-upload="autoupload" file-types="doc" show-progress="showProgress"
+			   on-file-uploaded="onFileUploaded(file)" on-file-upload-error="onFileUploadError(err)"></hb-upload>
+	-->
+	
+	<table class="table">
+		<tr>
+			<th>Name</th>
+			<th>Size</th>
+			<th>&nbsp;</th>
+		</tr>
+		<tr ng-repeat="doc in data.documents">
+			<td><a href="{{doc.location}}" target="_blank">{{doc.name}}</a></td>
+			<td>{{doc.file_size | bytes}}</td>
+			<td><button class="btn btn-danger btn-sm" ng-click="destroy(doc)">Delete</button></td>
+		</tr>
+	</table>
+</div>

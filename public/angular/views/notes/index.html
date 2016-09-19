@@ -1,0 +1,19 @@
+<div ng-controller="NoteIndexCtrl">
+	<div class="pull-left">
+		<ul>
+			<li ng-repeat="note in notes.list">
+				<div class="pull-left">{{ note.content }}
+					<div class="created_at">
+						{{ note.created_at | date:'M/d/y' }}
+					</div>
+				</div>
+				<div class="pull-right">
+					<a ng-click="onDestroy(note)"><i class='icon-remove'></i></a>
+				</div>
+				<div class="clear-float"></div>
+			</li>
+		</ul>
+	</div>
+	<div ng-include="'/angular/views/notes/form.html'" class="pull-right"></div>
+	<div class="clear-float"></div>
+</div>

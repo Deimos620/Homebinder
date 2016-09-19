@@ -1,0 +1,11 @@
+<div class="modal-header" ng-show="title">
+    <h3 class="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body">
+    <h4 ng-show="majorMessage">{{majorMessage}}</h4>
+    <p ng-show="minorMessage">{{minorMessage}}</p>
+</div>
+<div class="modal-footer" ng-show="buttons.length > 0">
+    <button ng-show="button.isFocused" ng-repeat="button in buttons" ng-class="button.cls" ng-click="click(button)" autofocus>{{button.label}}</button>
+    <button ng-hide="button.isFocused" ng-repeat="button in buttons" ng-class="button.cls" ng-click="click(button)">{{button.label}}</button>
+</div>

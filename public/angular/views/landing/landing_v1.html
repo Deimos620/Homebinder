@@ -1,0 +1,130 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container"> <a class="brand" href="#"><img src="assets/landing/flatlogo.png"></a>
+      <ul class="nav navbar-nav">
+        <li><a href="#Preview" class="smoothScroll">Preview</a></li>
+        <li><a href="#Features" class="smoothScroll">Features</a></li>
+        <li><a href="#Testimonials" class="smoothScroll">Testimonials</a></li>
+        <li><a href="#Pricing" class="smoothScroll">Pricing</a></li>
+      </ul>
+      <a class="pull-right btn btn-large btn-link orange" href="#/login">Sign In</a> <a class="btn btn-large btn-primary pull-right" href="#/register">Get Started</a> </div>
+  </div>
+</div>
+
+<div class="container">
+	<div ng-include="'angular/views/landing/landing_v1_content.html'"></div>
+</div>
+<!-- FOOTER -->
+<div class="divider"></div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1"> <img src="assets/landing/flatlogo.png" alt="Logo for HomeBinder's home management software"> </div>
+      <div class="col-md-3">
+        <ul>
+          <li>&copy; 2014 HomeBinder Inc.</li>
+          <li><a href="/terms.html">Terms of Use</a></li>
+		  <li><a href="/privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+        <li><a href="#Preview" class="smoothScroll">Preview</a></li>
+        <li><a href="#Features" class="smoothScroll">Features</a></li>
+        <li><a href="#Testimonials" class="smoothScroll">Testimonials</a></li>
+        <li><a href="#Pricing" class="smoothScroll">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+          <li>
+    		<!-- A link to launch the Classic Widget -->
+			<a href="javascript:void(0)" data-uv-lightbox="classic_widget" data-uv-mode="full" data-uv-primary-color="#000000" data-uv-link-color="#fc6500" data-uv-default-mode="support" data-uv-forum-id="208729">Feedback &amp; Support</a>
+		  </li>
+        </ul>
+      </div>
+      <div class="col-md-2"> Connect with us<br>
+        <a href="http://www.facebook.com/homebinder" target="_blank"><img src="assets/landing/facebookgrey.png" alt="Facebook image for HomeBinder's home management software"></a>&nbsp; <a href="http://www.twitter.com/homebinder" target="_blank"><img src="assets/landing/twittergrey.png" alt="Facebook image for HomeBinder's home management software"></a> </div>
+    </div>
+  </div>
+</footer>
+
+	<script>
+		(function($){
+		    $.fn.rotate = function(params){
+		        return this.each(function(index, el){
+		            var defaults = {
+		                text : [],
+		                interval : 6000
+		            };
+		            
+		            var options = $.extend({}, defaults, params);
+		            var i = 0;
+		            
+		            if(options.text.length){
+		                setInterval(function(){
+		                    i = i < options.text.length -1 ? ++i : 0;
+		                    $(el).fadeOut(function(){ 
+		                        $(this).text(options.text[i]).fadeIn();
+		                    });
+		                }, options.interval);
+		            }
+		        });
+		    };
+		})(jQuery);	
+
+
+	  	$("#slider1").responsiveSlides({
+	  		speed: 500,
+			nav: true,
+	    	namespace: "centered-btns"
+	  	});
+	    
+		$("#rotate").rotate({ 
+	    	text : ['Sell.', 'Plan.', 'Projects.', 'Easy.', 'More.'], 
+	    	interval : 3000  // in miliseconds
+		});
+		
+		var items = (Math.floor(Math.random() * ($('#testimonials li').length)));
+		$('#testimonials li').hide().eq(items).show();
+	
+  		function next(){
+			$('#testimonials li:visible').delay(5000).fadeOut('slow',function(){
+				$(this).appendTo('#testimonials ul');
+				$('#testimonials li:first').fadeIn('slow',next);
+    		});
+    	}
+    	next();		
+  	</script>	
+	
+	<!-- UserVoice JavaScript SDK (only needed once on a page) -->
+<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/lNUE0ZjInMQUKjndNrzFuA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
+
+<!-- A tab to launch the Classic Widget -->
+<script>
+UserVoice = window.UserVoice || [];
+UserVoice.push(['showTab', 'classic_widget', {
+  mode: 'full',
+  primary_color: '#000000',
+  link_color: '#fc6500',
+  default_mode: 'support',
+  forum_id: 208729,
+  tab_label: 'Feedback & Support',
+  tab_color: '#fc6500',
+  tab_position: 'bottom-left',
+  tab_inverted: false
+}]);
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35371925-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>

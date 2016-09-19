@@ -1,0 +1,21 @@
+<div ng-controller="SubscriptionIndexCtrl">
+	<account-master selected-tab="selectedTab">
+		<h3>Subscriptions</h3>
+		<div ng-repeat="sub in subscriptions.list" class="panel panel-default">
+			<div class="panel-body">
+				<div class="pull-left">
+					<h4>{{sub.binder.name}}</h4>
+					<p>{{sub.binder.property.address1}}</p>
+	            	<p>{{sub.binder.property.city}}, {{sub.binder.property.state}} {{sub.binder.property.zip}}</p>
+				</div>
+				<div class="pull-right">
+					<h4>Subscription Level: {{sub.plan | subscriptionLabel : 'home'}}</h4>
+					<p><a ng-if="sub.plan=='free'" href="#/subscriptions/{{sub.id}}/upgrade" class="btn btn-primary btn-lg">Upgrade</a></p>
+					<p ng-if="sub.plan!='free'">Subscription Ends On: {{sub.end_date * 1000 | date: 'M/d/yyyy'}}</p>
+					<p ng-if="sub.plan!='free'">Payment Method: {{sub.card_type}} ending in - {{sub.last4}}</p>
+					<p ng-if="sub.plan!='free'"><a href="" ng-click="cancel(sub)" class="btn btn-primary">Cancel Subscription</a>&nbsp;<a href="#/subscriptions/{{sub.id}}/update" class="btn btn-primary">Update Payment Information</a></p>
+				</div>
+			</div>
+		</div>
+	</account-master>
+</div>

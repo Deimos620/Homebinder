@@ -1,0 +1,39 @@
+<div class="container" ng-controller="LoginCtrl">
+	<div class="row col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
+		  	<div class="panel-heading panel-heading-image"><img src="/img/flatlogo.png" /></div>
+		  	<div class="panel-body">
+				<div ng-show="data.hasErrors" class="alert alert-danger errors">
+					<span ng-repeat="error in data.errors">{{ error }}</span>
+				</div>
+				
+				<form role="form" ng-submit="login()">
+					<div class="form-group">
+						<input type="email" class="form-control input-lg" id="email" placeholder="Email Address" ng-model="data.email" autofocus="true" />
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control input-lg" id="password" placeholder="Password" ng-model="data.password" />
+			 		</div>
+					<div ng-show="false" class="checkbox">
+						<label>
+							<input type="checkbox" id="rememberMe" ng-model="rememberMe" />&nbsp;Remember Me
+						</label>
+					</div>
+					<button type="submit" class="btn btn-lg btn-primary" ng-disabled="data.isBusy">Login</button>
+					<div ng-show="data.isBusy">
+						<p>Verifying your credentials. Please wait... <img src="/img/busy.gif" /></p>
+					</div>
+				</form>
+		  	</div>
+		  	<div class="panel-footer">
+		  		<span class="pull-left">
+		  			<a href='#/passwords/reset'>Forgot my password</a> | <a href='#/register'>Sign Up</a>
+		  		</span>
+		  		<span class="pull-right">
+		  			&copy; 2014 HomeBinder
+		  		</span>
+		  		<span class="clearfix">&nbsp;</span>
+		  	</div>
+		</div>
+	</div>
+</div>

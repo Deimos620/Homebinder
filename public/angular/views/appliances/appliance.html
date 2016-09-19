@@ -1,0 +1,78 @@
+<div ng-controller="ApplianceCtrl">
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="form{{ resource.data.id }}" onshow="onShow()" onbeforesave="save($data)">
+			<input type="hidden" ng-model="resource.data.id" />
+			<table class="table table-condensed">
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<th>Name</th>
+					<td><span editable-text="resource.data.name" e-name="name" e-required>{{ resource.data.name }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Manufacturer:</th>
+					<td><span editable-text="resource.data.manufacturer" e-name="manufacturer" e-typeahead="man for man in typeahead.manufacturers | filter:$viewValue | limitTo:8 | orderBy:'man'">{{ resource.data.manufacturer | titleize }}</span></td>
+					<th class="fixed-width">Model:</th>
+					<td><span editable-text="resource.data.model" e-name="model">{{ resource.data.model }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Serial Number:</th>
+					<td><span editable-text="resource.data.serial_no" e-name="serial_no">{{ resource.data.serial_no }}</span></td>
+					<th class="fixed-width">UPC Code:</th>
+					<td><span editable-text="resource.data.upc" e-name="upc">{{ resource.data.upc }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Warranty Information:</th>
+					<td colspan="3"><span editable-text="resource.data.warranty" e-name="warranty">{{ resource.data.warranty }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">User Guide:</th>
+					<td><a href="{{ resource.data.user_guide_url }}" editable-text="resource.data.user_guide_url">User Guide</a></td>
+					<th class="fixed-width">Installed On:</th>
+					<td><span editable-date="resource.data.install_date" e-name="install_date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options">{{ resource.data.install_date | date:'M/d/y' }}</span></td></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Purchased At:</th>
+					<td><span editable-text="resource.data.purchase.store" e-name="store" e-typeahead="store.name for store in typeahead.stores | filter:$viewValue | limitTo:8 | orderBy:'name'">{{ resource.data.purchase.store }}</span></td>
+					<th class="fixed-width">Purchase Price:</th>
+					<td colspan="3"><span editable-text="resource.data.purchase.price" e-name="price" onbeforesave="isFloat($data)">{{ resource.data.purchase.price | currency }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Purchased On:</th>
+					<td colspan="3"><span editable-date="resource.data.purchase.date" e-name="date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options">{{ resource.data.purchase.date | date:'M/d/y' }}</span></td>
+				</tr>
+				<tr ng-show="recalls.canCheckRecall && resource.data.upc">
+					<th>Last Recall Check:</th>
+					<td>{{ resource.data.last_recall_check | date:'M/d/y' }}</td>
+					<td colspan="2"><a href="" ng-click="checkForRecalls()">Check Again</a></td>
+				</tr>
+				<tr ng-show="recalls.canCheckRecall && recalls.show">
+					<td colspan="4">
+						<div class="alert alert-info">
+							<a href="" ng-click="recalls.show = false" class="pull-right" tooltip="Close Recalls"><span class="glyphicon glyphicon-remove"></span></a>
+							<div ng-include="'/angular/views/recalls/index.html'"></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th class="additional-details">Additional Details</th>
+					<td class="additional-details" colspan="5"><span editable-textarea="resource.data.details" e-name="details" e-rows="5" e-cols="120">{{ resource.data.details }}</span></td>
+				</tr>
+				<tr ng-show="errors.hasErrors">
+					<td colspan="4">
+						<div class="alert alert-danger errors">
+							<span ng-repeat="error in errors.list">{{ error }}</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="buttons" colspan="6">
+						<span ng-show="form{{ resource.data.id }}.$visible">
+	        				<button type="submit" class="btn btn-primary" ng-disabled="form{{ resource.data.id }}.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="form{{ resource.data.id }}.$waiting" ng-click="cancelEdit()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+

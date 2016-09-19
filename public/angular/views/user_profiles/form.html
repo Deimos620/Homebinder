@@ -1,0 +1,99 @@
+<h3>My Profile</h3>
+<p>Edit your HomeBinder profile information.</p>
+
+<form ng-submit="submitForm()" name="form">
+	<div ng-show="data.form.hasErrors" class="alert alert-error errors">
+		<span ng-repeat="error in data.form.errors">{{ error }}</span>
+	</div>
+	
+	<input ng-model="data.form.id" type="hidden" />
+	<input ng-model="data.form.user_id" type="hidden" />
+	
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="first_name">First name</label>
+				<input id="first_name" ng-model="data.form.first_name" type="text" class="form-control input-lg" autofocus="true" />
+			</div>
+			<div class="col-xs-6">
+				<label for="last_name">Last name</label>
+				<input id="last_name" ng-model="data.form.last_name" type="text" class="form-control input-lg" />
+			</div>
+		</div>
+	</div>
+		
+	<!-- <div ng-include="'/views/addresses/form.html'"></div>-->
+	<!-- for whatever reason the include here was breaking the bootstrap form style -->
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="address1">Address</label>
+				<input id="address1" type="text" class="form-control input-lg" ng-model="data.form.address_attributes.address1" />
+			</div>
+			<div class="col-xs-6">
+				<label for="address2">Apt/Suite</label>
+				<input id="address2" type="text" class="form-control input-lg" ng-model="data.form.address_attributes.address2" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">
+				<label for="city">City</label>
+				<input id="city" type="text" class="form-control input-lg" ng-model="data.form.address_attributes.city" />
+			</div>
+			<div class="col-xs-6">
+				<label for="state">State</label>
+				<select id="state" class="form-control input-lg" ng-model="data.form.address_attributes.state" ng-options="subregion.value as subregion.name for subregion in options.subregions"></select>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="zip">Zip Code</label>
+				<input id="zip" type="text" class="form-control input-lg" ng-model="data.form.address_attributes.zip" />
+			</div>
+			<div class="col-xs-6" ng-show="false">
+				<label for="country">Country</label>
+				<select id="country" class="form-control input-lg" ng-model="data.form.address_attributes.country" ng-options="country.value as country.name for country in options.countries"></select>
+			</div>
+		</div>
+	</div>	
+	
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="home_phone">Home phone</label>
+				<input id="home_phone" ng-model="data.form.home_phone" type="text" class="form-control input-lg" />
+			</div>
+			<div class="col-xs-6">
+				<label for="mobile_phone">Mobile phone</label>
+				<input id="mobile_phone" ng-model="data.form.mobile_phone" type="text" class="form-control input-lg" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="details">Date of Birth</label>
+		<input id="details" ng-model="data.form.dob" type="text" class="form-control input-lg" datepicker-popup="{{ datepicker.format }}" datepicker-options="datepicker.options"/>
+	</div>
+	
+	<label>Sex</label>
+	<label class="radio-inline">
+		<input type="radio" id="sex-male" ng-model="data.form.sex" value="m" />
+		Male	
+	</label>
+	<label class="radio-inline">
+		<input type="radio" id="sex-female" ng-model="data.form.sex" value="f" />
+		Female	
+	</label>
+	<label class="radio-inline">
+		<input type="radio" id="sex-other" ng-model="data.form.sex" value="o" />
+		Other	
+	</label>
+	
+	<div class='form-actions'>
+		<button ng-disabled="form.$invalid" type="submit" class="btn btn-lg btn-primary">Save</button>
+		<a href="#/user_profiles" class="btn btn-lg">Cancel</a>
+	</div> 
+</form>

@@ -1,0 +1,37 @@
+<form ng-controller="InventoryItemFormCtrl" ng-submit="submitForm()" name="form">
+	<div ng-show="data.form.hasErrors" class="alert alert-error errors">
+		<span ng-repeat="error in data.form.errors">{{ error }}</span>
+	</div>
+	<div class="form-inputs">
+		<input ng-model="data.form.id" type="hidden" />
+		<input ng-model="data.form.binder_id" type="hidden" />
+		<div class="control-group">
+			<label>Name</label>
+			<div class="controls">
+				<input id="name" ng-model="data.form.name" type="text" class="span4" required autofocus="true" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label>Inventory Item Type</label>
+			<div class="controls">
+				<input id="inventory_type" ng-model="data.form.inventory_type" type="text" class="span4" typeahead="type for type in typeahead.inventoryTypes | filter:$viewValue | limitTo:8"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label>Estimated Value</label>
+			<div class="controls">
+				<input id="value" ng-model="data.form.value" type="text" class="span4" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label>Additional Details</label>
+			<div class="controls">
+				<textarea id="details" ng-model="data.form.details" type="text" rows="5" class="span8"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class='form-actions'>
+		<button ng-disabled="form.$invalid" type="submit" class="btn btn-hb">Save</button>
+		<button ng-click="cancelForm()" class="btn">Cancel</button>
+	</div> 
+</form>

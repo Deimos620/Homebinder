@@ -1,0 +1,48 @@
+<hb-admin-toolbar></hb-admin-toolbar>
+<div class="container">
+	<div class="col-md-offset-2 col-md-8"> 
+	<form role="form" ng-submit="submit()">
+		<div class="modal-header">
+			<h3>User Role Assignment</h3>
+		</div>
+		<div class="modal-body">
+			<div class="form-group">
+				<label>User to apply/remove the role to</label>
+				<input id="apply_to" type="email" ng-model="form.apply_to" required autofocus="true" class="form-control input-lg"/>
+			</div>
+			<div class="form-group">
+				<label>What do you want to do?</label>
+				<label class="radio">
+					<input id="action_add_role" type="radio" value="add" ng-model="form.action" />&nbsp;Add a role to the user
+				</label>
+				<label class="radio">
+					<input id="action_remove_role" type="radio" value="remove" ng-model="form.action" />&nbsp;Remove a role from the user
+				</label>
+			</div>
+			<div class="form-group">
+				<label>What type of role do you want to assign to the user?</label>
+				<label class="radio">
+					<input id="role_admin" type="radio" value="admin" ng-model="form.role_name" />&nbsp;Administrator - Warning this should only be the HomeBinder guys.
+				</label>
+				<label class="radio">
+					<input id="role_partner_admin" type="radio" value="partner_admin" ng-model="form.role_name" />&nbsp;Partner Administrator - Does data entry for a partner.
+				</label>
+				<label class="radio">
+					<input id="role_broker" type="radio" value="broker" ng-model="form.role_name" />&nbsp;Broker - Administrator for a brokerage.
+				</label>
+			</div>
+			<div ng-show="partner_code_required" class="form-group">
+				<label>What is the partner code?</label>
+				<input id="partner_code" type="text" ng-model="form.partner_code" class="form-control input-lg"/>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button id="submit" type="submit" class="btn btn-primary" ng-disabled="form.$invalid">OK</button>
+			<button id="cancel" class="btn btn-default" ng-click="cancel()">Cancel</button>
+		</div>
+		<div ng-show="form.errors" class="alert alert-danger">
+			<span>{{form.errors}}</span>
+		</div>
+	</form>
+	</div>
+</div>

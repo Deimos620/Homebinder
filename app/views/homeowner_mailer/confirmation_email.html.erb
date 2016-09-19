@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome to HomeBinder.com</h1>
+    <p>
+      To finish the registration process click the link below.<br/>
+    </p>
+    <p>
+      <%= link_to "Complete My Registration", "http://localhost:3000" << confirm_account_path(:confirm_key => @homeowner.perishable_token) %>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

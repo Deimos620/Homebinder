@@ -1,0 +1,123 @@
+<div class="binder-control" ng-controller="BinderCtrl">
+	<binder-master selected-tab="selectedTab">
+		<div class="toolbar-btn-pad binder-options">
+			<div class="nav">
+				<a class="btn btn-primary navbar-btn" href="#/binders/{{ binder.id }}/edit"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Binder</a>
+				<a class="btn btn-primary navbar-btn" href="#/binders/{{ binder.id }}/onboarding_wizard/contractors"><span class="glyphicon glyphicon-flash"></span>&nbsp;Launch Wizard</a>
+			</div>
+		</div>
+	
+		<div id="binder-main" class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default panel-overview">
+						<div class="binder-map panel-body">
+							<div class="outer">
+								<div class="inner">
+									<img src="http://maps.googleapis.com/maps/api/staticmap?center={{ binder.property.address1 }}{{ binder.property.city }}, {{ binder.property.state }}&zoom=15&size=800x300&key=AIzaSyBkAHC5xhv7J2CSDJWOgAEAbhEaATTsb1Y&sensor=false&markers=color:red|*|{{ binder.property.address1 }}{{ binder.property.city }}, {{ binder.property.state }}" />
+								</div>
+							</div>
+						</div>				
+						<div class="panel-footer">
+							<h1>{{ binder.name }}</h1>
+							<h2>{{ binder.property.address1 }}, {{ binder.property.city }}, {{ binder.property.state }}</h2>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<!-- maintenance items -->
+					<div class="panel panel-default">
+					  <div class="panel-heading">					
+					  	<h3 class="panel-title pull-left">My Projects</h3>
+						<div class="pull-right">
+							<a href="#/binders/{{ binder.id }}/projects" class="btn btn-default btn-sm">
+								<span class='glyphicon glyphicon-eye-open'></span>&nbsp;View All
+							</a>
+						</div>
+						<div class="clearfix"></div>
+					  </div>
+					  <table class="table">
+					  	<thead>
+						    <tr>
+								<th>Name</th>
+								<th>Completion Date</th>
+								<th>Status</th>
+						    </tr>
+					    </thead>
+					    <tr ng-show="projects.isBusy">
+					    	<td colspan="3"><div class="alert alert-info">Loading your projects...</div></td>
+					    </tr>
+					    <tr ng-show="!projects.isBusy" ng-repeat="project in projects.items">
+					    	<td>{{project.name | titleize}}</td>
+					    	<td>{{project.end_date | date: "MMMM yyyy"}}</td>
+					    	<td>{{project.status}}</td>
+					    </tr>
+					  </table>
+					</div>
+					
+					<!-- maintenance items -->
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					  	<h3 class="panel-title pull-left">My Maintenance Items</h3>
+						<div class="pull-right">
+							<a href="#/binders/{{ binder.id }}/maintenance_items" class="btn btn-default btn-sm">
+								<span class='glyphicon glyphicon-eye-open'></span>&nbsp;View All
+							</a>
+						</div>
+						<div class="clearfix"></div>
+					  </div>
+					  <table class="table">
+					  	<thead>
+						    <tr>
+								<th>Name</th>
+								<th>Due Date</th>
+						    </tr>
+					    </thead>
+					    <tr ng-show="maintenance_items.isBusy">
+					    	<td colspan="2"><div class="alert alert-info">Loading your maintenance items...</div></td>
+					    </tr>
+					    <tr ng-show="!maintenance_items.isBusy" ng-repeat="maintenance_item in maintenance_items.items">
+					    	<td class="{{maintenance_item.rowclass}}">{{maintenance_item.name | titleize}}</td>
+					    	<td class="{{maintenance_item.rowclass}}">{{maintenance_item.do_date | date: "MMMM dd, yyyy"}}</td>
+					    </tr>
+					  </table>
+					</div>
+					
+					<!-- maintenance items -->
+					<div class="panel panel-default">
+					  <div class="panel-heading">					
+					  	<h3 class="panel-title pull-left">My Contractors</h3>
+						<div class="pull-right">
+							<a href="#/binders/{{ binder.id }}/binder_contractors" class="btn btn-default btn-sm">
+								<span class='glyphicon glyphicon-eye-open'></span>&nbsp;View All
+							</a>
+						</div>
+						<div class="clearfix"></div>
+					  </div>
+					  <table class="table">
+					  	<thead>
+						    <tr>
+								<th>Name</th>
+								<th>Type</th>
+								<th>Phone / Email</th>
+						    </tr>
+					    </thead>
+					    <tr ng-show="contractors.isBusy">
+					    	<td colspan="3"><div class="alert alert-info">Loading your contractors...</div></td>
+					    </tr>
+					    <tr ng-show="!contractors.isBusy" ng-repeat="contractor in contractors.items">
+					    	<td class="capitalize">{{contractor.contractor.name | titleize}}</td>
+					    	<td>{{contractor.contractor.contractor_type | titleize}}</td>
+					    	<td>
+					    		<span ng-show="contractor.contractor.phone">{{contractor.contractor.phone | tel}}<br/></span>
+					    		<span ng-show="contractor.contractor.email">{{contractor.contractor.email}}</span>
+					    	</td>
+					    </tr>
+					  </table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</binder-master>
+</div>

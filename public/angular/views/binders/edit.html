@@ -1,0 +1,18 @@
+<application-header></application-header>
+<div ng-controller="EditBinderCtrl">
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Edit Binder</h1>
+			<p>Fill out the form below to modify your Binder!</p>
+		</div>
+	</div>
+	<div class="jumbotron-bar navbar navbar-default navbar-fixed-top" style="display:none;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="">Edit Binder</a>
+		</div>
+	</div>
+	<div class="container">
+		<div ng-include="'/angular/views/binders/form.html'"></div>
+	</div>
+</div>
+<application-footer></application-footer>

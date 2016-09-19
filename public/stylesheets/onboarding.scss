@@ -1,0 +1,403 @@
+//  =============================================================================
+//  Variables
+//  =============================================================================
+		$orange: #f63;
+		$lightgrey: #e3e2e2;
+		$grey:  #c6c5c5;
+		$lightsienna: #aba29b;
+		$darksienna: #77706b;
+
+//  =============================================================================
+//  Breakpoints
+//  =============================================================================
+		$small:    "only screen and (max-width: 500px)";
+		$medium:   "only screen and (min-width: 501px) and (max-width: 690px)";
+		$large:    "only screen and (min-width: 1001px)";
+
+
+.onboarding {  //General wrapper so these styles don't interfer with other parts of the app
+	color: $darksienna;
+	max-width: 1200px;
+	overflow: hidden;
+	
+	//  =============================================================================
+	//  Step Header
+	//  =============================================================================
+	.step-header {
+	  width: 100%;
+	  padding: 30px 0;
+	  margin: 10px 0;
+	  border-bottom: 2px solid $orange;
+	  font-size: 16px;
+
+	  @media #{$small} {
+	  	border-bottom: none;
+	  	float: left;
+	  	font-size: 12px;
+	  	padding: 0;
+	  }
+
+		ul li {
+			//width: 20%;
+			color: $lightsienna;
+			float: left;
+			display: inline-block;
+			margin-right: 7%;
+			
+			@media #{$small} {
+				margin-right: auto;
+				margin-left: auto;
+				float: none;
+				font-size: 0;
+			}
+
+			&:last-of-type {
+				float: right;
+				margin-right: 0;
+				@media #{$small} {
+					float: none;
+				}
+			}
+			.glyphicon {
+				background-color: #fff;
+				-moz-border-radius: 50%;
+				-webkit-border-radius: 50%;
+				border-radius: 50%;
+				width: 15px;
+				height: 15px;
+				display: inline-block;
+				margin-right: 6px;
+				border: 1px solid $lightgrey;
+				&:before {
+				  position: relative;
+		      content: "";
+		      font-size: 16px;
+		  	}
+		  	@media #{$small} {
+		  		//display: none;
+		  		margin-bottom: 2px;
+		  	}
+			}
+			&.complete {
+				background-color: transparent;
+				border: none;
+				.glyphicon {
+					&:before {
+			    		content: "\e013";
+			    		color: $orange;
+			    	}
+			    }
+			}
+
+			&.active {
+				color: $orange;
+				@media #{$small} {
+					
+				}
+				.glyphicon {
+					background-color: $orange;
+					border-color: #ff5319;
+				}
+			}
+		}
+	}
+
+	//  =============================================================================
+	//  Footer
+	//  =============================================================================
+
+			.form-footer {
+				background-color: #f4f5f6;
+				border-top: 1px solid $lightgrey;
+				height: 100px;
+				padding: 30px;
+				text-align: right;
+				width: 100%;
+
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				@media #{$small} {
+					height: auto;
+					padding: 15px 0 20px;
+					text-align: left;
+				}
+				a {
+					margin: 0 2px;
+					&:hover { cursor: pointer; }
+				}
+			}
+
+	//  =============================================================================
+	//  Form
+	//  =============================================================================
+			
+			form {
+				margin-bottom: 300px;
+
+				@media #{$small} {
+					margin-bottom: 75px;
+				}
+				// ------------------------
+				// Question/Title
+				// ------------------------
+			
+				.title {
+					margin: 35px 0;
+					@media #{$small} {
+						margin: 15px 0;
+						text-align: center;
+					}
+					h1 { 
+						font-size: 40px;
+						font-weight: bold;
+						@media #{$small} {
+							font-size: 24px;
+						}
+					}
+					p { 
+						color: $lightsienna;
+						@media #{$small} {
+							display: none;
+						}
+					}
+				}
+	
+
+				// ------------------------
+				// Form Box
+				// ------------------------
+				.form-wrapper {
+					background-color: #fff;
+					border-radius: 10px; 
+					border: 3px solid $lightgrey;
+					@media #{$small} {
+						border: 1px solid $lightgrey;
+					}
+
+					.form-group {
+						padding: 10px 20px 15px;
+						margin-bottom: 0;
+						border-bottom: 3px solid $lightgrey;
+						position: relative;
+
+						@media #{$small} {
+							padding: 10px 10px 50px;
+						}
+
+						&:last-of-type { 
+							border-bottom: none;
+							padding-bottom: 10px;
+						}
+
+						label { 
+							font-size: 12px;
+							text-transform: uppercase; 
+						}
+						.inline-group {
+							> div {
+								&:first-of-type {
+									padding-left: 0;
+								}
+								&:last-of-type {
+									padding-right: 0;
+								}
+							}
+							.radio-buttons-inline {
+								display: inline-block;
+								label {
+									text-transform: capitalize;
+									font-weight: normal;
+									font-size: 14px;
+									margin-right: 10px;
+								}
+								input[type="radio"] {
+									margin-right: 5px;
+								}
+
+							}
+							.date {
+								display: inline-block;
+								width: 64%;
+								input { 
+									width: 100%;
+								}
+							}
+							
+						}
+						.add-note { 
+							padding: 30px 0 0 0;
+							@media #{$small} {
+								padding: 15px;
+								width: 50%;
+							}
+							a.add-note-button { 
+								color: $darksienna;
+								text-decoration: underline;
+								opacity: 1;
+								transition: opacity 0.3s ease-out;
+								-webkit-transition: opacity 0.3s east-out;
+								&:hover { cursor: pointer;} 
+								&.hidden {
+									opacity: 0;
+								}
+							} 
+						}
+
+						.notes {
+							overflow: hidden;
+							height: 0;
+							transition: height 0.2s ease-out;
+							-webkit-transition: height 0.2s ease-out;
+
+							&.expanded {
+								height: 110px;
+							}
+
+							> div { margin-top: 10px;}
+
+							textarea {
+								height: 70px;
+							}
+						}
+
+						a.add-another-row {
+							font-size: 16px;
+							margin: 10px 0;
+							display: inline-block;
+							&:hover { cursor: pointer; }
+							.glyphicon { margin-right: 4px; }
+
+						}
+					}
+				}
+
+			} // End Form
+	
+	// ------------------------
+	// Completed Page
+	// ------------------------
+
+	&.completed {
+		.title {
+			text-align: center;
+			padding: 10px 0 30px;
+			@media #{$small} {
+				padding-bottom: 10px;
+			}
+		}
+		.next-step {
+			text-align: center;
+			background-color: #fff;
+			padding: 40px;
+			border: 3px solid $lightgrey;
+			border-radius: 10px;
+			margin: 0 auto;
+			display: block;
+			height: 300px;
+			color: $darksienna;
+			text-decoration: none;
+			&:hover { cursor: pointer;}
+
+			@media #{$small} {
+				padding: 12px;
+			}
+			h3 {
+				color: $orange;
+				padding-bottom: 10px;
+				border-bottom: 1px solid $lightgrey;
+				@media #{$small} {
+					font-size: 18px;
+					line-height: 1.4;
+					margin-top: 12px;
+				}
+			}
+			img {
+				margin: 0 auto;
+				display: block;
+				width: 30%;
+			}
+		}
+		.binder-link,.report-link {
+			width: 50%;
+		}
+		.binder-link {
+			margin-left: 0;
+			padding-left: 0;
+			padding-right: 5px;
+		}
+		.report-link {
+			padding-left: 5px;
+			padding-right: 0;
+		}
+	}
+
+}
+
+//  =============================================================================
+//  Mobile-Only Styles
+//  =============================================================================
+
+		@media #{$small} {
+			ul.list-inline {
+				display: block;
+				float: left;
+				margin-left: auto;
+				margin-bottom: 0;
+				overflow: hidden;
+				text-align: center;
+				width: 100%;
+			}
+
+			.wizard-name, .wizard-make, .wizard-description, .wizard-frequency {
+				margin-top: 10px;
+				width: 100%;
+			}
+
+			.wizard-phone, .wizard-email, .wizard-year, .wizard-type {
+				margin-top: 10px;
+				width: 50%;
+			}
+
+			.col-xs-1 {
+				float: left;
+				padding: 15px;
+				width: 50%;
+			}
+				
+			.form-group {
+				input[type=text] {
+					font-size: 16px;
+				}
+			}
+
+
+			.btn.add-another-row {
+				display: block;
+				padding: 10px 12px 11px;
+				.glyphicon {
+					margin-right: 8px;
+				}
+			}
+
+			.notes .col-xs-11 {
+				width: 100%;
+			}
+
+			.wizard-edit {
+				position: absolute;
+				bottom: 0;
+				margin-left: 0;
+				margin-right: 0;
+				width: 100%;
+			}
+			.clear-fields {
+				float: right;
+				text-align: right;
+			}
+			.add-note {
+				float: left;
+				text-align: left;
+			}
+		}
+

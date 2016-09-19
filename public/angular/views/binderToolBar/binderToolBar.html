@@ -1,0 +1,15 @@
+<div ng-controller="BinderToolBarCtrl" class="navbar navbar-default navbar-fixed-top navbar-breadcrumbs col-sm-offset-3 col-md-offset-2" role="navigation">
+	<div class="row-fluid">
+		<div class="pull-left">
+			<span ng-repeat="button in buttons">
+				<a href="" id="{{button.id}}" ng-click="clickToolbarButton(button)" class="btn btn-primary navbar-btn"><span class='{{button.icon}}'></span>&nbsp;{{button.text}}</a>
+			</span>
+		</div>
+
+		<div class="pull-right">
+			<a href="#" ng-show="permissions.can_subscribe" class="upgrade-binder btn btn-primary navbar-btn"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upgrade</a>
+			<a href="#" ng-show="permissions.can_share" ng-click="share()" class="btn btn-primary navbar-btn"><span class='glyphicon glyphicon-share'></span>&nbsp;Share</a>
+			<a href="#" ng-show="permissions.can_report" class="btn btn-primary navbar-btn"><span class='glyphicon glyphicon-print'></span>&nbsp;Print</a>
+		</div>
+	</div>
+</div>

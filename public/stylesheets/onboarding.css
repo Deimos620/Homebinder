@@ -1,0 +1,270 @@
+.onboarding {
+  color: #77706b;
+  max-width: 1200px;
+  overflow: hidden; }
+  .onboarding .step-header {
+    width: 100%;
+    padding: 30px 0;
+    margin: 10px 0;
+    border-bottom: 2px solid #ff6633;
+    font-size: 16px; }
+    @media only screen and (max-width: 500px) {
+      .onboarding .step-header {
+        border-bottom: none;
+        float: left;
+        font-size: 12px;
+        padding: 0; } }
+    .onboarding .step-header ul li {
+      color: #aba29b;
+      float: left;
+      display: inline-block;
+      margin-right: 7%; }
+      @media only screen and (max-width: 500px) {
+        .onboarding .step-header ul li {
+          margin-right: auto;
+          margin-left: auto;
+          float: none;
+          font-size: 0; } }
+      .onboarding .step-header ul li:last-of-type {
+        float: right;
+        margin-right: 0; }
+        @media only screen and (max-width: 500px) {
+          .onboarding .step-header ul li:last-of-type {
+            float: none; } }
+      .onboarding .step-header ul li .glyphicon {
+        background-color: #fff;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        margin-right: 6px;
+        border: 1px solid #e3e2e2; }
+        .onboarding .step-header ul li .glyphicon:before {
+          position: relative;
+          content: "";
+          font-size: 16px; }
+        @media only screen and (max-width: 500px) {
+          .onboarding .step-header ul li .glyphicon {
+            margin-bottom: 2px; } }
+      .onboarding .step-header ul li.complete {
+        background-color: transparent;
+        border: none; }
+        .onboarding .step-header ul li.complete .glyphicon:before {
+          content: "\e013";
+          color: #ff6633; }
+      .onboarding .step-header ul li.active {
+        color: #ff6633; }
+        .onboarding .step-header ul li.active .glyphicon {
+          background-color: #ff6633;
+          border-color: #ff5319; }
+  .onboarding .form-footer {
+    background-color: #f4f5f6;
+    border-top: 1px solid #e3e2e2;
+    height: 100px;
+    padding: 30px;
+    text-align: right;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0; }
+    @media only screen and (max-width: 500px) {
+      .onboarding .form-footer {
+        height: auto;
+        padding: 15px 0 20px;
+        text-align: left; } }
+    .onboarding .form-footer a {
+      margin: 0 2px; }
+      .onboarding .form-footer a:hover {
+        cursor: pointer; }
+  .onboarding form {
+    margin-bottom: 300px; }
+    @media only screen and (max-width: 500px) {
+      .onboarding form {
+        margin-bottom: 75px; } }
+    .onboarding form .title {
+      margin: 35px 0; }
+      @media only screen and (max-width: 500px) {
+        .onboarding form .title {
+          margin: 15px 0;
+          text-align: center; } }
+      .onboarding form .title h1 {
+        font-size: 40px;
+        font-weight: bold; }
+        @media only screen and (max-width: 500px) {
+          .onboarding form .title h1 {
+            font-size: 24px; } }
+      .onboarding form .title p {
+        color: #aba29b; }
+        @media only screen and (max-width: 500px) {
+          .onboarding form .title p {
+            display: none; } }
+    .onboarding form .form-wrapper {
+      background-color: #fff;
+      border-radius: 10px;
+      border: 3px solid #e3e2e2; }
+      @media only screen and (max-width: 500px) {
+        .onboarding form .form-wrapper {
+          border: 1px solid #e3e2e2; } }
+      .onboarding form .form-wrapper .form-group {
+        padding: 10px 20px 15px;
+        margin-bottom: 0;
+        border-bottom: 3px solid #e3e2e2;
+        position: relative; }
+        @media only screen and (max-width: 500px) {
+          .onboarding form .form-wrapper .form-group {
+            padding: 10px 10px 50px; } }
+        .onboarding form .form-wrapper .form-group:last-of-type {
+          border-bottom: none;
+          padding-bottom: 10px; }
+        .onboarding form .form-wrapper .form-group label {
+          font-size: 12px;
+          text-transform: uppercase; }
+        .onboarding form .form-wrapper .form-group .inline-group > div:first-of-type {
+          padding-left: 0; }
+        .onboarding form .form-wrapper .form-group .inline-group > div:last-of-type {
+          padding-right: 0; }
+        .onboarding form .form-wrapper .form-group .inline-group .radio-buttons-inline {
+          display: inline-block; }
+          .onboarding form .form-wrapper .form-group .inline-group .radio-buttons-inline label {
+            text-transform: capitalize;
+            font-weight: normal;
+            font-size: 14px;
+            margin-right: 10px; }
+          .onboarding form .form-wrapper .form-group .inline-group .radio-buttons-inline input[type="radio"] {
+            margin-right: 5px; }
+        .onboarding form .form-wrapper .form-group .inline-group .date {
+          display: inline-block;
+          width: 64%; }
+          .onboarding form .form-wrapper .form-group .inline-group .date input {
+            width: 100%; }
+        .onboarding form .form-wrapper .form-group .add-note {
+          padding: 30px 0 0 0; }
+          @media only screen and (max-width: 500px) {
+            .onboarding form .form-wrapper .form-group .add-note {
+              padding: 15px;
+              width: 50%; } }
+          .onboarding form .form-wrapper .form-group .add-note a.add-note-button {
+            color: #77706b;
+            text-decoration: underline;
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+            -webkit-transition: opacity 0.3s east-out; }
+            .onboarding form .form-wrapper .form-group .add-note a.add-note-button:hover {
+              cursor: pointer; }
+            .onboarding form .form-wrapper .form-group .add-note a.add-note-button.hidden {
+              opacity: 0; }
+        .onboarding form .form-wrapper .form-group .notes {
+          overflow: hidden;
+          height: 0;
+          transition: height 0.2s ease-out;
+          -webkit-transition: height 0.2s ease-out; }
+          .onboarding form .form-wrapper .form-group .notes.expanded {
+            height: 110px; }
+          .onboarding form .form-wrapper .form-group .notes > div {
+            margin-top: 10px; }
+          .onboarding form .form-wrapper .form-group .notes textarea {
+            height: 70px; }
+        .onboarding form .form-wrapper .form-group a.add-another-row {
+          font-size: 16px;
+          margin: 10px 0;
+          display: inline-block; }
+          .onboarding form .form-wrapper .form-group a.add-another-row:hover {
+            cursor: pointer; }
+          .onboarding form .form-wrapper .form-group a.add-another-row .glyphicon {
+            margin-right: 4px; }
+  .onboarding.completed .title {
+    text-align: center;
+    padding: 10px 0 30px; }
+    @media only screen and (max-width: 500px) {
+      .onboarding.completed .title {
+        padding-bottom: 10px; } }
+  .onboarding.completed .next-step {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border: 3px solid #e3e2e2;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    height: 300px;
+    color: #77706b;
+    text-decoration: none; }
+    .onboarding.completed .next-step:hover {
+      cursor: pointer; }
+    @media only screen and (max-width: 500px) {
+      .onboarding.completed .next-step {
+        padding: 12px; } }
+    .onboarding.completed .next-step h3 {
+      color: #ff6633;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e3e2e2; }
+      @media only screen and (max-width: 500px) {
+        .onboarding.completed .next-step h3 {
+          font-size: 18px;
+          line-height: 1.4;
+          margin-top: 12px; } }
+    .onboarding.completed .next-step img {
+      margin: 0 auto;
+      display: block;
+      width: 30%; }
+  .onboarding.completed .binder-link, .onboarding.completed .report-link {
+    width: 50%; }
+  .onboarding.completed .binder-link {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 5px; }
+  .onboarding.completed .report-link {
+    padding-left: 5px;
+    padding-right: 0; }
+
+@media only screen and (max-width: 500px) {
+  ul.list-inline {
+    display: block;
+    float: left;
+    margin-left: auto;
+    margin-bottom: 0;
+    overflow: hidden;
+    text-align: center;
+    width: 100%; }
+
+  .wizard-name, .wizard-make, .wizard-description, .wizard-frequency {
+    margin-top: 10px;
+    width: 100%; }
+
+  .wizard-phone, .wizard-email, .wizard-year, .wizard-type {
+    margin-top: 10px;
+    width: 50%; }
+
+  .col-xs-1 {
+    float: left;
+    padding: 15px;
+    width: 50%; }
+
+  .form-group input[type=text] {
+    font-size: 16px; }
+
+  .btn.add-another-row {
+    display: block;
+    padding: 10px 12px 11px; }
+    .btn.add-another-row .glyphicon {
+      margin-right: 8px; }
+
+  .notes .col-xs-11 {
+    width: 100%; }
+
+  .wizard-edit {
+    position: absolute;
+    bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%; }
+
+  .clear-fields {
+    float: right;
+    text-align: right; }
+
+  .add-note {
+    float: left;
+    text-align: left; } }

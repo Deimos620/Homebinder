@@ -1,0 +1,125 @@
+<div ng-controller="SubscriptionPaymentCtrl">
+	<account-master selected-tab="selectedTab">
+	<div ng-show="showPlans" class="row">
+		<div class="panel panel-default">
+			<div class="panel-heading">Upgrade Your Binder!</div>
+			<table class="table">
+				<tr>
+					<th>Feature</th>
+					<th class="text-center">Renter</th>
+					<th class="text-center">Homeowner</th>
+				</tr>
+				<tr>
+					<th>Regular Features</th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok orange"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok orange"></span></th>
+				</tr>
+				<tr>
+					<th>Email Support</th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok orange"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok orange"></span></th>
+				</tr>
+				<tr>
+					<th>Upload Project Photos &amp; Files</th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok ltgray"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok orange"></span></th>
+				</tr>
+				<tr>
+					<th>Recall Notifications</th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok ltgray"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok orange"></span></th>
+				</tr>
+				<tr>
+					<th>Seller's Reports</th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok ltgray"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok orange"></span></th>
+				</tr>
+				<tr>
+					<th>Tax Reports</th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok ltgray"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-ok orange"></span></th>
+				</tr>
+				<tr>
+					<th>&nbsp;</th>
+					<th class="text-center">Free</th>
+					<th class="text-center orange">$49/year</th>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div ng-show="showCouponForm" class="row">
+		<div class="well">
+			<form role="form" ng-submit="submitCouponForm()">
+				<div class="form-group">
+					<label>Enter your coupon code:</label>
+					<input ng-model="coupon.value" type="text" class="form-control" autofocus="true"/>
+				</div>
+				<button ng-disabled="status.busy" type="submit" class="btn btn-primary">Next</button>
+				<a ng-disabled="status.busy" href="#/subscriptions" class="btn btn-default">Cancel</a>
+			</form>
+		</div>
+	</div>
+	<div ng-show="showCCForm" class="row">
+		<div class="col-md-4 well">
+			<form role="form" ng-submit="submitCCForm()">
+				<div class="payment-errors alert alert-error hide"></div>
+				<div class="form-group">
+					<label>Card Number</label>
+					<input type="text" size="20" ng-model="cc.number" class="form-control" autofocus="true"/>
+				</div>
+				<div class="form-group">
+					<img src="/img/cctypes.jpg" />
+				</div>
+				<div class="form-group">
+					<label>CVC</label>
+					<input type="text" size="4" ng-model="cc.cvc" class="form-control"/>
+				</div>
+				<div class="form-group">
+					<label>Expiration (MM/YYYY)</label>
+					<div class="row">
+						<div class="col-md-5">
+							<select ng-model="cc.exp_month" ng-options="month for month in options.months" class="form-control"></select>
+						</div>
+						<div class="col-md-7">
+							<select ng-model="cc.exp_year" ng-options="year for year in options.years" class="form-control"></select>
+						</div>
+					</div>
+				</div>		  
+				<button ng-disabled="status.busy" type="submit" class="btn btn-primary">Submit</button>  
+				<a ng-disabled="status.busy" href="#/subscriptions" class="btn btn-default">Cancel</a>
+			</form>
+		</div>
+		<div ng-show="showTotals" class="col-md-4">
+			<div class="well">
+				<table class="table table-condensed">
+					<tr>
+						<th>Subtotal:</th>
+						<td>{{totals.subtotal | currency}}</td>
+					</tr>
+					<tr>
+						<th>Discount:</th>
+						<td>{{totals.discount | currency}}</td>
+					</tr>
+					<tr>
+						<th>Total:</th>
+						<td>{{totals.total | currency}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div ng-show="error" class="margin-15-vertical">
+		<div class="alert alert-danger" ng-show="error">
+			<span>{{error}}</span>
+		</div>
+	</div>
+	<div ng-show="status.busy" class="margin-15-vertical">
+		<p>{{status.msg}} <img src="/img/busy.gif" /></p>
+	</div>
+	<div ng-show="status.complete" class="margin-15-vertical">
+		<div class="alert alert-success">
+			<h3>{{status.completeMsg}}</h3>
+		</div>
+	</div>
+	</account-master>
+</div>

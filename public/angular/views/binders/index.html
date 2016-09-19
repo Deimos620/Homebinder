@@ -1,0 +1,99 @@
+<application-header></application-header>
+
+<div ng-controller="BinderIndexCtrl">
+	<div class="jumbotron">
+		<div class="container">
+			<h1>My Binders</h1>
+			<p>These are your Binders. There are many like them, but these ones are yours.</p>
+			<p><a href="#/binders/new" class="btn btn-lg btn-primary">Create new binder</a></p>
+		</div>
+	</div>
+	
+	<div class="jumbotron-bar navbar navbar-default navbar-fixed-top" style="display:none;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#/binders/">My Binders</a>
+			<a href="#/binders/new" class="btn btn-primary navbar-btn">Create new binder</a>
+		</div>
+	</div>
+	
+	<div ng-show="data.isBusy">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p class="alert alert-info">Getting your binders. Please wait...</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div ng-repeat="binder in data.binders | orderBy:'name'">
+			<div ng-if="$index % 2 == 0" class="row">
+				
+				<div class="col-md-6" ng-if="data.binders[$index+0]">
+					<div ng-class="binder.primary ? 'panel panel-primary' : 'panel panel-default'">
+						<div class="panel-body binder-box">
+							<div class="binder-settings">
+								<ul class="nav">
+									<li class="dropdown">					
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
+							    		<ul class='dropdown-menu pull-right'>
+							    			<li><a href="#/binders/{{ data.binders[$index+0].id }}/edit">Edit</a></li>
+							    			<li><a href="" ng-click="deleteBinder(data.binders[$index+0])">Delete</a></li>
+							    			<li class="divider"></li>
+											
+											<li class="dropdown-header">Subscription Level:&nbsp;{{data.binders[$index+0].subscription.plan_id | subscriptionLabel : 'home'}}</li>
+								        	<!--<li ng-if="data.binders[$index+0].subscription.plan_id == 'free'" class="dropdown-header">Subscription Level:&nbsp;Renter</li>-->
+								           	<li ng-if="data.binders[$index+0].subscription.plan_id == 'free'"><a href="#/subscriptions/{{ data.binders[$index+0].subscription.id }}/update" class="orange">Upgrade</a></li>
+								        	
+							        		<!--<li ng-if="data.binders[$index+0].subscription.plan_id != 'free'" class="dropdown-header">Subscription Level:&nbsp;{{ data.binders[$index+0].subscription_info.plan.name }}</li>-->
+							            	<li ng-if="data.binders[$index+0].subscription.plan_id != 'free'" class="dropdown-header">Renews On:&nbsp;{{ data.binders[$index+0].subscription_info.current_period_end * 1000 | date: 'MM/dd/yyyy' }}</li>
+							    		</ul>
+							    	</li>
+							    </ul>
+						    </div>
+							<a class="binder-link" href='#/binders/{{ data.binders[$index+0].id }}' ng-click="clickBinder(data.binders[$index+0])">
+								<img src="http://maps.googleapis.com/maps/api/staticmap?center={{ data.binders[$index+0].property.address1 }},{{ data.binders[$index+0].property.city }},{{ data.binders[$index+0].property.state }}&zoom=15&size=300x200&key=AIzaSyBkAHC5xhv7J2CSDJWOgAEAbhEaATTsb1Y&sensor=false&markers=color:red|*|{{ data.binders[$index+0].property.address1 }}{{ data.binders[$index+0].property.city }}, {{ data.binders[$index+0].property.state }}" />
+								<h3>{{ data.binders[$index+0].name }}</h3>
+								<p>{{ data.binders[$index+0].property.address1 }}, {{ data.binders[$index+0].property.city }}, {{ data.binders[$index+0].property.state }} {{ data.binders[$index+0].property.zip}}</p>
+							</a>
+						</div>				
+					</div>
+				</div>
+				
+				<div class="col-md-6" ng-if="data.binders[$index+1]">
+					<div ng-class="data.binders[$index+1].primary ? 'panel panel-primary' : 'panel panel-default'">
+						<div class="panel-body binder-box">
+							<div class="binder-settings">
+								<ul class="nav">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
+							    		<ul class='dropdown-menu pull-right'>
+							    			<li><a href="#/binders/{{ data.binders[$index+1].id }}/edit">Edit</a></li>
+							    			<li><a href="" ng-click="deleteBinder(data.binders[$index+1])">Delete</a></li>
+							    			<li class="divider"></li>
+											
+								        	<li ng-if="data.binders[$index+1].subscription.plan_id == 'free'" class="dropdown-header">Subscription Level:&nbsp;Renter</li>
+								           	<li ng-if="data.binders[$index+1].subscription.plan_id == 'free'"><a href="#/subscriptions/{{ data.binders[$index+1].subscription.id }}/update" class="orange">Upgrade</a></li>
+								        	
+							        		<li ng-if="data.binders[$index+1].subscription.plan_id != 'free'" class="dropdown-header">Subscription Level:&nbsp;{{ data.binders[$index+0].subscription_info.plan.name }}</li>
+							            	<li ng-if="data.binders[$index+1].subscription.plan_id != 'free'" class="dropdown-header">Renews On:&nbsp;{{ data.binders[$index+0].subscription_info.current_period_end | date: 'MM/dd/yyyy' }}</li>
+							    		</ul>
+							    	</li>
+							    </ul>
+						    </div>
+							<a class="binder-link" href='#/binders/{{ data.binders[$index+1].id }}' ng-click="clickBinder(data.binders[$index+1])">
+								<img src="http://maps.googleapis.com/maps/api/staticmap?center={{ data.binders[$index+1].property.address1 }},{{ data.binders[$index+1].property.city }},{{ data.binders[$index+1].property.state }}&zoom=15&size=300x200&key=AIzaSyBkAHC5xhv7J2CSDJWOgAEAbhEaATTsb1Y&sensor=false&markers=color:red|*|{{ data.binders[$index+1].property.address1 }}{{ data.binders[$index+1].property.city }}, {{ data.binders[$index+1].property.state }}" />
+								<h3>{{ data.binders[$index+1].name }}</h3>
+								<p>{{ data.binders[$index+1].property.address1 }}, {{ data.binders[$index+1].property.city }}, {{ data.binders[$index+1].property.state }} {{ data.binders[$index+1].property.zip}}</p>			
+							</a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<application-footer></application-footer>

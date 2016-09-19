@@ -1,0 +1,2 @@
+class SubscriptionError < StandardError
+end

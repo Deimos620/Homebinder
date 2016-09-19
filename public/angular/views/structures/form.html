@@ -1,0 +1,70 @@
+<form ng-controller="StructureFormCtrl" ng-submit="submitForm()" name="form" role="form">
+	<div ng-show="data.form.hasErrors" class="alert alert-danger errors">
+		<span ng-repeat="error in data.form.errors">{{ error }}</span>
+	</div>
+	
+	<input ng-model="data.form.id" type="hidden" />
+	<input ng-model="data.form.binder_id" type="hidden" />
+	
+	<div class="form-group">
+		<label for="name">Name</label>
+		<input id="name" ng-model="data.form.name" type="text" required autofocus="true" class="form-control input-lg" />
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="construction_style">Construction Style</label>
+				<input id="construction_style" ng-model="data.form.construction_style" type="text" typeahead="style for style in typeahead.constructionStyles | filter:$viewValue | limitTo:8" class="form-control input-lg" />
+			</div>
+			<div class="col-xs-6">
+				<label for="construction_type">Construction Type</label>
+				<input id="construction_type" ng-model="data.form.construction_type" type="text" typeahead="type for type in typeahead.constructionTypes | filter:$viewValue | limitTo:8" class="form-control input-lg" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="year_built">Built In</label>
+				<input id="year_built" ng-model="data.form.year_built" type="text" class="form-control input-lg" />
+			</div>
+			<div class="col-xs-6">
+				<label for="sq_ft">Square Feet</label>
+				<input id="sq_ft" ng-model="data.form.sq_ft" type="text" class="form-control input-lg" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="beds">Beds</label>
+				<input id="beds" ng-model="data.form.beds" type="text" class="form-control input-lg" />
+			</div>
+			<div class="col-xs-6">
+				<label for="baths">Baths</label>
+				<input id="baths" ng-model="data.form.baths" type="text" class="form-control input-lg" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="heat_type">Heat Type</label>
+				<input id="heat_type" ng-model="data.form.heat_type" type="text" typeahead="type for type in typeahead.heatTypes | filter:$viewValue | limitTo:8" class="form-control input-lg" />
+			</div>
+			<div class="col-xs-6">
+				<label for="heat_source">Heat Source</label>
+				<input id="heat_source" ng-model="data.form.heat_source" type="text" typeahead="source for source in typeahead.heatSources | filter:$viewValue | limitTo:8" class="form-control input-lg" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="details">Additional Details</label>
+		<textarea id="details" ng-model="data.form.details" type="text" rows="5" class="form-control input-lg" ></textarea>
+	</div>
+		
+	<div class='form-actions'>
+		<button ng-disabled="form.$invalid" type="submit" class="btn btn-primary btn-lg">Save</button>
+		<button ng-click="cancelForm()" class="btn btn-lg">Cancel</button>
+	</div> 
+</form>

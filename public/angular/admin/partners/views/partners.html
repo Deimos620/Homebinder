@@ -1,0 +1,47 @@
+<hb-admin-toolbar></hb-admin-toolbar>
+<div>
+	
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Partners - {{data.partners.length}}</h1>
+			<p><a href="#/admin/partners/new" class="btn btn-lg btn-primary">Create new partner</a></p>
+		</div>
+	</div>
+	
+	<div class="jumbotron-bar navbar navbar-default navbar-fixed-top" style="display:none;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#/admin/partners/">Partners</a>
+			<a href="#/admin/partners/new" class="btn btn-primary navbar-btn">Create new partner</a>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">		
+			<table class="table table-striped table-condensed table-hover">
+				<thead>
+					<th>Name</th>
+					<th>Code</th>
+					<th>Type</th>
+					<th>Contact</th>
+					<th>Phone</th>
+					<th>Email</th>
+					<th></th>
+				</thead>
+				<tr ng-show="data.isBusy">
+					<td colspan="7">
+						<p>Loading partners... <img src="/img/busy.gif" /></p>
+					</td>
+				</tr>
+				<tr ng-repeat="partner in data.partners" ng-show="!data.isBusy">
+					<td><a ng-href="#/admin/partners/{{partner.id}}">{{partner.name}}</a></td>
+					<td>{{partner.code}}</td>
+					<td>{{partner.partner_type}}</td>
+					<td>{{partner.contact}}</td>
+					<td>{{partner.phone | tel}}</td>
+					<td>{{partner.email}}</td>
+					<td><a href="" ng-click="deletePartner(partner)" class="btn btn-danger btn-xs">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

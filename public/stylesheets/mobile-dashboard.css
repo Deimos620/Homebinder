@@ -1,0 +1,54 @@
+@media only screen and (max-width: 500px) {
+  .jumbotron {
+    margin-bottom: 0;
+    padding: 0; }
+    .jumbotron h1 {
+      font-size: 28px; }
+    .jumbotron p {
+      font-size: 16px; }
+
+  .account-master-container {
+    padding: 0; }
+    .account-master-container h3 {
+      font-size: 22px; }
+    .account-master-container .col-md-2 {
+      background: white;
+      border-bottom: 3px solid #c6c5c5;
+      margin-bottom: 15px;
+      padding: 0;
+      width: 100%; }
+    .account-master-container .nav-pills > li > a {
+      -moz-border-radius: 0;
+      -webkit-border-radius: 0;
+      border-radius: 0; }
+    .account-master-container .nav-stacked > li + li {
+      margin-top: 0; }
+    .account-master-container .nav-sub {
+      border-bottom: 1px solid #e3e2e2; }
+      .account-master-container .nav-sub.active {
+        border-bottom: none; }
+    .account-master-container .btn.btn-primary {
+      position: absolute;
+      top: 0;
+      right: 15px; }
+    .account-master-container .table th, .account-master-container .table td {
+      display: block;
+      float: left;
+      min-height: 40px; }
+    .account-master-container .table th {
+      width: 35%; }
+    .account-master-container .table td {
+      width: 65%; }
+      .account-master-container .table td.buttons {
+        width: 100%; }
+        .account-master-container .table td.buttons .btn.btn-primary {
+          float: left;
+          margin-top: 0;
+          margin-right: 8px; }
+    .account-master-container .panel-body h4 {
+      margin-top: 0; }
+    .account-master-container .panel-body p {
+      margin-bottom: 0; }
+    .account-master-container .panel-body .pull-left, .account-master-container .panel-body .pull-right {
+      margin-bottom: 15px;
+      width: 100%; } }

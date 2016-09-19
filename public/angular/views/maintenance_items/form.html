@@ -1,0 +1,40 @@
+<form ng-controller="MaintenanceItemFormCtrl" ng-submit="submitForm()" name="form">
+	<div ng-show="data.form.hasErrors" class="alert alert-error errors">
+		<span ng-repeat="error in data.form.errors">{{ error }}</span>
+	</div>
+	<div class="form-inputs">
+		<input ng-model="data.form.id" type="hidden" />
+		<input ng-model="data.form.binder_id" type="hidden" />
+		<div class="control-group">
+			<label>Name</label>
+			<div class="controls">
+				<input id="name" ng-model="data.form.name" type="text" class="span4" required autofocus="true" />
+			</div>
+		</div>
+		<div class="control-row">
+			<div class="control-group">
+				<label>Occurs Every:</label>
+				<div class="controls">
+					<input id="interval" ng-model="data.form.interval" type="text" class="span1" />
+					<select id="maintenance_cycle_id" ng-model="data.form.maintenance_cycle_id" ng-options="cycle.id as cycle.name for cycle in options.cycles" class="span2"></select>
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label>Due On:</label>
+			<div class="controls">
+				<input id="do_date" ng-model="data.form.do_date" type="text" class="span3" datepicker-popup="{{ datepicker.format }}" datepicker-options="datepicker.options" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label>Additional Details</label>
+			<div class="controls">
+				<textarea id="details" ng-model="data.form.details" type="text" rows="5" class="span8"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class='form-actions'>
+		<button ng-disabled="form.$invalid" type="submit" class="btn btn-hb">Save</button>
+		<button ng-click="cancelForm()" class="btn">Cancel</button>
+	</div> 
+</form>

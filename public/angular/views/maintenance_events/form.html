@@ -1,0 +1,31 @@
+<form ng-controller="MaintenanceEventFormCtrl" ng-submit="submitForm()" name="form">
+	<div ng-show="data.form.hasErrors" class="alert alert-error errors">
+		<span ng-repeat="error in data.form.errors">{{ error }}</span>
+	</div>
+	<div class="form-inputs">
+		<input ng-model="data.form.id" type="hidden" />
+		<input ng-model="data.form.maintenance_item_id" type="hidden" />
+		<div class="control-group">
+			<label>Completed by:</label>
+			<div class="controls">
+				<select id="contractor_id" ng-model="data.form.contractor_id" ng-options="contractor.id as contractor.name for contractor in options.contractors" class="span4"></select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label>To be completed by:</label>
+			<div class="controls">
+				<input id="do_date" ng-model="data.form.do_date" type="text" class="span4" datepicker-popup="{{ datepicker.format }}" datepicker-options="datepicker.options" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label>Completed on:</label>
+			<div class="controls">
+				<input id="completed_date" ng-model="data.form.completed_date" type="text" class="span4" datepicker-popup="{{ datepicker.format }}" datepicker-options="datepicker.options" />
+			</div>
+		</div>
+	</div>
+	<div class='form-actions'>
+		<button ng-disabled="form.$invalid" type="submit" class="btn btn-hb">Save</button>
+		<button ng-click="cancelForm()" class="btn">Cancel</button>
+	</div> 
+</form>

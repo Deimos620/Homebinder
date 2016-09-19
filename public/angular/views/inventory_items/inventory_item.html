@@ -1,0 +1,37 @@
+<div ng-controller="InventoryItemCtrl">
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="form{{ resource.data.id }}" onshow="onShow()" onbeforesave="save($data)">
+			<table class="table table-condensed">
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<th>Name</th>
+					<td><span editable-text="resource.data.name" e-name="name" e-required>{{ resource.data.name }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Inventory Type:</th>
+					<td><span editable-text="resource.data.inventory_item_type" e-name="inventory_item_type" e-typeahead="type for type in typeahead.inventoryTypes | filter:$viewValue | limitTo:8 | orderBy:'type'">{{ resource.data.inventory_item_type | titleize }}</span></td>
+					<th class="fixed-width">Value:</th>
+					<td><span editable-text="resource.data.value" e-name="value">{{ resource.data.value | currency }}</span></td>
+				</tr>
+				<tr>
+					<th class="additional-details">Additional Details</th>
+					<td class="additional-details" colspan="5"><span editable-textarea="resource.data.details" e-name="details" e-rows="5" e-cols="120">{{ resource.data.details }}</span></td>
+				</tr>
+				<tr ng-show="errors.hasErrors">
+					<td colspan="4">
+						<div class="alert alert-danger errors">
+							<span ng-repeat="error in errors.list">{{ error }}</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="buttons" colspan="6">
+						<span ng-show="form{{ resource.data.id }}.$visible">
+	        				<button type="submit" class="btn btn-primary" ng-disabled="form{{ resource.data.id }}.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="form{{ resource.data.id }}.$waiting" ng-click="cancelEdit()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

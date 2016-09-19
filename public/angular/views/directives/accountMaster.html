@@ -1,0 +1,29 @@
+<application-header></application-header>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>User Dashboard</h1>
+			<p>Manage your User Profile, Subscriptions and Binder shares here.</p>
+		</div>
+	</div>
+
+	<div class="jumbotron-bar navbar navbar-default navbar-fixed-top" style="display:none;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="">User Dashboard</a>
+		</div>
+	</div>
+	
+	<div class="container account-master-container">
+		<div class="col-md-2">
+			<ul class="nav nav-pills nav-stacked">
+	  			<li class="nav-sub {{ nav.profileClass }}"><a href="#/user_profiles"><span class="glyphicon glyphicon-user"></span>&nbsp;User Profile</a></li>
+	  			<li class="nav-sub {{ nav.subscriptionsClass }}"><a href="#/subscriptions"><span class="glyphicon glyphicon-star"></span>&nbsp;Subscriptions</a></li>
+	  			<li class="nav-sub {{ nav.sharesClass }}"><a href="#/shares"><span class="glyphicon glyphicon-share"></span>&nbsp;Sharing</a></li>
+			</ul>
+		</div>
+		<div class="col-md-9 col-md-offset-1">
+			<div ng-transclude></div>
+		</div>
+	</div>
+	
+<application-footer></application-footer>

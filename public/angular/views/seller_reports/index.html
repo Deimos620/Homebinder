@@ -1,0 +1,269 @@
+<link href="/stylesheets/buyers-report.css" rel="stylesheet">
+<!--
+<public-header></public-header>
+-->
+<div ng-controller="SellerReportCtrl" class="public-binder">
+	
+	<meta property="og:title" content="HomeBinder.com" />
+	<meta property="og:description" content="My Home is for Sale!  Click the following link to see the HomeBinder Report for my home." />
+	<meta property="og:image" content="/img/flatlogo.png" />
+
+	<div class="report-wrapper">
+		<div class="report-actions">
+			<div class="pull-left"><h3 class="orange">HomeBinder.com Seller's Report</h3></div>
+			<div class="pull-right">
+				<a href="{{data.binder.seller_report_url}}" class="btn btn-md btn-primary">Download a PDF</a>
+			</div>
+			<!-- AddThis Button BEGIN -->
+			<div data-addthis-toolbox class="addthis_toolbox addthis_default_style addthis_32x32_style pull-right">
+				<a class="addthis_button_facebook"></a>
+				<a class="addthis_button_twitter"></a>
+				<a class="addthis_button_google_plusone_share"></a>
+				<a class="addthis_button_email"></a>
+			</div>
+			<div class="shareTitle pull-right">Share This Report:</div>
+		</div>
+		
+		<div class="paper-document">
+			<div class="report" >
+				<div class="row report-heading">
+					<div class="col-md-8 meta">
+						<div class="pull-left hb-logo"><img src="/img/flatlogonotext.png"/></div>
+						<h5>Seller's Report for</h5>
+						<h1>{{ data.binder.property.address1 }}<br/><small>{{ data.binder.property.city }}, {{ data.binder.property.state }}</small></h1>
+					</div>
+					<div class="col-md-4 provider" ng-if="data.binder.logo_url">
+						<div class="wrapper">
+							<p class="label"><small>Provided by</small></p>
+							<p class="provider-logo"><a href=""><img ng-src="{{data.binder.logo_url}}" /></a></p>
+						</div>
+					</div>
+				</div>
+
+				<section class="row" id="appliances">
+					<h3>Appliances</h3>
+					<table class="table" ng-if="data.appliances.length > 0">
+						<tr>
+							<th class="col-xs-5">
+								<label>Details</label>
+							</th>
+							<th class="col-xs-5">
+								<label>Make &amp; Model</label>
+							</th>
+							<th class="col-xs-2">
+								<label>Year Installed</label>
+							</th>
+						</tr>
+						<tr ng-repeat="appliance in data.appliances | orderObjectBy:'install_date':'desc'">
+							<td class="col-xs-5">
+								<span class="name capitalize">{{ appliance.name }}</span>
+								<span class="notes">{{ appliance.details }}</span>
+							</td>
+							<td class="col-xs-5 make"><span class="capitalize"><strong>{{ appliance.manufacturer }}</strong></span><small class="uppercase">{{ appliance.model }}</small></td>
+							<td class="col-xs-2 installed"><span>{{ appliance.install_date | date: 'yyyy' }}</span></td>
+						</tr>
+					</table>
+					<div ng-if="data.appliances.length == 0">
+						<hr class="gallery-divider"/>
+						<p class="no-data">No appliances have been included.</p>
+					</div>
+				</section>
+
+				<section class="row" id="maintenance">
+					<h3>Maintenance</h3>
+					<table class="table" ng-if="data.maintenance.length > 0">
+						<tr>
+							<th class="col-xs-9">
+								<label>Description</label>
+							</th>
+							<th class="col-xs-3">
+								<label>Frequency</label>
+							</th>
+						</tr>
+						<tr ng-repeat="maintenance_item in data.maintenance | orderObjectBy:'name':'asc'">
+							<td class="col-xs-5">
+								<span class="description capitalize">{{ maintenance_item.name}}</span>
+								<span class="notes">{{ maintenance_item.details}}</span>
+							</td>
+							<td class="col-xs-3 frequency"><span>Every&nbsp;{{ maintenance_item.interval }}&nbsp;{{ maintenance_item.maintenance_cycle }}</span></td>
+						</tr>
+					</table>
+					<div ng-if="data.maintenance.length == 0">
+						<hr class="gallery-divider"/>
+						<p class="no-data">No maintenance has been included.</p>
+					</div>
+				</section>
+
+
+				<section class="row" id="improvements">
+					<h3>Home Improvements</h3>
+					<table class="table" ng-if="data.improvements.length > 0"</table>
+						<tr>
+							<th class="col-xs-9">
+								<label>Description</label>
+							</th>
+							<th class="col-xs-3">
+								<label>Completed</label>
+							</th>
+						</tr>
+						<tr ng-repeat="project in data.improvements | orderObjectBy:'name':'asc'">
+							<td class="col-xs-9">
+								<span class="description capitalize">{{ project.name }}</span>
+								<span class="notes">{{ project.details }}</span>
+							</td>
+							<td class="col-xs-3 frequency"><span>{{ project.end_date | date: 'MMMM yyyy' }}</span></td>
+						</tr>
+					</table>
+					<div ng-if="data.improvements.length == 0">
+						<hr class="gallery-divider"/>
+						<p class="no-data">No improvements have been included.</p>
+					</div>
+				</section>
+
+				<section class="row" id="contractors">
+					<h3>Contractors</h3>
+					<table class="table" ng-if="data.contractors.length > 0">
+						<tr>
+							<th class="col-xs-5">
+								<label>Name</label>
+							</th>
+							<th class="col-xs-3">
+								<label>Type</label>
+							</th>
+							<th class="col-xs-4">
+								<label>Contact</label>
+							</th>
+						</tr>
+						<tr ng-repeat="binder_contractor in data.contractors | orderBy:'contractor.name':'asc'">
+							<td class="col-xs-5">
+								<span class="name capitalize">{{ binder_contractor.contractor.name }}</span>
+								<span class="notes">{{ binder_contractor.details }}</span>
+							</td>
+							<td class="col-xs-3 type capitalize"><span>{{ binder_contractor.contractor.contractor_type }}</span></td>
+							<td class="col-xs-4 contact">
+								<span ng-show="binder_contractor.contractor.phone">{{ binder_contractor.contractor.phone | tel }}</span>
+					    		<span ng-show="binder_contractor.contractor.email"><a href="mailto:{{ binder_contractor.contractor.email }}">{{ binder_contractor.contractor.email }}</a></span>
+							</td>
+						</tr>
+					</table>
+					<div ng-if="data.contractors.length == 0"> 
+						<hr class="gallery-divider"/>
+						<p class="no-data">No contractors have been included.</p>
+					</div>
+				</section>
+				
+				<section class="row" id="paints">
+					<h3>Paints</h3>
+					<table class="table" ng-if="data.paints.length > 0">
+						<tr>
+							<th class="col-xs-9">
+								<label>Name</label>
+							</th>
+							<th class="col-xs-3">
+								<label>Manufacturer</label>
+							</th>
+						</tr>
+						<tr ng-repeat="paint in data.paints | orderBy:'paint.name':'asc'">
+							<td class="col-xs-9">
+								<span class="name capitalize">{{ paint.name }}</span>
+								<span class="notes">{{ paint.details }}</span>
+							</td>
+							<td class="col-xs-3 type capitalize"><span>{{ paint.manufacturer }}</span></td>
+						</tr>
+					</table>
+					<div ng-if="data.paints.length == 0">
+						<hr class="gallery-divider"/>
+						<p class="no-data">No paints have been included.</p>
+					</div>
+				</section>
+				
+				<section class="row" id="finishes">
+					<h3>Finishes</h3>
+					<table class="table" ng-if="data.finishes.length > 0">
+						<tr>
+							<th class="col-xs-5">
+								<label>Name</label>
+							</th>
+							<th class="col-xs-3">
+								<label>Make</label>
+							</th>
+							<th class="col-xs-4">
+								<label>Model</label>
+							</th>
+						</tr>
+						<tr ng-repeat="finish in data.finishes | orderBy:'finish.name':'asc'">
+							<td class="col-xs-5">
+								<span class="name capitalize">{{ finish.name }}</span>
+								<span class="notes">{{ finish.details }}</span>
+							</td>
+							<td class="col-xs-3 type capitalize"><span>{{ finish.make }}</span></td>
+							<td class="col-xs-4 type capitalize"><span>{{ finish.model }}</span></td>
+						</tr>
+					</table>
+					<div ng-if="data.finishes.length == 0"> 
+						<hr class="gallery-divider"/>
+						<p class="no-data" >No finishes have been included.</p>
+					</div>
+				</section>
+				
+				<section class="row" id="documents">
+					<h3>Documents</h3>
+					<table class="table" ng-if="data.documents.length > 0">
+						<tr>
+							<th class="col-xs-11">
+								<label>Name</label>
+							</th>
+							<th class="col-xs-1"></th>
+						</tr>
+						<tr ng-repeat="doc in data.documents | orderBy:'name'">
+							<td class="col-xs-11">
+								<a ng-href="{{doc.location}}" class="name capitalize" target="_blank">{{doc.name}}</a>
+							</td>
+							<td></td>
+						</tr>
+					</table>
+					<div ng-if="data.documents.length == 0">
+						<hr class="gallery-divider"/>
+						<p class="no-data">No additional documents have been included.</p>
+					</div>
+				</section>
+				
+				<section class="row" id="gallery">
+					<h3>Gallery</h3>
+					<hr class="gallery-divider"/>
+					<ul class="thumbnails">
+						<li ng-repeat="image in data.images | orderBy:'name'">
+							<div class="photo-thumb">
+								<a class="thumbnail" href="{{image.location}}" data-toggle="lightbox" data-gallery="all-images-gallery">
+									<img style="max-width: 200px;" ng-src="{{image.location}}">
+								</a>
+							</div>
+						</li>
+					</ul>
+					<p class="no-data" ng-if="data.images.length == 0">No additional images have been included.</p>
+				</section>
+
+				<p class="disclaimer"><small><em>Information contained in this report is provided by the Seller.</em></small></p>
+			</div>
+			<div class="actions">
+
+				<div class="col-xs-12">
+					<span>Share This Report:</span>
+					
+					<!-- AddThis Button BEGIN -->
+					<div data-addthis-toolbox class="addthis_toolbox addthis_default_style addthis_32x32_style addthis_toolbox_bottom">
+						<a class="addthis_button_facebook"></a>
+						<a class="addthis_button_twitter"></a>
+						<a class="addthis_button_google_plusone_share"></a>
+						<a class="addthis_button_email"></a>
+					</div>
+					
+					<a href="{{data.binder.seller_report_url}}" class="btn btn-md btn-primary">Download a PDF</a>
+				</div>
+			</div>
+			<div class="footer">
+				<p>HomeBinder can centralize all your home information. <a class="btn" href="#/register">Get started today</a></p>
+			</div>
+		</div>
+	</div>
+</div>

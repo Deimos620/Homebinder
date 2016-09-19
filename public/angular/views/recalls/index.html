@@ -1,0 +1,72 @@
+	<!--
+	<h3>Recalls for&nbsp;{{data.appliance.name}}</h3>
+	<h4>{{data.appliance.manufacturer}}&nbsp;
+	{{data.appliance.model}}&nbsp;
+	<span>(UPC: {{data.appliance.upc}})</span>
+	-->
+	<div ng-show="!recalls.data" class="object-block">
+		<h3>No recalls</h3>
+	</div>
+	<div ng-show="recalls.data">
+		<div ng-repeat="r in recalls.data.recalls" class="span12 object-block recall-block">
+			<table class='recall-table'>
+				<tr>
+					<th>Recall Number:&nbsp;</th>
+					<td>{{r.recall_number}}</td>
+				</tr>
+				<tr>
+					<th>Recall Date:&nbsp;</th>
+					<td>{{r.recall_date}}</td>
+				</tr>
+				<tr>
+					<th>Manufacturers:&nbsp;</th>
+					<td colspan="3">
+						<div ng-repeat="m in r.manufacturers">
+							{{m}}</br>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>Product Types:&nbsp;</th>
+					<td colspan="3">
+						<div ng-repeat="pt in r.product_types">
+							{{pt}}</br>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>Descrptions:&nbsp;</th>
+					<td colspan="3">
+						<div ng-repeat="d in r.descriptions">
+							{{d}}</br>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>UPC Codes:&nbsp;</th>
+					<td colspan="3">
+						<div ng-repeat="u in r.upcs">
+							{{u}}</br>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>Hazards:&nbsp;</th>
+					<td colspan="3">
+						<div ng-repeat="h in r.hazards">
+							{{h}}</br>
+						</div>
+					</td>
+				</tr>
+				<tr class="tr-last">
+					<th></th>
+					<td><a href="{{r.recall_url}}" target="_blank">More Information</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="back-to-appliances">
+			<a ng-show="data.next_page" href="{{data.next_page}}">Next</a>	
+		</div>	
+	</div>

@@ -1,0 +1,10 @@
+<table class="table table-condensed">
+	<tr>
+		<th class="fixed-width">To be completed on:</th>
+		<td>{{ resource.data.do_date | date:'M/d/y' }}</td>
+		<th class="fixed-width">Completed on:</th>
+		<td>{{ resource.data.completed_date | date:'M/d/y' }}</td>
+		<th class="fixed-width">Completed by:</th>
+		<td>{{ resource.data.contractor_name }}</td>
+	</tr>
+</table>

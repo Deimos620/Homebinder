@@ -1,0 +1,27 @@
+development:
+  aws:
+    access_key_id     : ""
+    secret_access_key : ""
+    s3_bucket         : ""
+    bucket_url        : ""
+
+testing:
+  aws:
+    access_key_id     : ""
+    secret_access_key : ""
+    s3_bucket         : ""
+    bucket_url        : ""
+    
+test:
+  aws:
+    access_key_id     : ""
+    secret_access_key : ""
+    s3_bucket         : ""
+    bucket_url        : ""
+
+production:
+  aws:
+    access_key_id     : ""
+    secret_access_key : ""
+    s3_bucket         : ""
+    bucket_url        : ""

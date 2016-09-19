@@ -1,0 +1,2 @@
+class UnprocessableException < StandardError
+end

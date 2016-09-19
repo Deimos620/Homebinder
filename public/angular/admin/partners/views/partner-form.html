@@ -1,0 +1,70 @@
+<hb-admin-toolbar></hb-admin-toolbar>
+<div class="jumbotron">
+	<div class="container">
+		<h1>{{labels.title}}</h1>
+	</div>
+</div>
+<div class="container">
+	<form ng-submit="submitForm()" name="form" role="form">
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input id="name" ng-model="data.form.name" type="text" class="form-control input-lg" required autofocus="true" placeholder="Partner name"/>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-xs-6">		
+					<label for="partner_type">Partner type</label>
+					<select id="partner_type" class="form-control input-lg" ng-model="data.form.partner_type" ng-options="partType for partType in options.partner_types" required></select>
+				</div>
+				<div class="col-xs-6">
+					<label for="code">Code</label>
+					<input id="code" type="text" class="form-control input-lg" ng-model="data.form.code" required />
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-xs-6">		
+					<label for="contact">Contact</label>
+					<input id="contact" type="text" class="form-control input-lg" ng-model="data.form.contact" />
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-xs-6">		
+					<label for="email">Email</label>
+					<input id="email" type="email" class="form-control input-lg" ng-model="data.form.email" />
+				</div>
+				<div class="col-xs-6">
+					<label for="phone">Phone Number</label>
+					<input id="phone" type="phone" class="form-control input-lg" ng-model="data.form.phone" />
+				</div>
+			</div>
+		</div>
+		<div ng-show="logos" class="form-group">
+			<div class="row">
+				<div class="col-xs-6">		
+					<label for="binder_logo">Binder Logo</label>
+					<select id="binder_logo_id" ng-model="data.form.binder_logo_id" class="form-control input-lg" ng-options="logo.id as logo.name for logo in logos">
+						<option value="">-- None --</option>
+					</select>
+					
+				</div>
+				<div class="col-xs-6">
+					<label for="phone">Seller Report Logo</label>
+					<select id="sellers_logo_id" ng-model="data.form.sellers_logo_id" class="form-control input-lg" ng-options="logo.id as logo.name for logo in logos">
+						<option value="">-- None --</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class='form-group'>
+			<button ng-disabled="form.$invalid" type="submit" class="btn btn-lg btn-primary">Save</button>
+			<button ng-click="cancelForm()" class="btn btn-lg btn-default">Cancel</button>
+		</div> 	
+		<div ng-show="data.form.errors" class="alert alert-danger">
+			<span>{{data.form.errors}}</span>
+		</div>
+	</form>
+</div>

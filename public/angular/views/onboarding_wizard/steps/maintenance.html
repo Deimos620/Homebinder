@@ -1,0 +1,62 @@
+<application-header></application-header>
+<link href="/stylesheets/onboarding.css" rel="stylesheet">
+<div ng-controller="OnboardingWizardCtrl">
+	<div class="container onboarding">
+
+		<div ng-include="'/angular/views/onboarding_wizard/step-header.html'"></div>
+
+		<form>
+			<div class="title">
+				<h1>What regular maintenance takes place on the home?</h1>
+				<p>Do any of the following apply at your home?  Adding water softener pellets, Blowing out irrigation lines, Changing the filter for your central air, or pumping out a septic tank.</p>
+			</div>
+			<div class="form-wrapper container">
+				<div ng-repeat="form in forms" class="form-group">
+					<div class="row">
+						<div class="wizard-description col-xs-5">
+							<label for="">Short Description</label>
+							<input ng-model="form.name" ng-disabled="form.disabled" id="" type="text" class="form-control input-small" autofocus placeholder="Sweep chimney, Change AC filter" tabindex="{{$index*4+1}}" ng-if="$index == 0"/>
+							<input ng-model="form.name" ng-disabled="form.disabled" id="" type="text" class="form-control input-small" placeholder="Sweep chimney, Change AC filter" tabindex="{{$index*4+1}}" ng-if="$index > 0"/>
+						</div><!---->	
+						<div class="wizard-frequency col-xs-5">
+							<label for="">Frequency</label>
+							<div class="row">
+								<div class="col-xs-4">
+									<input ng-model="form.interval" ng-disabled="form.disabled" id="" type="text" class="form-control input-small" tabindex="{{$index*4+2}}"/>		
+								</div>
+								<div class="col-xs-8">
+									<select ng-model="form.maintenance_cycle" ng-disabled="form.disabled" class="form-control input-small" ng-options="cycle.name as cycle.name for cycle in options.maintenance_cycles | orderBy:'name'" tabindex="{{$index*4+3}}"></select>
+								</div>
+							</div>
+						</div>
+						<div class="wizard-edit row">
+							<div class="col-xs-1 add-note">
+								<a ng-click="notesClass='expanded'; noteButtonClass='hidden'" ng-disabled="form.disabled" class="add-note-button ng-class: noteButtonClass;">Add details</a>
+							</div>
+							<div class="col-xs-1">
+								<a href="" ng-click="deleteRow($index)" ng-disabled="form.disabled">Clear</a>
+							</div>
+						</div>
+					</div><!--row -->
+					<div class="row notes ng-class: notesClass;">
+						<div class="col-xs-11">
+							<label for="">Additional Details</label>
+							<textarea ng-model="form.details" ng-disabled="form.disabled" id="" class="form-control" tabindex="-1"></textarea>
+						</div>
+					</div><!--row-->
+					<div ng-show="form.error" class="alert alert-danger">
+						<span>{{form.error}}</span>
+					</div>
+				</div><!--form-group-->
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-12"><button ng-click="addRow()" class="add-another-row btn btn-primary" tabindex="{{forms.length*4+1}}"><i class="glyphicon glyphicon-plus"></i>Add a maintenance item</button></div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<div ng-include="'/angular/views/onboarding_wizard/form-footer.html'"></div>
+	</div>
+
+</div>

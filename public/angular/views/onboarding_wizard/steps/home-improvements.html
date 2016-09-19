@@ -1,0 +1,55 @@
+<application-header></application-header>
+<link href="/stylesheets/onboarding.css" rel="stylesheet">
+<div ng-controller="OnboardingWizardCtrl">
+	<div class="container onboarding">
+
+		<div ng-include="'/angular/views/onboarding_wizard/step-header.html'"></div>
+
+		<form>
+			<div class="title">
+				<h1>List the projects you've completed.</h1>
+				<p>Have you done any of the following since you've owned the home?  Kitchen remodel, Home addition, Central air, Finished basement, Hardwood flooring...</p>
+			</div>
+			<div class="form-wrapper">
+				<div ng-repeat="form in forms" class="form-group">
+					<div class="row">
+						<div class="wizard-description col-xs-8">
+							<label for="">Short Description</label>
+							<input ng-model="form.name" ng-disabled="form.disabled" id="" type="text" class="form-control input-small"  placeholder="Remodelled Kitchen, Installed New Flooring" autofocus ng-if="$index == 0" tabindex="{{$index*3+1}}" />
+							<input ng-model="form.name" ng-disabled="form.disabled" id="" type="text" class="form-control input-small"  placeholder="Remodelled Kitchen, Installed New Flooring" ng-if="$index > 0" tabindex="{{$index*3+1}}" />
+						</div><!---->
+						<div class="wizard-year col-xs-2">
+							<label for="">Year Completed</label>
+							<select ng-model="form.end_date_year" ng-disabled="form.disabled" class="form-control input-small" placeholder="Year" tabindex="{{$index*3+3}}" ng-options="year for year in options.years"></select>
+						</div><!---->
+						<div class="wizard-edit row">
+							<div class="col-xs-1 add-note">
+								<a ng-click="notesClass='expanded'; noteButtonClass='hidden'" ng-disabled="form.disabled" class="add-note-button ng-class: noteButtonClass;">Add details</a>
+							</div>
+							<div class="col-xs-1">
+								<a href="" ng-click="deleteRow($index)" ng-disabled="form.disabled">Clear</a>
+							</div>
+						</div>
+					</div><!--row -->
+					<div class="row notes ng-class: notesClass;">
+						<div class="col-xs-11">
+							<label for="">Additional Details</label>
+							<textarea ng-model="form.details" ng-disabled="form.disabled" id="" class="form-control" tabindex="-1" ></textarea>
+						</div>
+					</div><!--row-->
+					<div ng-show="form.error" class="alert alert-danger row">
+						<span>{{form.error}}</span>
+					</div>
+				</div><!--form-group-->
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-12"><button ng-click="addRow()" class="add-another-row btn btn-primary" tabindex="{{forms.length*3+1}}"><i class="glyphicon glyphicon-plus"></i>Add a home improvement</a></div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<div ng-include="'/angular/views/onboarding_wizard/form-footer.html'"></div>
+	</div>
+
+</div>

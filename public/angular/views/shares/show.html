@@ -1,0 +1,41 @@
+<h3>Sharing</h3>
+<p>Manage your shared binders and binders shared with you.</p>
+<hr class="orange clear-float" />
+
+<h4>Shared by me</h4>
+<div ng-show="sharedByMe.isBusy">
+	<p>Getting binder(s) you have shared...<img src="/img/busy.gif" /></p>
+</div>
+<div ng-show="!sharedByMe.list.length > 0">
+	<p>You haven't shared your binder(s) with anyone</p>
+</div>
+<div ng-show="sharedByMe.list.length > 0">
+	<div ng-repeat="share in sharedByMe.list" class="panel panel-default">
+		<div class="panel-body">
+			<p>You are sharing binder <b>{{ share.shared_name }}</b> with <b>{{ share.shared_with_email }}</b> as a <b>{{ share.roleDisplayName }}</b></p>
+			<button class="btn btn-danger" ng-click="cancelShare(share)">Remove Share</button>
+		</div>
+	</div>
+</div>
+
+<br />
+
+<h4>Shared with me</h4>
+<div ng-show="sharedWithMe.isBusy">
+	<p>Getting binder(s) shared with you...<img src="/img/busy.gif" /></p>
+</div>
+<div ng-show="!sharedWithMe.list.length > 0">
+	<p>No binders are being shared with you</p>
+</div>
+<div ng-show="sharedWithMe.list.length > 0">
+	<div class="panel panel-default" ng-repeat="share in sharedWithMe.list">
+		<div class="panel-body">
+			<p><b>{{ share.shared_by_email }}</b> is sharing a binder <b>{{ share.shared_name }}</b> with you</p>
+			<p ng-show="share.status == 'pending'">
+				<button class="btn btn-success" ng-click="acceptShare(share)">Accept Invite</button>
+				<button class="btn btn-danger" ng-click="declineShare(share)">Decline Invite</button>
+			</p>
+			<p ng-show="share.status == 'accepted'"><button class="btn btn-danger" ng-click="declineShare(share)">Remove Share</button></p>
+		</div>
+	</div>
+</div>

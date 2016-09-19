@@ -1,0 +1,1 @@
+attribute :token, :user_token, :binder_id

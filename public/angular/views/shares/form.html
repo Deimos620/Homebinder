@@ -1,0 +1,27 @@
+<form role="form" ng-submit="submit()">
+	<div class="modal-header">
+		<h3>Share</h3>
+	</div>
+	<div class="modal-body">
+		<div class="form-group">
+			<label>Share with (email)</label>
+			<input id="share_with" type="email" ng-model="form.shared_with_email" required autofocus="true" class="form-control input-lg"/>
+		</div>
+		<div class="form-group">
+			<label>What type of permissions do you want to grant?</label>
+				<label class="radio">
+					<input id="role_co_owner" type="radio" value="co_owner" ng-model="form.role_name" />&nbsp;Co-Owner - Can read and write to the binder
+				</label>
+				<label class="radio">
+					<input id="role_reader" type="radio" value="reader" ng-model="form.role_name" />&nbsp;Viewer - Can read the binder
+				</label>
+		</div>
+		<div ng-if="error" class="alert alert-danger">
+			<p>{{error}}</p>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button id="submit" type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Share</button>
+		<button id="cancel" class="btn btn-default" ng-click="cancel()">Cancel</button>
+	</div>
+</form>

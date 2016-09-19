@@ -1,0 +1,239 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*
+ * Base structure
+ */
+body {
+	border-top: 2px solid #FC6500;
+  	background-color: transparent;
+    background: url(../img/landing2/background.jpg) no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	   -moz-background-size: cover;
+  		 -o-background-size: cover;
+  			background-size: cover;
+	color: #666;
+  	text-align: center;
+  	font-family: 'Open Sans', sans-serif;
+  	text-shadow: 2px 2px 2px #fff, -2px -2px 2px #fff, 0px 0px 2px #fff;
+  	overflow: hidden;
+}
+
+.site-wrapper {
+	float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+}
+
+.media {
+	overflow: visible;
+}
+.media-body {
+	text-align:left;
+	font-size: 15px;
+	line-height: 1.5;
+}
+.media-body p {
+	margin-bottom: 0;
+}
+.media-object {
+	margin-top: -2px;
+	margin-right: 8px;
+}
+
+.brandfont {
+	font-family: 'Arvo', serif;
+	font-weight: 400;
+}
+.bold {
+	font-weight: 600;
+}
+
+h1 {
+	font-size: 40px;
+	color: #444;
+	text-shadow: 2px 2px 2px #fff, -2px -2px 2px #fff, 0px 0px 2px #fff;
+}
+.lead {
+	font-size: 18px;
+	line-height: 1.5em;
+	text-shadow: 2px 2px 2px #fff, -2px -2px 2px #fff, 0px 0px 2px #fff;
+}
+
+.col-sm-6 {
+	margin: 12px 0;
+}
+.trigger {
+	 text-transform: uppercase; 
+	 margin-top: -5px; 
+	 font-size: 10px; 
+	 font-weight: 700; 
+	 color: #777; 
+	 letter-spacing:.6px;  
+	 text-shadow: 0px 0px 3px #eee, 0px 0px 3px #eee;
+}
+.btn {
+	text-shadow: none;
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: -10px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  margin: 10px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #777;
+  border-bottom: 2px solid transparent;
+  text-shadow: none;
+  margin-left: 20px;
+  letter-spacing: .2px;
+    text-shadow: 0px 0px 3px #eee, 0px 0px 3px #eee;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  color: #FC6500;
+  border-bottom: 2px solid #FC6500;
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 15px 25px;
+  margin-top: 20px;
+}
+
+
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+  color: #fff; /* IE8 proofing */
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .6px;
+  text-shadow: none;
+}
+.mastfoot .inner {
+	padding-bottom: 0px;
+}
+
+/*
+ * Affix and center
+ */
+
+@media (min-width: 768px) {
+   .masthead-brand {
+    float: left;
+  }
+ 
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+
+@media (min-width: 992px) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  body {
+	  color: #444;
+  }
+  .masthead-nav li {
+  float: none !important;
+  margin: 0 !important;
+  }
+    .masthead-nav li a {
+  margin: 10px 20px !important;
+  }
+  .inner {
+	  padding-bottom: 0px;
+  }
+  .lead br {
+	  display: none;
+  }
+  .media {
+	  overflow: hidden;
+  }
+  .media-body {
+	  font-size: 16px;
+  }
+  .col-sm-6:last-of-type .media {
+	  overflow: visible;
+  }
+}

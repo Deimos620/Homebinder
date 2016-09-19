@@ -1,0 +1,77 @@
+@media only screen and (max-width: 500px) {
+  #main-wrapper {
+    display: block;
+    float: left;
+    width: 100%; }
+    #main-wrapper .panel-heading .pull-right {
+      float: left !important; }
+    #main-wrapper .panel-heading h3.panel-title {
+      font-size: 18px;
+      margin-bottom: 0.75em;
+      text-align: left;
+      width: 100%; }
+    #main-wrapper .panel-default {
+      overflow: hidden; }
+      #main-wrapper .panel-default:last-of-type {
+        margin-bottom: 0; }
+      #main-wrapper .panel-default.panel-overview {
+        margin-bottom: 20px; }
+      #main-wrapper .panel-default .btn-group {
+        width: 100%; }
+    #main-wrapper .edit_item_btn, #main-wrapper .delete_post {
+      margin-right: 5px;
+      padding: 8px; }
+    #main-wrapper .table.table-condensed tr,
+    #main-wrapper .table.table-responsive tr {
+      display: block; }
+    #main-wrapper .table.table-condensed th, #main-wrapper .table.table-condensed td,
+    #main-wrapper .table.table-responsive th,
+    #main-wrapper .table.table-responsive td {
+      border-top: none;
+      border-bottom: 1px solid #ddd;
+      display: block;
+      float: left;
+      height: 50px; }
+      #main-wrapper .table.table-condensed th.additional-details, #main-wrapper .table.table-condensed th.edit-history, #main-wrapper .table.table-condensed td.additional-details, #main-wrapper .table.table-condensed td.edit-history,
+      #main-wrapper .table.table-responsive th.additional-details,
+      #main-wrapper .table.table-responsive th.edit-history,
+      #main-wrapper .table.table-responsive td.additional-details,
+      #main-wrapper .table.table-responsive td.edit-history {
+        border: none;
+        min-height: 50px;
+        height: auto;
+        width: 100%; }
+    #main-wrapper .table.table-condensed th,
+    #main-wrapper .table.table-responsive th {
+      width: 60%; }
+    #main-wrapper .table.table-condensed td,
+    #main-wrapper .table.table-responsive td {
+      width: 40%; }
+      #main-wrapper .table.table-condensed td.buttons,
+      #main-wrapper .table.table-responsive td.buttons {
+        width: 100%; }
+    #main-wrapper .table.table-condensed input[type=text],
+    #main-wrapper .table.table-responsive input[type=text] {
+      font-size: 16px; }
+    #main-wrapper .thumbnails {
+      margin-left: 0;
+      padding-left: 0; }
+      #main-wrapper .thumbnails li {
+        margin: 0;
+        width: 50%; }
+      #main-wrapper .thumbnails img {
+        width: 100%; }
+
+  #binder-main {
+    padding-left: 0;
+    padding-right: 0; }
+    #binder-main .binder-map {
+      display: none; }
+    #binder-main .panel-footer h1 {
+      border-bottom: none;
+      font-size: 28px;
+      margin-top: 0;
+      padding-bottom: 0; }
+    #binder-main .panel-footer h2 {
+      font-size: 22px;
+      margin-top: 0; } }

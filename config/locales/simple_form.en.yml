@@ -1,0 +1,145 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "At least one of the required fields has not been filled out. Please review the highlighted fields below."
+    # Labels and hints examples
+    labels:
+      defaults:
+        password:     'Password'
+        details:      'Additional Details'
+      user:
+        new:
+          email: 'E-mail to sign in.'
+        edit:
+          email: 'E-mail.'
+      appliance:
+        name:               'Name'
+        appliance_type:     'Type'
+        manufacturer:       'Manufacturer'
+        model:              'Model'
+        serial_no:          'Serial Number'
+        upc:                'UPC Code'
+        warranty:           'Warranty Information'
+        user_guide_url:     'User Guide Url'
+      area:
+        name:               'Area / Room Name'
+        structure_id:       'Structure'
+        area_type:          'Type of Area'
+        dimensions:         'Dimensions'
+        sq_ft:              'Square Feet'
+      binder:
+        name:               'The name of this binder is'
+        primary:            'Make this binder my primary binder.'
+      contractor:
+        name:               'Name'
+      finish:
+        name:               'Name'
+        make:               'Manufacturer'
+        model:              'Model'
+        style_color:        'Style or Color'
+        detail:             'Detail'
+      maintenance_event:
+        contractor_id:        'Work Done By'
+        do_date:              'To Be Done On'
+        completed_date:       'Done On'
+        submit:               'Save Maintenance Event'
+      maintenance_item:
+        name:                 'Name of this maintenance item'
+        maintenance_type:     'Maintenance Type'
+        maintenance_cycle_id: 'Maintenance Cycle'
+        appliance:            'Appliance'
+        interval:             'Occurs every'
+        do_date:              'Due Next On'
+        structure_id:         'Which strucure does this apply to?'
+        area_id:              'Which area or room does this apply to?'
+        appliance_id:         'Which appliance does this appy to?'
+      paint:
+        name:               'Name'
+        paint_manufacturer: 'Manufacturer'
+        paint_type:         'Type'
+        code:               'Paint Code'
+        makeup:             'Makeup'
+      property:
+        property_type_id:   'Type of Property'
+        country:            'Country'
+        address1:           'Address'
+        address2:           'Apt/Suite'
+        city:               'City'
+        state:              'State'
+        zip:                'Zip Code'
+        county:             'County'
+        apn:                'APN'
+        acres:              'Acres'
+      purchase:
+        store:                'Purchased At'
+        date:                 'Purchased On'
+        price:                'Purchase Price'
+      structure:
+        name:               'Name'
+        year_built:         'Structure Built In'
+        sq_ft:              'Square Feet'
+        beds:               'Number of Bedrooms'
+        baths:              'Number of Bathrooms'
+        building_type:      'Type of Structure'
+        construction_style: 'Construction Style'
+        construction_type:  'Type of Construction'
+        heat_type:          'Type of Heat'
+        heat_source:        'Type of Heating Fuel'
+      subscription:
+        subscription_type_id: 'What type of subscription would you like for this binder?'
+      share:
+        email:              'Who do you want to share with?'
+        role_name:          'What role would you like to give them?'
+      inventory_item:
+        name:               'What is the name of this item?'
+        inventory_type:     'What type of item is it?'
+        value:              'What is the value of this item?'
+    #hints:
+    #  defaults:
+    #    username: 'User name to sign in.'
+    #    password: 'No special characters, please.'
+    placeholders:
+      appliance:     
+        name:               'Washing Machine, Boiler, Microwave, ...'    
+        manufacturer:       'Whirlpool, GE...'
+        appliance_type:     'Dishwasher, Dryer, ...'
+      area:
+        name:               'Kitchen, Front Yard...'
+        area_type:          'Kitchen, Bathroom, ...'
+        structure:          'Main House, Shed...'
+      binder:
+      structure:
+        name:               'Main House, Shed, ...'
+        building_type:      'Main House, Shed, ...'
+        construction_style: 'Cape, Colonial, Ranch, ...'
+        construction_type:  'Brick, Wood Frame, ...'
+        heat_type:          'Baseboard, Radiant, ...'
+        heat_source:        'Gas, Oil, ...'
+      paint:
+        name:               'Desert Cloud, Gray Pearl...'
+        paint_manufacturer: 'Benjamin Moore, Sherwin Williams...'
+        paint_type:         'Interior, Exterior, ...'
+      finish:
+        name:               'Bathroom Tile, Kitchen Countertop, ...'
+        make:               'Hampton Bay, Armstrong, ...'
+        model:              'White Oak, Pendleton, ...'
+      user:
+        email:              'Email'
+        password:           'Password'
+      purchase:
+        store:              'Home Depot, Lowes...'
+      share:  
+        email:              'somebody@mail.com'
+      inventory_item:   
+        name:               'Living Room TV, Laptop, ...'
+        inventory_type:     'Electronics, Collectibles, ...'
+        value:              '999'
+

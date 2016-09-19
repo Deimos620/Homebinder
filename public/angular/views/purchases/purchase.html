@@ -1,0 +1,10 @@
+<tr>
+	<th class="fixed-width">Purchased At:</th>
+	<td><span editable-text="resource.data.purchase.store" e-name="store" e-typeahead="store for store in typeahead.stores | filter:$viewValue | limitTo:8">{{ resource.data.purchase.store }}</span></td>
+	<th class="fixed-width">Purchase Price:</th>
+	<td colspan="3"><span editable-text="resource.data.purchase.price" e-name="price" onbeforesave="isFloat($data)">{{ resource.data.cost | currency }}</span></td>
+</tr>
+<tr>
+	<th class="fixed-width">Purchased On:</th>
+	<td><span editable-date="resource.data.purchase.date" e-name="date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options">{{ resource.data.purchase.date | date:'M/d/y' }}</span></td>
+</tr>

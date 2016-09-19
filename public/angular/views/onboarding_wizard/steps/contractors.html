@@ -1,0 +1,67 @@
+<application-header></application-header>
+<link href="/stylesheets/onboarding.css" rel="stylesheet">
+<div ng-controller="OnboardingWizardCtrl">
+	<div class="container onboarding">
+		
+		<!-- This repeat may not be the best way to accomplish this, but it solves the issue of having appropriate active and completed classes on the right steps -->
+		<div ng-repeat="step in ['contractors']" ng-include="'/angular/views/onboarding_wizard/step-header.html'"></div>
+
+		<form>
+			<div class="title">
+				<h1>Who's worked on the home?</h1>
+				<p>List anyone from the local handyman to a large general contracting company.  Do any of the following apply?  Electrician, Pest Control, Landscaper, Plumber, Painter, Pool Service.</p>
+			</div>
+			<div class="form-wrapper">
+				<div ng-repeat="form in forms" class="form-group">
+					<div class="row">
+						<div class="wizard-name col-xs-3">
+							<label for="">Name</label>
+							<input id="" type="text" ng-model="form.name" ng-disabled="form.disabled" class="form-control input-small" placeholder="Jim Evans, ServiceMaster" tabindex="{{$index*3+1}}" ng-if="$index <= 0" autofocus/>
+							<input id="" type="text" ng-model="form.name" ng-disabled="form.disabled" class="form-control input-small" placeholder="Jim Evans, ServiceMaster" tabindex="{{$index*3+1}}" ng-if="$index > 0"/>
+						</div><!---->
+						<div class="wizard-type col-xs-2">
+							<label for="">Type</label>
+							<input id="" type="text" ng-model="form.type" ng-disabled="form.disabled" class="form-control input-small" placeholder="Plumbing, Landscaping" tabindex="{{$index*3+2}}" typeahead="type for type in typeahead.contractor_types | filter:$viewValue | limitTo:8 | orderBy:'type'"/>
+						</div><!---->
+						<div class="wizard-phone col-xs-2">
+							<label for="">Phone</label>
+							<input id="" type="tel" ng-model="form.phone" ng-disabled="form.disabled" class="form-control input-small" placeholder="phone" tabindex="{{$index*3+3}}"/>
+						</div><!---->
+						<div class="wizard-email col-xs-3">
+							<label for="">Email</label>
+							<input id="" type="email" ng-model="form.email" ng-disabled="form.disabled" class="form-control input-small" placeholder="email" tabindex="{{$index*3+3}}"/>
+						</div><!---->
+						<div class="wizard-edit row">
+							<div class="col-xs-1 add-note">
+								<a ng-click="notesClass='expanded'; noteButtonClass='hidden'" ng-disabled="form.disabled" class="add-note-button ng-class: noteButtonClass;">Add details</a>
+							</div>
+							<div class="col-xs-1 clear-fields">
+								<a href="" ng-click="deleteRow($index)" ng-disabled="form.disabled">Clear</a>
+							</div>
+						</div>
+						
+					</div><!--row -->
+					<div class="row notes ng-class: notesClass;">
+						<div class="col-xs-11">
+							<label for="">Additional Details</label>
+							<textarea ng-model="form.details" ng-disabled="form.disabled" id="" class="form-control" tabindex="-1"></textarea>
+						</div>
+					</div><!--row-->
+					<div ng-show="form.error" class="alert alert-danger row">
+						<span>{{form.error}}</span>
+					</div>
+				</div><!--form-group-->
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-12"><button ng-click="addRow()" class="add-another-row btn btn-primary" tabindex="{{forms.length*3+1}}"><i class="glyphicon glyphicon-plus"></i>Add a contractor</button></div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<div ng-include="'/angular/views/onboarding_wizard/form-footer.html'"></div>
+	</div>
+
+</div>
+
+

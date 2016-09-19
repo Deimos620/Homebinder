@@ -1,0 +1,47 @@
+<div ng-controller="UserProfileCtrl">
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="userProfileForm" onaftersave="save()">
+			<h3>My Profile</h3>
+			<p>Your HomeBinder profile information. <a href="" class="btn btn-primary" ng-click="userProfileForm.$show()" ng-show="!userProfileForm.$visible">Edit Profile</a></p>
+			<table class="table">
+				<tr>
+					<th>First Name:</th>
+					<td><span editable-text="data.first_name" e-name="first_name">{{ data.first_name }}</span></td>
+					<th>Last Name:</th>
+					<td colspan="3"><span editable-text="data.last_name" e-name="last_name">{{ data.last_name }}</span></td>
+				</tr>
+				<tr>
+					<th>Address:</th>
+					<td><span editable-text="data.address.address1" e-name="address1">{{ data.address1 }}</span></td>
+					<th>Apt/Suite</th>
+					<td colspan="3"><span editable-text="data.address.address2" e-name="address2">{{ data.address2 }}</span></td>
+				</tr>
+				<tr>
+					<th>City:</th>
+					<td><span editable-text="data.address.city" e-name="city">{{ data.address.city }}</span></td>
+					<th>State:</th>
+					<td><span editable-select="data.address.state" e-name="state" e-ng-options="subregion.value as subregion.name for subregion in options.subregions">{{ data.address.state }}</span></td>
+					<th>Zip:</th>
+					<td><span editable-text="data.address.zip" e-name="zip">{{ data.address.zip }}</span></td>
+				</tr>
+				<tr>
+					<th>Home Phone:</th>
+					<td colspan="5"><span editable-text="data.home_phone" e-name="home_phone">{{ data.home_phone }}</span></td>
+				</tr>
+				<tr>
+					<th>Mobile:</th>
+					<td colspan="5"><span editable-text="data.mobile_phone" e-name="zip">{{ data.mobile_phone}}</span></td>
+				</tr>
+				<tr ng-show="userProfileForm.$visible">
+					<td class="buttons" colspan="6">
+						<span>
+	        				<button type="submit" class="btn btn-primary" ng-disabled="userProfileForm.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="userProfileForm.$waiting" ng-click="userProfileForm.$cancel()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+			
+		</form>
+	</div>
+</div>

@@ -1,0 +1,81 @@
+<form ng-controller="BinderFormCtrl" ng-submit="submitForm()" name="form" role="form">
+	<input ng-model="data.form.id" type="hidden" />
+	
+	<div class="form-group">
+		<label for="name">Name*</label>
+		<input id="name" ng-model="data.form.name" type="text" class="form-control input-lg" required autofocus="true" />
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="property_type">Property type*</label>
+				<select id="property_type" class="form-control input-lg" ng-model="data.form.property_attributes.property_type" ng-options="propType for propType in options.propertyTypes"></select>
+			</div>
+			<div class="col-xs-6">
+				<label for="acres">Acres</label>
+				<input id="acres" type="text" class="form-control input-lg" ng-model="data.form.property_attributes.acres" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="address1">Address*</label>
+				<input id="address1" type="text" class="form-control input-lg" ng-model="data.form.property_attributes.address1" required />
+			</div>
+			<div class="col-xs-6">
+				<label for="address2">Apt/Suite</label>
+				<input id="address2" type="text" class="form-control input-lg" ng-model="data.form.property_attributes.address2" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="city">City*</label>
+				<input id="city" type="text" class="form-control input-lg" ng-model="data.form.property_attributes.city" required />
+			</div>
+			<div class="col-xs-6">
+				<label for="state">State*</label>
+				<select id="state" class="form-control input-lg" ng-model="data.form.property_attributes.state" ng-options="subregion.value as subregion.name for subregion in options.subregions" required></select>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+  			<div class="col-xs-6">		
+				<label for="zip">Zip Code*</label>
+				<input id="zip" type="text" class="form-control input-lg" ng-model="data.form.property_attributes.zip" />
+			</div>
+			<div class="col-xs-6">
+				<label for="country">Country</label>
+				<select id="country" class="form-control input-lg" ng-model="data.form.property_attributes.country" ng-options="country.value as country.name for country in options.countries" required></select>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="details">Additional Details</label>
+		<textarea id="details" ng-model="data.form.property_attributes.details" type="text" rows="5" class="form-control input-lg"></textarea>
+	</div>
+	<div class="checkbox">
+		<label>
+			<input id="primary" ng-model="data.form.primary" type="checkbox"> Make this my primary binder
+		</label>
+	</div>	
+	<div ng-show="permissions.assign_partner" class="form-group">
+		<label for="partner">Partner</label>
+		<select id="partner" class="form-control input-lg" ng-model="data.form.partner" ng-options="partner.id as partner.name for partner in options.partners|orderBy:'name'">
+			<option value="">-- None --</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<p>* = required fields.</p>
+	</div>
+	<div class='form-group'>
+		<button ng-disabled="form.$invalid" type="submit" class="btn btn-lg btn-primary">Save</button>
+		<button ng-click="cancelForm()" class="btn btn-lg btn-default">Cancel</button>
+	</div> 	
+	<div ng-show="data.form.errors" class="alert alert-danger">
+		<span>{{data.form.errors}}</span>
+	</div>
+</form>

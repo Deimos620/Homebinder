@@ -1,0 +1,32 @@
+<application-header></application-header>
+<link href="/stylesheets/onboarding.css" rel="stylesheet">
+<div ng-controller="OnboardingWizardCtrl">
+	<div class="container onboarding completed">
+
+		<div ng-include="'/angular/views/onboarding_wizard/step-header.html'"></div>
+
+		<div class="title">
+			<h1>All Done!</h1>
+			<p>What do you want to do with your new binder?</p>
+		</div>
+
+		<div class="form-wrapper">
+			<div class="binder-link col-xs-5 col-xs-offset-1">
+				<a class="next-step" href="{{complete.binder_url}}">
+					<img src="img/inventory.svg" />
+					<h3>Take Me to My Binder</h3>
+					<p>View the newly created binder for this home. You can add more details here.</p>
+				</a>
+			</div>
+			<div class="report-link col-xs-5">
+				<a class="next-step" ng-click="generateSellerReport()">
+					<img src="img/report.svg" />
+					<h3>Generate a Seller's Report</h3>
+					<p>Generate a publicly viewable document with limited information about the home, share and print.</p>
+				</a>
+			</div>
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" ng-app="homebinderApp">
+<head>
+  	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="home organization, home binder, homebinder, home projects, home management, managing home projects, home improvement projects, home repair, kitchen remodeling, plumbing project, electrical project, painting project, real estate project, decorating project, organize home, home management">
+	<meta name="description" content="HomeBinder helps manage your home by keeping all your household information in our convenient web application.">
+    <title>HomeBinder - Home Management Software</title>
+    <link rel="shortcut icon" href="img/landing3/favicon.ico" type="image/x-icon" />
+    
+  	<!-- css -->
+  	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+  	<link rel="stylesheet" href="/stylesheets/select.css" />
+  	<link rel="stylesheet" href="/stylesheets/custom.css" />
+  	<link rel="stylesheet" href="/stylesheets/animations.css" />
+  	<link rel="stylesheet" href="/stylesheets/xeditable.css" />
+  	<link rel="stylesheet" href="/stylesheets/ekko-lightbox.min.css" />
+	<link rel="stylesheet" href="/stylesheets/mobile-binder.css" />
+	<link rel="stylesheet" href="/stylesheets/mobile-dashboard.css" />
+	<link rel="stylesheet" href="/stylesheets/mobile-menu.css" />
+  	
+	<link href='//fonts.googleapis.com/css?family=Arvo:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  	<!--<link rel="stylesheet" href="/stylesheets/homebinder.css" />-->
+  	
+  	<!-- hosted libs -->
+  	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+  	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-cookies.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-animate.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-sanitize.js"></script>
+	<script src="https://js.stripe.com/v2/"></script>
+	<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+	<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5369a7b92429a849"></script>
+	
+	<!--<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
+	
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<!-- local libs -->
+	<script src="/javascripts/bootstrap.min.js"></script>
+	<script src="/javascripts/ui-bootstrap-0.10.0.min.js"></script>
+	<script src="/javascripts/ui-bootstrap-tpls-0.10.0.min.js"></script>
+	<script src="/javascripts/xeditable.min.js"></script>
+	<script src="/javascripts/checklist-model.js"></script>
+	<script src="/javascripts/plupload/plupload.full.js"></script>
+	<script src="/javascripts/angular-cache-2.3.3.min.js"></script>
+	<script src="/javascripts/xml2json.min.js"></script>
+	<script src="/javascripts/ekko-lightbox.min.js"></script>
+	<script src="/javascripts/select.js"></script>
+	<script src="/javascripts/PhoneFormat.js"></script>
+	
+	
+	<!-- ngapp -->
+	<script src="/angular/app.js"></script>
+	<script src="/angular/services.js"></script>
+	<script src="/angular/directives.js"></script>
+	<script src="/angular/controllers.js"></script>
+	<script src="/angular/animations.js"></script>
+	<script src="/angular/filters/filters.js"></script>
+	
+	<script src="/angular/services/config.js"></script>
+	<script src="/angular/services/session.js"></script>
+	<script src="/angular/services/httpInterceptor.js"></script>
+	<script src="/angular/services/modal-service.js"></script>
+	<script src="/angular/services/errors.js"></script>
+	<script src="/angular/services/address.js"></script>
+	<script src="/angular/services/userToken.js"></script>
+	<script src="/angular/services/user.js"></script>
+	<script src="/angular/services/userProfile.js"></script>
+	<script src="/angular/services/binderTabs.js"></script>
+	<script src="/angular/services/binder.js"></script>
+	<script src="/angular/services/structure.js"></script>
+	<script src="/angular/services/area.js"></script>
+	<script src="/angular/services/paint.js"></script>
+	<script src="/angular/services/project.js"></script>
+	<script src="/angular/services/binderContractor.js"></script>
+	<script src="/angular/services/appliance.js"></script>
+	<script src="/angular/services/inventoryItem.js"></script>
+	<script src="/angular/services/finish.js"></script>
+	<script src="/angular/services/maintenanceItem.js"></script>
+	<script src="/angular/services/maintenanceEvent.js"></script>
+	<script src="/angular/services/store.js"></script>
+	<script src="/angular/services/contractor.js"></script>
+	<script src="/angular/services/note.js"></script>
+	<script src="/angular/services/share.js"></script>
+	<script src="/angular/services/validation.js"></script>
+	<script src="/angular/services/documents.js"></script>
+	<script src="/angular/services/img.js"></script>
+	<script src="/angular/services/subscription.js"></script>
+	<script src="/angular/services/userRole.js"></script>
+	<script src="/angular/services/partner.js"></script>
+	<script src="/angular/services/logo.js"></script>
+	<script src="/angular/services/sellerReport.js"></script>
+	<script src="/angular/services/recall.js"></script>
+	<script src="/angular/services/transfer.js"></script>
+	<script src="/angular/services/receipt.js"></script>
+	<script src="/angular/services/afterLoginService.js"></script>
+	<script src="/angular/services/free-trial-service.js"></script>
+	
+	<script src="/angular/directives/applicationHeader.js"></script>
+	<script src="/angular/directives/applicationFooter.js"></script>
+	<script src="/angular/directives/accountMaster.js"></script>
+	<script src="/angular/directives/binderMaster.js"></script>
+	<script src="/angular/directives/tabbedResource.js"></script>
+	<script src="/angular/directives/validations.js"></script>
+	<script src="/angular/directives/plupload-angular-directive.js"></script>
+	<script src="/angular/directives/dynamic.js"></script>
+	<script src="/angular/directives/publicHeader.js"></script>
+	<script src="/angular/directives/addthis.js"></script>
+    <script src="/angular/directives/intercom.js"></script>
+
+	<script src="/angular/controllers/registrations/registrationFormCtrl.js"></script>
+	<script src="/angular/controllers/registrations/registrationConfirmCtrl.js"></script>
+	<script src="/angular/controllers/agents/agentsCtrl.js"></script>
+	<script src="/angular/controllers/agents/agentsFreeTrialCtrl.js"></script>
+	<script src="/angular/controllers/landing/landingCtrl.js"></script>
+	<script src="/angular/controllers/sessions/loginCtrl.js"></script>
+	<script src="/angular/controllers/binders/binderIndexCtrl.js"></script>
+	<script src="/angular/controllers/binders/binderFormCtrl.js"></script>
+	<script src="/angular/controllers/binders/newBinderCtrl.js"></script>
+	<script src="/angular/controllers/binders/editBinderCtrl.js"></script>
+	<script src="/angular/controllers/binders/binderCtrl.js"></script>
+	<script src="/angular/controllers/shared/resourceIndex.js"></script>
+	<script src="/angular/controllers/shared/inlineFormCtrl.js"></script>
+	<script src="/angular/controllers/structures/structureIndexCtrl.js"></script>
+	<script src="/angular/controllers/structures/structureCtrl.js"></script>
+	<script src="/angular/controllers/structures/structureFormCtrl.js"></script>
+	<script src="/angular/controllers/areas/areaIndexCtrl.js"></script>
+	<script src="/angular/controllers/areas/areaCtrl.js"></script>
+	<script src="/angular/controllers/areas/areaFormCtrl.js"></script>
+	<script src="/angular/controllers/binder_contractors/binderContractorIndexCtrl.js"></script>
+	<script src="/angular/controllers/binder_contractors/binderContractorCtrl.js"></script>
+	<script src="/angular/controllers/binder_contractors/binderContractorFormCtrl.js"></script>
+	<script src="/angular/controllers/finishes/finishIndexCtrl.js"></script>
+	<script src="/angular/controllers/finishes/finishCtrl.js"></script>
+	<script src="/angular/controllers/finishes/finishFormCtrl.js"></script>
+	<script src="/angular/controllers/inventory_items/inventoryItemIndexCtrl.js"></script>
+	<script src="/angular/controllers/inventory_items/inventoryItemCtrl.js"></script>
+	<script src="/angular/controllers/inventory_items/inventoryItemFormCtrl.js"></script>
+	<script src="/angular/controllers/maintenance_items/maintenanceItemIndexCtrl.js"></script>
+	<script src="/angular/controllers/maintenance_items/maintenanceItemCtrl.js"></script>
+	<script src="/angular/controllers/maintenance_items/maintenanceItemFormCtrl.js"></script>
+	<script src="/angular/controllers/maintenance_events/maintenanceEventIndexCtrl.js"></script>
+	<script src="/angular/controllers/maintenance_events/maintenanceEventFormCtrl.js"></script>
+	<script src="/angular/controllers/paints/paintIndexCtrl.js"></script>
+	<script src="/angular/controllers/paints/paintCtrl.js"></script>
+	<script src="/angular/controllers/paints/paintFormCtrl.js"></script>
+	<script src="/angular/controllers/appliances/applianceIndexCtrl.js"></script>
+	<script src="/angular/controllers/appliances/applianceCtrl.js"></script>
+	<script src="/angular/controllers/appliances/applianceFormCtrl.js"></script>
+	<script src="/angular/controllers/projects/projectIndexCtrl.js"></script>
+	<script src="/angular/controllers/projects/projectCtrl.js"></script>
+	<script src="/angular/controllers/projects/projectFormCtrl.js"></script>
+	<script src="/angular/controllers/purchases/purchaseFormCtrl.js"></script>
+	<script src="/angular/controllers/addresses/addressFormCtrl.js"></script>
+	<script src="/angular/controllers/user_profiles/userProfileCtrl.js"></script>
+	<script src="/angular/controllers/user_profiles/userProfileFormCtrl.js"></script>
+	<script src="/angular/controllers/notes/noteIndexCtrl.js"></script>
+	<script src="/angular/controllers/notes/noteFormCtrl.js"></script>
+	<script src="/angular/controllers/shares/shareFormCtrl.js"></script>
+	<script src="/angular/controllers/shares/shareIndexCtrl.js"></script>
+	<script src="/angular/controllers/shares/shareCtrl.js"></script>
+	<script src="/angular/controllers/passwords/passwordResetFormCtrl.js"></script>
+	<script src="/angular/controllers/passwords/passwordUpdateFormCtrl.js"></script>
+	<script src="/angular/controllers/documents/documentIndexCtrl.js"></script>
+	<script src="/angular/controllers/images/imageIndexCtrl.js"></script>
+	<script src="/angular/controllers/subscriptions/subscriptionIndexCtrl.js"></script>
+	<script src="/angular/controllers/subscriptions/subscriptionPaymentCtrl.js"></script>
+	<script src="/angular/controllers/shared/busyModalCtrl.js"></script>
+	<script src="/angular/controllers/transfers/newTransferCtrl.js"></script>
+	<script src="/angular/controllers/receipts/receiptIndexCtrl.js"></script>
+	<script src="/angular/controllers/receipts/receiptCtrl.js"></script>
+	<script src="/angular/controllers/application/modalCtrl.js"></script>
+	
+	<!-- Admin Module -->
+	<script src="/angular/admin/admin-module.js"></script>
+	<script src="/angular/admin/admin-toolbar/admin-toolbar-directive.js"></script>
+	<script src="/angular/admin/users/admin-user-service.js"></script>
+	<script src="/angular/admin/users/admin-users-controller.js"></script>
+	<script src="/angular/admin/partners/admin-partner-service.js"></script>
+	<script src="/angular/admin/logos/admin-logo-service.js"></script>
+	<script src="/angular/admin/partners/admin-partner-controller.js"></script>
+	<script src="/angular/admin/partners/admin-partners-controller.js"></script>
+	<script src="/angular/admin/partners/admin-partner-form-controller.js"></script>
+	<script src="/angular/admin/user-roles/admin-user-role-assign-contoller.js"></script>
+	<script src="/angular/admin/seller-reports/admin-seller-report-service.js"></script>
+	<script src="/angular/admin/seller-reports/admin-seller-reports-controller.js"></script>
+		
+	<!----Onboarding UI. Added by Jessica, Simple Focus ---------->
+	<script src="/angular/controllers/onboarding_wizard/onboardingWizardCtrl.js"></script>
+
+	<!----Buyer's Report. Added by Jessica, Simple Focus ---------->
+	<script src="/angular/controllers/seller_reports/sellerReport.js"></script>
+	<script src="/angular/controllers/seller_reports/sellerReportForm.js"></script>
+
+</head>
+<body>
+
+  <div>
+    <div ng-view></div>
+  </div>
+
+  <script>
+	$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+	  event.preventDefault();
+	  $(this).ekkoLightbox();
+	});
+  </script>
+</body>
+</html>

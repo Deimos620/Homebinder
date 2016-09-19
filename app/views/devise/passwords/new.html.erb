@@ -1,0 +1,18 @@
+<div class="page-header">
+	<h1>Forgot your password?</h1>
+	<p>Enter your email below and we will send you password reset instructions.</p>
+</div>
+
+<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, :required => true, :autofocus => true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Send Me Password Reset Instructions", :class => 'btn btn-hb' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

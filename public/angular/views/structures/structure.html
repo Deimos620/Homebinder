@@ -1,0 +1,55 @@
+<div ng-controller='StructureCtrl'>
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="form{{ resource.data.id }}" onshow="onShow()" onbeforesave="save($data)">
+			<table class="table table-responsive">
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<th>Name</th>
+					<td><span editable-text="resource.data.name" e-name="name" onbeforesave="checkName($data)" e-required>{{ resource.data.name }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Construction Style</th>
+					<td><span editable-text="resource.data.construction_style" e-name="construction_style" e-typeahead="style for style in typeahead.constructionStyles | filter:$viewValue | limitTo:8 | orderBy:'style'">{{ resource.data.construction_style | titleize }}</span></td>
+					<th class="fixed-width">Construction Type</th>
+					<td><span editable-text="resource.data.construction_type" e-name="construction_type" e-typeahead="type for type in typeahead.constructionTypes | filter:$viewValue | limitTo:8 | orderBy:'type'">{{ resource.data.construction_type | titleize }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Built In</th>
+					<td><span editable-text="resource.data.year_built" e-name="year_built" onbeforesave="isInteger($data)">{{ resource.data.year_built }}</span></td>
+					<th class="fixed-width">Square Feet</th>
+					<td><span editable-text="resource.data.sq_ft" e-name="sq_ft" onbeforesave="isInteger($data)">{{ resource.data.sq_ft }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Beds</th>		
+					<td><span editable-text="resource.data.beds" e-name="beds" onbeforesave="isInteger($data)">{{ resource.data.beds }}</span></td>		
+					<th class="fixed-width">Baths</th>
+					<td><span editable-text="resource.data.baths" e-name="baths" onbeforesave="isFloat($data)">{{ resource.data.baths }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Heat Type</th>
+					<td><span editable-text="resource.data.heat_type" e-name="heat_type" e-typeahead="type for type in typeahead.heatTypes  | filter:$viewValue | limitTo:8 | orderBy:'type'">{{ resource.data.heat_type | titleize }}</span></td>
+					<th class="fixed-width">Heat Source</th>
+					<td><span editable-text="resource.data.heat_source" e-name="heat_source" e-typeahead="source for source in typeahead.heatSources  | filter:$viewValue | limitTo:8 | orderBy:'source'">{{ resource.data.heat_source | titleize }}</span></td>
+				</tr>
+				<tr>
+					<th class="additional-details">Additional Details</th>
+					<td class="additional-details" colspan="3"><span editable-textarea="resource.data.details" e-name="details" e-rows="5" e-cols="110">{{ resource.data.details }}</span></td>
+				</tr>
+				<tr ng-show="errors.hasErrors">
+					<td colspan="4">
+						<div class="alert alert-danger errors">
+							<span ng-repeat="error in errors.list">{{ error }}</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="buttons" colspan="4">
+						<span ng-show="form{{ resource.data.id }}.$visible">
+	        				<button type="submit" class="btn btn-primary" ng-disabled="form{{ resource.data.id }}.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="form{{ resource.data.id }}.$waiting" ng-click="cancelEdit()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

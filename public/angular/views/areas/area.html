@@ -1,0 +1,41 @@
+<div ng-controller="AreaCtrl">
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="form{{ resource.data.id }}" onshow="onShow()" onbeforesave="save($data)">
+			<table class="table table-condensed">
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<th>Name:</th>
+					<td colspan="3"><span editable-text="resource.data.name" e-name="name" onbeforesave="checkName($data)" e-required>{{ resource.data.name }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Area Type:</th>
+					<td><span editable-text="resource.data.area_type" e-name="area_type" e-typeahead="type for type in typeahead.areaTypes | filter:$viewValue | limitTo:8 | orderBy:'type'">{{ resource.data.area_type | titleize }}</span></td>
+					<th class="fixed-width">Dimensions:</th>
+					<td><span editable-text="resource.data.dimensions" e-name="dimensions">{{ resource.data.dimensions }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Structures:</th>
+					<td colspan="3"><span editable-checklist="resource.data.structures" e-name="structures" e-ng-options="structure as structure.name for structure in options.structures | orderBy:'name'">{{showTags()}}</span></td>
+				</tr>
+				<tr>
+					<th class="additional-details">Additional Details:</th>
+					<td class="additional-details" colspan="3"><span editable-textarea="resource.data.details" e-name="details" e-rows="5" e-cols="120">{{ resource.data.details }}</span></td>
+				</tr>
+				<tr ng-show="errors.hasErrors">
+					<td colspan="4">
+						<div class="alert alert-danger errors">
+							<span ng-repeat="error in errors.list">{{ error }}</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="buttons" colspan="6">
+						<span ng-show="form{{ resource.data.id }}.$visible">
+	        				<button type="submit" class="btn btn-primary" ng-disabled="form{{ resource.data.id }}.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="form{{ resource.data.id }}.$waiting" ng-click="cancelEdit()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

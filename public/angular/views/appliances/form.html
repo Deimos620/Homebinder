@@ -1,0 +1,66 @@
+<form ng-controller="ApplianceFormCtrl" ng-submit="submitForm()" name="form">
+	<div ng-show="data.form.hasErrors" class="alert alert-error errors">
+		<span ng-repeat="error in data.form.errors">{{ error }}</span>
+	</div>
+	<div class="form-inputs">
+		<input ng-model="data.form.id" type="hidden" />
+		<input ng-model="data.form.binder_id" type="hidden" />
+		<div class="control-group">
+			<label>Name</label>
+			<div class="controls">
+				<input id="name" ng-model="data.form.name" type="text" class="span4" required autofocus="true" />
+			</div>
+		</div>
+		<div class="controls-row">
+			<div class="control-group-inline">
+				<label>Manufacturer</label>
+				<div class="controls">
+					<input id="area_type" ng-model="data.form.manufacturer" type="text" class="span4" typeahead="man for man in typeahead.manufacturers | filter:$viewValue | limitTo:8"/>
+				</div>
+			</div>
+			<div class="control-group-inline">
+				<label>Model</label>
+				<div class="controls">
+					<input id="model" ng-model="data.form.model" type="text" class="span4" />
+				</div>
+			</div>
+		</div>
+		<div class="controls-row">
+			<div class="control-group-inline">
+				<label>Serial Number</label>
+				<div class="controls">
+					<input id="serial_no" ng-model="data.form.serial_no" type="text" class="span4" />
+				</div>
+			</div>
+			<div class="control-group-inline">
+				<label>UPC Code</label>
+				<div class="controls">
+					<input id="upc" ng-model="data.form.upc" type="text" class="span4" />
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label>User Guide URL</label>
+			<div class="controls">
+				<input id="user_guide_url" ng-model="data.form.user_guide_url" type="text" class="span4" />
+			</div>
+		</div>
+		<div ng-include="'/views/purchases/form.html'"></div>
+		<div class="control-group">
+			<label>Warranty Information</label>
+			<div class="controls">
+				<textarea id="warranty" ng-model="data.form.warranty" rows="5" class="span8"></textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<label>Additional Details</label>
+			<div class="controls">
+				<textarea id="details" ng-model="data.form.details" rows="5" class="span8"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class='form-actions'>
+		<button ng-disabled="form.$invalid" type="submit" class="btn btn-hb">Save</button>
+		<button ng-click="cancelForm()" class="btn">Cancel</button>
+	</div> 
+</form>

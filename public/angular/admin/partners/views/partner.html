@@ -1,0 +1,65 @@
+<hb-admin-toolbar></hb-admin-toolbar>
+<div>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>{{partner.name}}</h1>
+			<a href="#/admin/partners/{{partner.id}}/edit" class="btn btn-primary navbar-btn">Edit</a>
+		</div>
+	</div>
+	
+	<div class="jumbotron-bar navbar navbar-default navbar-fixed-top" style="display:none;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#/partners/">Partners</a>
+			<a href="#/admin/partners/{{partner.id}}/edit" class="btn btn-primary navbar-btn">Edit</a>
+		</div>
+	</div>
+	
+	<!--
+	<div ng-show="data.isBusy">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p class="alert alert-info">Loading partner. Please wait...</p>
+				</div>
+			</div>
+		</div>
+	</div>
+-->
+
+	<div class="container">
+		<div class="row">			
+			<h3>Logos</h3>
+			<div> 
+				<a class="btn btn-primary" pl-upload pl-url="upload.url" pl-files-model="upload.multiFiles" pl-progress-model="upload.multiPercent" 
+					pl-instance="upload.uploader" pl-filters-model="upload.filters" pl-multi-params-model="upload.multipart_params" 
+					on-file-uploaded="onFileUploaded($response)" on-file-error="onFileError($error)">
+					<span class="glyphicon glyphicon-upload"></span>&nbsp;Upload Files</a>
+			</div>
+			
+			<table ng-show="upload.multiFiles.length" class="table table-condensed">
+				<th>Name</th>
+				<th>Size</th>
+				<th>Percent Uploaded</th>
+				<tr ng-repeat="file in upload.multiFiles">
+					<td>{{file.name}}</td>
+					<td>{{file.size | bytes}}</td>
+					<td><progressbar class="progress-striped active" value="file.percent"></progressbar></td>
+				</tr>
+			</table>
+		
+			<ul class="thumbnails">
+				<li ng-repeat="logo in data.logos">
+					<div class="photo-thumb">
+				    	<a class="thumbnail" href="{{logo.location}}" data-toggle="lightbox" data-gallery="all-images-gallery">
+				         	<img style="max-width: 200px;" ng-src="{{logo.location}}">
+				        </a>
+				        <a data-placement="bottom" data-toggle="tooltip" title="Delete Logo" class="photo-thumb-delete delete_image" href="" ng-click="deleteLogo(logo)">
+				        	<span class="glyphicon glyphicon-remove"></span>
+						</a>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+</div>

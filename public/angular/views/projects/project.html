@@ -1,0 +1,47 @@
+<div ng-controller="ProjectCtrl">
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="form{{ resource.data.id }}" onshow="onShow()" onbeforesave="save($data)">
+			<table class="table table-condensed">
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<th>Name</th>
+					<td><span editable-text="resource.data.name" e-name="name" e-required>{{ resource.data.name }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Project Type</th>
+					<td><span editable-text="resource.data.project_type" e-name="project_type" e-typeahead="type for type in typeahead.projectTypes | filter:$viewValue | limitTo:8 | orderBy:'type'">{{ resource.data.project_type | titleize }}</span></td>
+					<th class="fixed-width">Project Status</th>
+					<td><span editable-select="resource.data.status" e-name="status" e-ng-options="status.name as status.name for status in options.statuses | orderBy:'name'">{{ resource.data.status }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Start Date</th>
+					<td><span editable-date="resource.data.start_date" e-name="start_date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options">{{ resource.data.start_date | date:'M/d/y' }}</span></td>
+					<th class="fixed-width">End Date</th>
+					<td><span editable-date="resource.data.end_date" e-name="end_date" e-datepicker-popup="{{ datepicker.format }}" e-datepicker-options="datepicker.options">{{ resource.data.end_date | date:'M/d/y' }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Cost</th>
+					<td colspan="3"><span editable-text="resource.data.cost" e-name="cost" onbeforesave="isFloat($data)">{{ resource.data.cost | currency }}</span></td>
+				</tr>
+				<tr>
+					<th class="additional-details">Additional Details</th>
+					<td class="additional-details" colspan="5"><span editable-textarea="resource.data.details" e-name="details" e-rows="5" e-cols="120">{{ resource.data.details }}</span></td>
+				</tr>
+				<tr ng-show="errors.hasErrors">
+					<td colspan="4">
+						<div class="alert alert-danger errors">
+							<span ng-repeat="error in errors.list">{{ error }}</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="buttons" colspan="6">
+						<span ng-show="form{{ resource.data.id }}.$visible">
+	        				<button type="submit" class="btn btn-primary" ng-disabled="form{{ resource.data.id }}.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="form{{ resource.data.id }}.$waiting" ng-click="cancelEdit()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

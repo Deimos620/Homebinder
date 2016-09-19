@@ -1,0 +1,33 @@
+<div ng-controller="ImageIndexCtrl" resource-count="data.images.length">		
+	<div class="btn-pad">
+		<a class="btn btn-primary btn-sm" pl-upload pl-url="upload.url" pl-files-model="upload.multiFiles" pl-progress-model="upload.multiPercent" 
+			pl-instance="upload.uploader" pl-filters-model="upload.filters" pl-multi-params-model="upload.multipart_params" 
+			on-file-uploaded="onFileUploaded($response)" on-file-error="onFileError($error)">
+			<span class="glyphicon glyphicon-upload"></span>&nbsp;Upload Files</a>
+		<!--<a class="btn btn-default btn-sm" ng-click="uploadFiles()"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload Files</a>-->
+	</div>
+
+	<table ng-show="upload.multiFiles.length" class="table table-condensed">
+		<th>Name</th>
+		<th>Size</th>
+		<th>Percent Uploaded</th>
+		<tr ng-repeat="file in upload.multiFiles">
+			<td>{{file.name}}</td>
+			<td>{{file.size | bytes}}</td>
+			<td><progressbar class="progress-striped active" value="file.percent"></progressbar></td>
+		</tr>
+	</table>
+		
+	<ul class="thumbnails">
+		<li ng-repeat="image in data.images">
+			<div class="photo-thumb">
+	        	<a class="thumbnail" href="{{image.location}}" data-toggle="lightbox" data-gallery="multiimages">
+	          		<img style="max-width: 200px;" ng-src="{{image.location}}">
+	        	</a>
+	        	<a data-placement="bottom" data-toggle="tooltip" title="Delete Photo" class="photo-thumb-delete delete_image" href="" ng-click="destroy(image)">
+	        		<span class="glyphicon glyphicon-remove"></span>
+				</a>
+			</div>
+      	</li>
+	</ul>
+</div>

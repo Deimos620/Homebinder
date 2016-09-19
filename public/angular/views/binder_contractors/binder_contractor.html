@@ -1,0 +1,63 @@
+<div ng-controller="BinderContractorCtrl">
+	<div ng-controller="InlineFormCtrl">
+		<form editable-form name="form{{ resource.data.id }}" onshow="onShow()" onbeforesave="save($data)">
+			<table class="table table-condensed">
+				<tr ng-show="form{{ resource.data.id }}.$visible">
+					<th>Name</th>
+					<td><span editable-text="resource.data.contractor.name" e-name="name" e-required>{{ resource.data.name }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed_width">Contractor Type:</th>
+					<td colspan="5"><span editable-text="resource.data.contractor.contractor_type" e-name="contractor_type" e-typeahead="type for type in typeahead.contractorTypes | filter:$viewValue | limitTo:8 | orderBy:'type'">{{ resource.data.contractor.contractor_type | titleize }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Address:</th>
+					<td><span editable-text="resource.data.contractor.address.address1" e-name="address1">{{ resource.data.contractor.address.address1 }}</span></td>
+				    <th class="fixed-width">Apt/Suite:</th>
+				    <td colspan="3"><span editable-text="resource.data.contractor.address.address2" e-name="address1">{{ resource.data.contractor.address.address2 }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">City:</th>
+					<td><span editable-text="resource.data.contractor.address.city" e-name="city">{{ resource.data.contractor.address.city }}</span></td>
+					<th class="fixed-width">State:</th>
+					<td><span editable-select="resource.data.contractor.address.state" e-name="state" e-ng-options="subregion.value as subregion.name for subregion in options.subregions">{{ resource.data.contractor.address.state }}</span></td>
+					<th class="fixed-width">Zip Code:</th>
+					<td><span editable-text="resource.data.contractor.address.zip" e-name="zip">{{ resource.data.contractor.address.zip }}</span></td>
+				</tr>
+				<tr>
+					<th class="fixed-width">Phone Number:</th>
+					<td><span editable-text="resource.data.contractor.phone" e-name="phone" e-placeholder="xxx-xxx-xxxx">{{ resource.data.contractor.phone }}</span></td>
+					<th class="fixed-width">Email:</th>
+					<td><span editable-text="resource.data.contractor.email" e-name="email">{{ resource.data.contractor.email }}</span></td>
+					<th class="fixed-width">Website:</th>
+					<td><span editable-text="resource.data.contractor.url" e-name="url">{{ resource.data.contractor.url }}</span></td>
+				</tr>
+				<tr>
+					<th>Account Number:</th>
+					<td><span editable-text="resource.data.contractor.account_number" e-name="account_number">{{ resource.data.contractor.account_number }}</span></td>
+					<th>Contact:</th>
+					<td colspan="3"><span editable-text="resource.data.contractor.contact" e-name="contact">{{ resource.data.contractor.contact }}</span></td>
+				</tr>
+				<tr>
+					<th>Additional Details:</th>
+					<td colspan="3"><span editable-textarea="resource.data.details" e-name="details" e-rows="5" e-cols="120">{{ resource.data.details }}</span></td>
+				</tr>
+				<tr ng-show="errors.hasErrors">
+					<td colspan="4">
+						<div class="alert alert-danger errors">
+							<span ng-repeat="error in errors.list">{{ error }}</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="buttons" colspan="6">
+						<span ng-show="form{{ resource.data.id }}.$visible">
+	        				<button type="submit" class="btn btn-primary" ng-disabled="form{{ resource.data.id }}.$waiting">Save</button>
+	        				<button type="button" class="btn btn-default" ng-disabled="form{{ resource.data.id }}.$waiting" ng-click="cancelEdit()">Cancel</button>
+	      				</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

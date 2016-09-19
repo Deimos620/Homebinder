@@ -1,0 +1,42 @@
+<form ng-submit="onSubmit()">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Request Free Trial</h4>
+    </div>  
+    <div class="modal-body" ng-hide="status.done">
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" required autofocus ng-model="form.name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required ng-model="form.email">
+        </div>
+        <div class="radiobtns row">
+            <div class="col-md-4">
+                <input type="radio" name="radio" id="agent" value="single" ng-model="form.trial_type">
+                <label for="agent">Single Agent</label>
+            </div>
+            <div class="col-md-4">
+                <input type="radio" name="radio" id="team" value="small" ng-model="form.trial_type">
+                <label for="team">Small Team</label>
+            </div>
+            <div class="col-md-4">
+                <input type="radio" name="radio" id="brokerage" value="large" ng-model="form.trial_type">
+                <label for="brokerage">Brokerage</label>
+            </div>
+        </div>
+        <div class="alert alert-danger" ng-show="error">
+            <p>{{error}}</p>
+        </div>
+    </div>
+    <div class="modal-body" ng-hide="!status.done">
+        <h4>Thank you, your request has been received. A member of the Homebinder team will contact you soon.</h4>
+    </div>
+    <div class="modal-footer" ng-hide="status.done">
+        <input type="submit" value="Request a free trial" />
+        &nbsp;<a href="" ng-click="onCancel()">No Thanks</a>
+    </div>
+    <div class="modal-footer" ng-hide="!status.done">
+        <a href="" ng-click="onClose()">Close</a>
+    </div>
+</form>

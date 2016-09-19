@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Seller's Report for {{data.report.binder.name}}</h2>
+    <form role="form">
+        <div class="form-group">
+            <input type="checkbox" ng-model="data.report.public" /> Make this report publicly viewable.
+        </div>
+        <div class="form-group">
+            <p>Select the documents and images you would like included in
+            the online version of your seller's report.</p>
+            <accordion close-others="false">
+                <accordion-group heading="Documents" is-open="true">
+                    <table class="table table-condensed table-striped table-hover">
+                        <thead>
+                            <td>File</td>
+                            <td>Include</td>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="doc in data.documents">
+                                <td>{{doc.name}}</td>
+                                <td><input type="checkbox" ng-model="doc.seller_report_item.include" tooltip="Inclue in seller report" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </accordion-group>
+                <accordion-group heading="Images" is-open="true">
+                    <ul class="thumbnails">
+                        <li ng-repeat="image in data.images">
+                            <div class="photo-thumb">
+                                <a class="thumbnail" href="{{image.location}}" data-toggle="lightbox" data-gallery="all-images-gallery">
+                                    <img style="max-width: 200px;" ng-src="{{image.location}}">
+                                </a>
+                                <input type="checkbox" ng-model="image.seller_report_item.include" tooltip="Inclue in seller report" /> Include
+                            </div>
+                        </li>
+                    </ul>
+                </accordion-group>
+            </accordion>
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+        <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    </form>
+</div>

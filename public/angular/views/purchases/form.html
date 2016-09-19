@@ -1,0 +1,20 @@
+<div ng-controller="PurchaseFormCtrl" class="controls-row">
+	<div class="control-group-inline">
+		<label>Store</label>
+		<div class="controls">
+			<input id="store" ng-model="data.form.purchase_attributes.store" type="text" class="span4" typeahead="store for store in typeahead.stores | filter:$viewValue | limitTo:8"/>
+		</div>
+	</div>
+	<div class="control-group-inline">
+		<label>Date</label>
+		<div class="controls">
+			<input id="date" ng-model="data.form.purchase_attributes.date" type="text" class="span4" datepicker-popup="{{ datepicker.format }}" datepicker-options="datepicker.options" />
+		</div>
+	</div>
+	<div class="control-group-inline">
+		<label>Price</label>
+		<div class="controls">
+			<input id="price" ng-model="data.form.purchase_attributes.price" type="text" class="span4" />
+		</div>
+	</div>
+</div>

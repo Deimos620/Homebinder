@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  	<title>HomeBinder Transfer Notification!</title>
+	  	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	  	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	</head>
+	<body style="font:14px 'Open Sans', Sans-serif;color:#444;">
+		<table border="0" cellspacing="0" cellpadding="10" width="600px">
+			<tr>
+				<td style="background-color:#222;text-align:center;width:100px;border-top:2px solid #ff9900" valign="top">
+					<a href="http://www.homebinder.com">
+						<img src="http://www.homebinder.com/img/logo.png" />
+					</a>
+				</td>
+				<td valign="top">
+		  			<p style="border-bottom:1px solid #ccc;"><strong><span style="color:#ff9900;font-size: 28px;">You have a new HomeBinder!</span></strong></p>
+				  	<p>
+                      <% if @transfer_by.user_profile.first_name.nil? || @transfer_by.user_profile.last_name.nil? %>
+                        <%= @transfer_by.email %>
+                      <% else %>
+                        <%= "#{@transfer_by.user_profile.first_name} #{@transfer_by.user_profile.last_name}" %>
+                      <% end %>
+                      &nbsp;transferred the binder&nbsp;<b><%= @binder.name %></b> to you.
+                    </p>
+					<p>To see the binder, go to <a href="www.homebinder.com">www.homebinder.com</a> and sign up.</p>
+				  	<p>If you have any questions, please email us - <a href="mailto:support@homebinder.com" style="color:#ff9900">support@homebinder.com</a></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="background-color:#222;text-align:left;width:100px;color:#fff;">
+					<strong>Organize.<br/>Manage.<br/><span style="color:#ff9900">Sell.</span></strong>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="border-top:1px solid #ccc;font-size:10px;text-align: right">
+					&copy; 2013 <a href="http://www.homebinder.com" style="color:#ff9900">HomeBinder.com</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<div class="navbar navbar-inverse navbar-fixed-top main-navbar" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+          	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            	<span class="sr-only">Toggle navigation</span>
+            	<!--  SF  --><span class="glyphicon glyphicon-cog"></span>
+          	</button>
+          	<a class="navbar-brand" href="#/binders"><img src="/img/flatlogonotext.png"><span>&nbsp; HomeBinder</span></a>
+          	
+          	<!--  SF  -->
+          	<div class="dropdown mobile-binder-select">
+		      		<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span>&nbsp;{{data.binder.name}}&nbsp;<b class="caret"></b></a>
+			    		<ul class='dropdown-menu'>
+			    			<li class="dropdown-header">My Binders</li>
+			    			<li ng-repeat="binder in data.binders"><a href="" ng-click="selectBinder(binder)">{{ binder.name }}</a></li>
+			    			<li class='divider'></li>
+			    			<li><a href="#/binders/new"><span class="glyphicon glyphicon-plus"></span>&nbsp;Create New Binder</a></li>
+			    		</ul>
+				    </div>
+
+        </div>			
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right nav-account-actions">
+				<li class="dropdown binder-select">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" tooltip-placement="bottom" tooltip="Your Binders"><span class="glyphicon glyphicon-book"></span>&nbsp;{{data.binder.name}}&nbsp;<b class="caret"></b></a>
+					<ul class='dropdown-menu'>
+						<li class="dropdown-header">My Binders</li>
+						<li ng-repeat="binder in data.binders"><a href="" ng-click="selectBinder(binder)">{{ binder.name }}</a></li>
+						<li class='divider'></li>
+						<li><a href="#/binders/new"><span class="glyphicon glyphicon-plus"></span>&nbsp;Create New Binder</a></li>
+					</ul>
+				 </li>
+				<li class="divider-vertical account-actions"></li>
+				<li class="account-actions"><a href="#/user_profiles" tooltip-placement="bottom" tooltip="{{data.settings_tooltip}}"><span class="glyphicon glyphicon-cog"></span>&nbsp;{{data.user.email}}&nbsp;<span ng-if="data.pending_shares > 0" class="badge">{{data.pending_shares}}</span></a></li>
+		    <li class="account-actions"><a href="#/logout" ng-click="logout()" tooltip-placement="bottom" tooltip="Logout"><span class='glyphicon glyphicon-lock'></span></a></li>
+
+		    <!--  SF  -->
+		    <li class="mobile-account-actions"><a href="#/user_profiles"><span class="glyphicon glyphicon-cog"></span>&nbsp;Settings</a></li>
+		    <li class="mobile-account-actions"><a href="#/logout" ng-click="logout()" tooltip-placement="bottom" tooltip="Logout"><span class='glyphicon glyphicon-log-out'></span>&nbsp;Log Out</a></li>
+		  </ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<div class="page-header">
+	<h1>Resend Unlock Instructions</h1>
+	<p>Didn't receive your account unlock instructions? Enter your email below and we will resend them to you. Be sure to check your spam folder!</p>
+</div>
+
+<%= simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post, :class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.full_error :unlock_token %>
+
+  <div class="form-inputs">
+    <%= f.input :email, :required => true, :autofocus => true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Resend Unlock Instructions", :class => 'btn btn-hb' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

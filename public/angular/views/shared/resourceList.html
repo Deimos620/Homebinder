@@ -1,0 +1,9 @@
+<binder-master selected-tab="selectedTab" resource-count="data.resources.length" buttons="toolbar.buttons">
+	<div ng-show="status.message" class="alert alert-info">
+		<p>{{ status.message }}</p>
+	</div>
+			
+	<div ng-repeat="resource in data.resources | orderBy:'data.name'">
+		<tabbed-resource resource="resource" service="data.service" tagId="resource.tagId" on-edit="onEdit(resource)" on-destroy="onDestroy(resource)"></tabbed-resource>
+	</div>
+</binder-master>

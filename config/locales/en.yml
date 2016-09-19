@@ -1,0 +1,150 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  
+  # Form Buttons
+  save:           'Save'
+  ok:             'OK'
+  cancel:         'Cancel'
+  wait:           'Please Wait...'
+  new:            'New'
+  sign_up:        'Sign Up'
+  close:          'Close'
+
+  
+  # ToolTips
+  edit_tip:       'Edit'
+  delete_tip:     'Delete'
+  history_tip:    'History'
+  notes_tip:      'Notes'
+  documents_tip:  'Documents'
+  gallery_tip:    'Gallery'
+  share_tip:      'Share'
+  
+  # Messages
+  confirm_delete: 'Are you sure?'
+  value_required: 'You must enter information'
+  
+  # Item Tabs
+  info_tab:       'Info'
+  gallery_tab:    'Gallery'
+  docs_tab:       'Documents'
+  notes_tab:      'Notes'
+  
+  # multi use
+  phone:          'Phone Number'
+  
+  # Structures
+  struct:                     'Structure'
+  struct_new:                 'New Structure'
+  struct_year:                'Year Built:'
+  struct_feet:                'Square Feet:'
+  struct_beds:                'Bedrooms:'
+  struct_baths:               'Bathrooms:'
+  struct_building_type:       'Building Type:'
+  struct_construction_style:  'Construction Style:'
+  struct_construction_type:   'Construction Type:'
+  struct_heat_type:           'Heat Type:'
+  struct_heat_source:         'Heat Source:'
+  
+  # Areas
+  area:                 'Areas & Room'
+  area_new:             'New Area / Room'
+  area_struct:          'Structure:'
+  area_type:            'Type:'
+  area_dimensions:      'Dimensions:'
+  
+  # Paints
+  paint:                'Paint'
+  paint_new:            'New Paint'
+  paint_manufacturer:   'Manufacturer:'
+  paint_type:           'Type:'
+  paint_code:           'Code:'
+  paint_makeup:         'Makeup:'
+  paint_areas:          'Used On:'        
+  
+  # Finishes
+  finish:             'Finish'
+  finish_new:         'New Finish'
+  finish_make:        'Make:'
+  finish_model:       'Model:'
+  finish_style_color: 'Style/Color:'
+  finish_detail:      'Detail:'
+  
+  # Appliances
+  appliance:                    'Appliance'
+  appliance_new:                'New Appliance'
+  appliance_type:               'Type:'
+  appliance_manufacturer:       'Manufacturer:'
+  appliance_model:              'Model:'
+  appliance_serial:             'Serial Number:'
+  appliance_warranty:           'Warranty:'
+  appliance_user_guide:         'User Guide:'
+  appliance_last_recall_check:  'Checked For Recall:'
+  appliance_upc:                'UPC Code:'
+    
+  # Purchases
+  purchase:       'Purchase'
+  purchase_store: 'Purchased At:'
+  purchase_date:  'Purchased On:'
+  purchase_price: 'Purchase Price:'
+  
+  # Contractor
+  contractor:                 'Contractor'
+  contractor_new:             'New Contractor'
+  contractor_type:            'Contractor Type:'
+  contractor_name:            'Name:'
+  contractor_address:         'Address:'
+  contractor_city:            'City:'
+  contractor_state:           'State:'
+  contractor_zip:             'Zip Code:'
+  contractor_phone:           'Phone:'
+  contractor_email:           'Email:'
+  contractor_url:             'Web Site:'
+  contractor_account_number:  'Account Number:'
+  contractor_contact:         'Contact:'
+  
+  # Maintenance Item
+  maintenance_item:       'Maintenance Item'
+  maintenance_item_new:   'New Maintenance Item'
+  maintenance_name:       'Name of this maintenance item'
+  maintenance_type:       'Type of maintenance item'
+  maintenance_cycle:      'Cycle'
+  maintenance_appliance:  'Which appliance is the maintenance done on?'
+  maintenance_structure:  'Which structure is the maintenance done on?'
+  maintenance_area:       'Which area is the maintenance done on?'
+  maintenance_interval:   'Interval'
+  maintenance_frequency:  'Frequency'
+  maintenance_every:      'Every'
+  maintenance_perform_on: 'Performed On'
+  maintenance_how_often:  'How Often'
+  maintenance_next:       'Next On'
+  
+  # Maintenance Event
+  maintenance_event:        'Maintenance Event'
+  maintenance_unknown_do:   'Unknown'
+  maintenance_history:      'Maintenance History For - '
+  maintenance_event_alert:  'is scheduled to be completed next on'
+  
+  # Projects
+  project:          'Project'
+  project_new:      'New Project'
+  project_type:     'Project Type:'
+  project_status:   'Status:'
+  project_started:  'Started On:'
+  project_ended:    'Completed On:'
+  project_cost:     'Cost of Project'
+  
+  # Shares
+  share_co_owner:       'Co-owner - Can add/remove/edit all resources in a binder. Can NOT transfer/share/delete a binder.'
+  share_reader:         'Reader - Can read all resources in a binder.'
+  share_reader2:        'Reader - Can read the resource. Can NOT edit the resource.'
+  share_reader_writer:  'Reader/Writer - Can read/edit the resource.'
+  
+  # Inventory Item
+  inventory:            'Inventory'
+  inventory_item:       'Inventory Item'
+  inventory_item_new:   'New Inventory Item'
+  inventory_type:       'Inventory Type:'
+  inventory_value:      'Value:'
